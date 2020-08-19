@@ -43,6 +43,7 @@ export default {
       default: 'CT',
       description: 'Sidebar short title'
     },
+    // set here sidebar icon  */
     logo: {
       type: String,
       default: 'img/icon-vue.png',
