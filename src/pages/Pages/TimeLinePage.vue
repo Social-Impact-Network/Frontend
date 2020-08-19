@@ -513,7 +513,7 @@ export default {
           labels: ['APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP'],
           datasets: [
             {
-              label: 'Amount of € generated this month',
+              label: 'Amount of € generated up to this month',
               fill: true,
               borderColor: config.colors.danger,
               borderWidth: 2,
