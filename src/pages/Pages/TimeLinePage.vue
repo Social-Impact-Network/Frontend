@@ -1,106 +1,608 @@
 <template>
-  <div class="content">
-    <div class="header text-center"><h3 class="title">Timeline</h3></div>
+  <div class="row">
+    <!-- Stats Cards -->
+    <div class="col-lg-4" v-for="card in statsCards" :key="card.title">
+      <stats-card
+        :title="card.title"
+        :sub-title="card.subTitle"
+        :type="card.type"
+        :icon="card.icon"
+      >
+        <div slot="footer" v-html="card.footer"></div>
+      </stats-card>
+    </div>
+
+
+    <!-- Big Chart -->
+    <!-- 
+    <div class="col-12">
+      <card type="chart">
+        <template slot="header">
+          <div class="row">
+            <div class="col-sm-6" :class="isRTL ? 'text-right' : 'text-left'">
+              
+              <h2 class="card-title" v-if="bigLineChart.activeIndex===0">Earning</h2>
+              <h2 class="card-title" v-if="bigLineChart.activeIndex===1">Energy</h2>
+
+            </div>
+            <div class="col-sm-6 d-flex d-sm-block">
+              <div
+                class="btn-group btn-group-toggle"
+                :class="isRTL ? 'float-left' : 'float-right'"
+                data-toggle="buttons"
+              >
+                <label
+                  v-for="(option, index) in bigLineChartCategories"
+                  :key="option.name"
+                  class="btn btn-sm btn-primary btn-simple"
+                  :class="{ active: bigLineChart.activeIndex === index }"
+                  :id="index"
+                >
+                  <input
+                    type="radio"
+                    @click="initBigChart(index)"
+                    name="options"
+                    autocomplete="off"
+                    :checked="bigLineChart.activeIndex === index"
+                  />
+                  <span class="d-none d-sm-block">{{ option.name }}</span>
+                  <span class="d-block d-sm-none">
+                    <i :class="option.icon"></i>
+                  </span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </template>
+        <div class="chart-area">
+          <line-chart
+            style="height: 100%"
+            ref="bigChart"
+            :chart-data="bigLineChart.chartData"
+            :gradient-colors="bigLineChart.gradientColors"
+            :gradient-stops="bigLineChart.gradientStops"
+            :extra-options="bigLineChart.extraOptions"
+          >
+          </line-chart>
+        </div>
+      </card>
+    </div> -->
+    
+    
+
+    <!-- Small charts -->
+
+
+
+    <div class="col-lg-4" :class="{ 'text-right': isRTL }">
+      <card type="chart">
+        <template slot="header">
+          <h5 class="card-category">Total Token</h5>
+          <h3 class="card-title">
+            <i class="tim-icons icon-coins"></i> 515,653
+          </h3>
+        </template>
+        <div class="chart-area">
+          <bar-chart
+            style="height: 100%"
+            :chart-data="blueBarChart.chartData"
+            :gradient-stops="blueBarChart.gradientStops"
+            :extra-options="blueBarChart.extraOptions"
+          >
+          </bar-chart>
+        </div>
+      </card>
+    </div>
+
+    <div class="col-lg-4" :class="{ 'text-right': isRTL }">
+      <card type="chart">
+        <template slot="header">
+          <h5 class="card-category">Total kWh generated</h5>
+          <h3 class="card-title">
+            <i class="tim-icons icon-bell-55 text-primary "></i> 563,165
+          </h3>
+        </template>
+        <div class="chart-area">
+          <line-chart
+            style="height: 100%"
+            :chart-data="purpleLineChart.chartData"
+            :gradient-colors="purpleLineChart.gradientColors"
+            :gradient-stops="purpleLineChart.gradientStops"
+            :extra-options="purpleLineChart.extraOptions"
+          >
+          </line-chart>
+        </div>
+      </card>
+    </div>
+
+    <div class="col-lg-4" :class="{ 'text-right': isRTL }">
+      <card type="chart">
+        <template slot="header">
+          <h5 class="card-category">Total Profit in €</h5>
+          <h3 class="card-title">
+            <i class="tim-icons icon-send icon-money-coins"></i> 23,890
+          </h3>
+        </template>
+        <div class="chart-area">
+          <line-chart
+            style="height: 100%"
+            :chart-data="greenLineChart.chartData"
+            :gradient-stops="greenLineChart.gradientStops"
+            :extra-options="greenLineChart.extraOptions"
+          >
+          </line-chart>
+        </div>
+      </card>
+    </div> 
+
+    <div>
     <div class="row">
-      <div class="col-md-12">
-        <time-line>
-          <time-line-item
-            inverted
-            badge-type="danger"
-            badge-icon="tim-icons icon-planet"
+      <div class="col-md-6">
+        <card>
+          <template slot="header">
+            <h5 class="card-category">Navigation Pills</h5>
+            <h3 class="card-title">Horizontal Tabs</h3>
+          </template>
+
+          <tabs type="primary">
+            <tab-pane label="Profile">
+              Collaboratively administrate empowered markets via plug-and-play
+              networks. Dynamically procrastinate B2C users after installed base
+              benefits. <br /><br />
+              Dramatically visualize customer directed convergence without
+              revolutionary ROI.
+            </tab-pane>
+
+            <tab-pane label="Settings">
+              Efficiently unleash cross-media information without cross-media
+              value. Quickly maximize timely deliverables for real-time schemas.
+              <br /><br />Dramatically maintain clicks-and-mortar solutions
+              without functional solutions.
+            </tab-pane>
+
+            <tab-pane label="Options">
+              Completely synergize resource taxing relationships via premier
+              niche markets. Professionally cultivate one-to-one customer
+              service with robust ideas. <br /><br />Dynamically innovate
+              resource-leveling customer service for state of the art customer
+              service.
+            </tab-pane>
+          </tabs>
+        </card>
+      </div>
+
+      <div class="col-md-6">
+        <card>
+          <template slot="header">
+            <h5 class="card-category">Navigation Pills</h5>
+            <h3 class="card-title">Vertical Tabs</h3>
+          </template>
+
+          <tabs type="primary" vertical class="row">
+            <tab-pane label="Profile">
+              Collaboratively administrate empowered markets via plug-and-play
+              networks. Dynamically procrastinate B2C users after installed base
+              benefits. <br /><br />
+              Dramatically visualize customer directed convergence without
+              revolutionary ROI.
+            </tab-pane>
+
+            <tab-pane label="Settings">
+              Efficiently unleash cross-media information without cross-media
+              value. Quickly maximize timely deliverables for real-time schemas.
+              <br /><br />Dramatically maintain clicks-and-mortar solutions
+              without functional solutions.
+            </tab-pane>
+
+            <tab-pane label="Options">
+              Completely synergize resource taxing relationships via premier
+              niche markets. Professionally cultivate one-to-one customer
+              service with robust ideas. <br /><br />Dynamically innovate
+              resource-leveling customer service for state of the art customer
+              service.
+            </tab-pane>
+          </tabs>
+        </card>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <card>
+          <template slot="header">
+            <h5 class="card-category">Collapse Example</h5>
+            <h3 class="card-title">Collapsible Accordion</h3>
+          </template>
+
+          <collapse :multiple-active="false" :active-index="0">
+            <collapse-item title="Collapsible Group Item #1">
+              <div>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life
+                accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                non cupidatat skateboard dolor brunch. Food truck quinoa
+                nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
+                put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
+                wes anderson cred nesciunt sapiente ea proident. Ad vegan
+                excepteur butcher vice lomo. Leggings occaecat craft beer
+                farm-to-table, raw denim aesthetic synth nesciunt you probably
+                haven't heard of them accusamus labore sustainable VHS.
+              </div>
+            </collapse-item>
+
+            <collapse-item title="Collapsible Group Item #2">
+              <div>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life
+                accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                non cupidatat skateboard dolor brunch. Food truck quinoa
+                nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
+                put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
+                wes anderson cred nesciunt sapiente ea proident. Ad vegan
+                excepteur butcher vice lomo. Leggings occaecat craft beer
+                farm-to-table, raw denim aesthetic synth nesciunt you probably
+                haven't heard of them accusamus labore sustainable VHS.
+              </div>
+            </collapse-item>
+
+            <collapse-item title="Collapsible Group Item #3">
+              <div>
+                Anim pariatur cliche reprehenderit, enim eiusmod high life
+                accusamus terry richardson ad squid. 3 wolf moon officia aute,
+                non cupidatat skateboard dolor brunch. Food truck quinoa
+                nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua
+                put a bird on it squid single-origin coffee nulla assumenda
+                shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore
+                wes anderson cred nesciunt sapiente ea proident. Ad vegan
+                excepteur butcher vice lomo. Leggings occaecat craft beer
+                farm-to-table, raw denim aesthetic synth nesciunt you probably
+                haven't heard of them accusamus labore sustainable VHS.
+              </div>
+            </collapse-item>
+          </collapse>
+        </card>
+      </div>
+
+      <div class="col-md-6">
+        <card>
+          <template slot="header">
+            <h5 class="card-category">Navigation Pills</h5>
+            <h3 class="card-title">Vertical Tabs With Icons</h3>
+          </template>
+          <tabs
+            type="primary"
+            tabNavWrapperClasses="col-lg-3 col-md-6"
+            tabContentClasses="col-md-8"
+            vertical
+            square
+            class="row"
           >
-            <span slot="header" class="badge badge-pill badge-danger"
-              >Some title</span
-            >
-            <p slot="content">
-              Wifey made the best Father's Day meal ever. So thankful so happy
-              so blessed. Thank you for making my family We just had fun with
-              the “future” theme !!! It was a fun night all together ... The
-              always rude Kanye Show at 2am Sold Out Famous viewing @ Figueroa
-              and 12th in downtown.
-            </p>
+            <tab-pane>
+              <span slot="label">
+                <i class="tim-icons icon-istanbul"></i>Home
+              </span>
+              Collaboratively administrate empowered markets via plug-and-play
+              networks. Dynamically procrastinate B2C users after installed base
+              benefits. <br /><br />
+              Dramatically visualize customer directed convergence without
+              revolutionary ROI.
+            </tab-pane>
 
-            <h6 slot="footer">
-              <i class="ti-time"></i> 11 hours ago via Twitter
-            </h6>
-          </time-line-item>
+            <tab-pane>
+              <span slot="label">
+                <i class="tim-icons icon-settings"></i>Settings
+              </span>
+              Efficiently unleash cross-media information without cross-media
+              value. Quickly maximize timely deliverables for real-time schemas.
+              <br /><br />Dramatically maintain clicks-and-mortar solutions
+              without functional solutions.
+            </tab-pane>
+          </tabs>
+        </card>
+      </div>
+      
+    </div>
+    <div class="row">
+      <div class="col-md-8 ml-auto mr-auto">
+        <card class="card-subcategories card-plain">
+          <template slot="header">
+            <h4 class="card-title text-center mt-5">Page Subcategories</h4>
+            <br />
+          </template>
 
-          <time-line-item
-            badge-type="success"
-            badge-icon="tim-icons icon-user-run"
+          <tabs
+            type="primary"
+            tabContentClasses="tab-subcategories"
+            square
+            centered
+            class="row"
           >
-            <span slot="header" class="badge badge-pill badge-success"
-              >Another Title</span
-            >
-            <p slot="content">
-              Thank God for the support of my wife and real friends. I also
-              wanted to point out that it’s the first album to go number 1 off
-              of streaming!!! I love you Ellen and also my number one design
-              rule of anything I do from shoes to music to homes is that Kim has
-              to like it....
-            </p>
-          </time-line-item>
+            <tab-pane>
+              <span slot="label">
+                <i class="tim-icons icon-istanbul"></i>Home
+              </span>
+              Collaboratively administrate empowered markets via plug-and-play
+              networks. Dynamically procrastinate B2C users after installed base
+              benefits. <br /><br />
+              Dramatically visualize customer directed convergence without
+              revolutionary ROI.
+            </tab-pane>
 
-          <time-line-item
-            inverted
-            badge-type="info"
-            badge-icon="tim-icons icon-notes"
-          >
-            <span slot="header" class="badge badge-pill badge-info"
-              >Another Title</span
-            >
+            <tab-pane>
+              <span slot="label">
+                <i class="tim-icons icon-bag-16"></i>Messages
+              </span>
+              Efficiently unleash cross-media information without cross-media
+              value. Quickly maximize timely deliverables for real-time schemas.
+              <br /><br />Dramatically maintain clicks-and-mortar solutions
+              without functional solutions.
+            </tab-pane>
 
-            <temlate slot="content">
-              <p>
-                Called I Miss the Old Kanye That’s all it was Kanye And I love
-                you like Kanye loves Kanye Famous viewing @ Figueroa and 12th in
-                downtown LA 11:10PM
-              </p>
-              <p>
-                What if Kanye made a song about Kanye Royère doesn't make a
-                Polar bear bed but the Polar bear couch is my favorite piece of
-                furniture we own It wasn’t any Kanyes Set on his goals Kanye
-              </p>
-              <hr />
-            </temlate>
-
-            <base-dropdown slot="footer" title-classes="btn btn-round btn-info">
-              <i slot="title" class="tim-icons icon-settings-gear-63"></i>
-
-              <a class="dropdown-item" href="#">Action</a>
-              <a class="dropdown-item" href="#">Another action</a>
-              <a class="dropdown-item" href="#">Something else here</a>
-            </base-dropdown>
-          </time-line-item>
-
-          <time-line-item
-            badge-type="warning"
-            badge-icon="tim-icons icon-gift-2"
-          >
-            <span slot="header" class="badge badge-pill badge-warning"
-              >Another Title</span
-            >
-            <p slot="content">
-              Tune into Big Boy's 92.3 I'm about to play the first single from
-              Cruel Winter Tune into Big Boy's 92.3 I'm about to play the first
-              single from Cruel Winter also to Kim’s hair and makeup Lorraine
-              jewelry and the whole style squad at Balmain and the Yeezy team.
-              Thank you Anna for the invite thank you to the whole Vogue team
-            </p>
-          </time-line-item>
-        </time-line>
+            <tab-pane>
+              <span slot="label">
+                <i class="tim-icons icon-settings"></i>Settings
+              </span>
+              Completely synergize resource taxing relationships via premier
+              niche markets. Professionally cultivate one-to-one customer
+              service with robust ideas. <br /><br />Dynamically innovate
+              resource-leveling customer service for state of the art customer
+              service.
+            </tab-pane>
+          </tabs>
+        </card>
       </div>
     </div>
   </div>
+
+    <div class="col-lg-5">
+      <!-- <card type="tasks" :header-classes="{ 'text-right': isRTL }">
+        <template slot="header">
+          <h6 class="title d-inline">Tasks (5)</h6>
+          <p class="card-category d-inline">Today</p>
+          <base-dropdown
+            menu-on-right=""
+            tag="div"
+            title-classes="btn btn-link btn-icon"
+            :class="{ 'float-left': isRTL }"
+          >
+            <i slot="title" class="tim-icons icon-settings-gear-63"></i>
+            <a class="dropdown-item" href="#pablo"> Action </a>
+            <a class="dropdown-item" href="#pablo"> Another action </a>
+            <a class="dropdown-item" href="#pablo"> Something else </a>
+          </base-dropdown>
+        </template>
+        <div class="table-full-width table-responsive">
+          <task-list></task-list>
+        </div>
+
+        
+      </card> -->
+    </div>
+    <div class="col-md-12">
+      <card class="card" :header-classes="{ 'text-right': isRTL }">
+        <div class=""><user-table></user-table></div>
+        <!-- <h5 slot="header" class="card-title">Purchase log</h5> -->
+      </card>
+    </div>
+    <!-- <div class="col-lg-12"><country-map-card></country-map-card></div> -->
+  </div>
 </template>
 <script>
-import { TimeLine, TimeLineItem } from 'src/components';
+import LineChart from 'src/components/Charts/LineChart.js';
+import BarChart from 'src/components/Charts/BarChart.js';
+import * as chartConfigs from 'src/components/Charts/config.js';
+import TaskList from 'src/pages/Dashboard/TaskList.vue';
+import UserTable from 'src/pages/Dashboard/UserTable.vue';
+import CountryMapCard from 'src/pages/Dashboard/CountryMapCard.vue';
+import StatsCard from 'src/components/Cards/StatsCard';
+import config from '@/config';
+import { TabPane, Tabs, Collapse, CollapseItem } from 'src/components';
+
+let bigChartData = [
+  [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100],
+  [80, 120, 156, 222, 286, 380, 421, 409, 321, 231, 180, 133, 99]/* ,
+  [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130, 22] */
+]
+let bigChartLabels = [
+  ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
+  ["January '19", 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', "January '20"],
+  /* ['a','b','c','d','e','f','g','h','i','k','l','m','n'] */
+]
+let bigChartDatasetOptions = {
+  fill: true,
+  borderColor: config.colors.primary,
+  borderWidth: 2,
+  borderDash: [],
+  borderDashOffset: 0.0,
+  pointBackgroundColor: config.colors.primary,
+  pointBorderColor: 'rgba(255,255,255,0)',
+  pointHoverBackgroundColor: config.colors.primary,
+  pointBorderWidth: 20,
+  pointHoverRadius: 4,
+  pointHoverBorderWidth: 15,
+  pointRadius: 4,
+}
 
 export default {
   components: {
-    TimeLine,
-    TimeLineItem
+    LineChart,
+    BarChart,
+    StatsCard,
+    TaskList,
+    CountryMapCard,
+    UserTable,
+    TabPane,
+    Tabs,
+    Collapse,
+    CollapseItem
+  },
+  data() {
+    return {
+      statsCards: [
+        {
+          title: '3904',
+          subTitle: 'Total members',
+          type: 'warning',
+          icon: 'tim-icons icon-single-02',
+          /* footer: '<i class="tim-icons icon-notes"></i> Earning history' */
+        },
+        {
+          title: '2478 kWh',
+          subTitle: 'Your total generated energy',
+          type: 'info',
+          icon: 'tim-icons icon-bulb-63',
+          /* footer: '<i class="tim-icons icon-satisfied"></i> Impact' */
+        },
+        {
+          title: '37',
+          subTitle: 'Total solar projects in operation',
+          type: 'primary',
+          icon: 'tim-icons icon-user-run',
+          /* footer: '<i class="tim-icons icon-chart-bar-32"></i> Progression' */
+        }/* ,
+        {
+          title: 'Buy token',
+          subTitle: 'Go to the shop',
+          type: 'danger',
+          icon: 'tim-icons icon-cart',
+          footer: '<i class="tim-icons icon-wallet-43"></i> Purchase history'
+        } */
+      ],
+      bigLineChart: {
+        activeIndex: 0,
+        chartData: {
+          datasets: [{
+            ...bigChartDatasetOptions,
+            data: bigChartData[0]
+          }],
+          labels: bigChartLabels
+        },
+        extraOptions: chartConfigs.purpleChartOptions,
+        gradientColors: config.colors.primaryGradient,
+        gradientStops: [1, 0.4, 0],
+        categories: []
+      },
+      purpleLineChart: {
+        extraOptions: chartConfigs.purpleChartOptions,
+        chartData: {
+          labels: ['APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP'],
+          datasets: [
+            {
+              label: 'kWh generated so far up to this month by all projects',
+              fill: true,
+              borderColor: config.colors.primary,
+              borderWidth: 2,
+              borderDash: [],
+              borderDashOffset: 0.0,
+              pointBackgroundColor: config.colors.primary,
+              pointBorderColor: 'rgba(255,255,255,0)',
+              pointHoverBackgroundColor: config.colors.primary,
+              pointBorderWidth: 20,
+              pointHoverRadius: 4,
+              pointHoverBorderWidth: 15,
+              pointRadius: 4,
+              data: [107416, 115055, 126064, 134793, 143798, 156786]
+            }
+          ]
+        },
+        gradientColors: config.colors.primaryGradient,
+        gradientStops: [1, 0.2, 0]
+      },
+      greenLineChart: {
+        extraOptions: chartConfigs.greenChartOptions,
+        chartData: {
+          labels: ['APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP'],
+          datasets: [
+            {
+              label: 'Amount of € generated this month',
+              fill: true,
+              borderColor: config.colors.danger,
+              borderWidth: 2,
+              borderDash: [],
+              borderDashOffset: 0.0,
+              pointBackgroundColor: config.colors.danger,
+              pointBorderColor: 'rgba(255,255,255,0)',
+              pointHoverBackgroundColor: config.colors.danger,
+              pointBorderWidth: 20,
+              pointHoverRadius: 4,
+              pointHoverBorderWidth: 15,
+              pointRadius: 4,
+              data: [16421, 17780, 20390, 21750, 22720, 23890]
+            }
+          ]
+        },
+        gradientColors: [
+          'rgba(66,134,121,0.15)',
+          'rgba(66,134,121,0.0)',
+          'rgba(66,134,121,0)'
+        ],
+        gradientStops: [1, 0.4, 0]
+      },
+      blueBarChart: {
+        extraOptions: chartConfigs.barChartOptions,
+        chartData: {
+          labels: ['APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP'],
+          datasets: [
+            {
+              label: 'Total Token up to this point',
+              fill: true,
+              borderColor: config.colors.info,
+              borderWidth: 2,
+              borderDash: [],
+              borderDashOffset: 0.0,
+              data: [428358, 443495, 463994, 482073, 504628, 515653]
+            }
+          ]
+        },
+        gradientColors: config.colors.primaryGradient,
+        gradientStops: [1, 0.4, 0]
+      }
+    };
+  },
+  computed: {
+    enableRTL() {
+      return this.$route.query.enableRTL;
+    },
+    isRTL() {
+      return this.$rtl.isRTL;
+    },
+    bigLineChartCategories() {
+      return [
+        { name: 'Earning (€)', icon: 'tim-icons icon-single-02' }, 
+        { name: 'Energy (kwh)', icon: 'tim-icons icon-gift-2' }
+      ];
+    }
+  },
+  methods: {
+    initBigChart(index) {
+      let chartData = {
+        datasets: [{
+          ...bigChartDatasetOptions,
+          data: bigChartData[index]
+        }],
+        labels: bigChartLabels[index],
+      };
+      this.$refs.bigChart.updateGradients(chartData);
+      this.bigLineChart.chartData = chartData;
+      this.bigLineChart.activeIndex = index;
+      
+      /* console.log(index); */
+    }
+  },
+  mounted() {
+    this.i18n = this.$i18n;
+    if (this.enableRTL) {
+      this.i18n.locale = 'ar';
+      this.$rtl.enableRTL();
+    }
+    this.initBigChart(0);
+  },
+  beforeDestroy() {
+    if (this.$rtl.isRTL) {
+      this.i18n.locale = 'en';
+      this.$rtl.disableRTL();
+    }
   }
 };
 </script>
-<style></style>
+
+<style lang="scss"></style>
