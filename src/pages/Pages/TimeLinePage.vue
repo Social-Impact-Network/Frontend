@@ -152,9 +152,9 @@
 					>
 						<tab-pane>
 							<span slot="label">
-								<i class="tim-icons icon-istanbul"></i>Home
+								<i class="tim-icons icon-globe-2"></i>Libanon
 							</span>
-							<img src="img/Solar.jpg" alt="AU"/>
+							<img src="img/Solar.jpg"/>
 							<br>
 							<br>
 							Collaboratively administrate empowered markets via plug-and-play
@@ -166,7 +166,7 @@
 
 						<tab-pane>
 							<span slot="label">
-								<i class="tim-icons icon-settings"></i>Settings
+								<i class="tim-icons icon-notes"></i>Details
 							</span>
 							Efficiently unleash cross-media information without cross-media
 							value. Quickly maximize timely deliverables for real-time schemas.
@@ -193,9 +193,9 @@
 					>
 						<tab-pane>
 							<span slot="label">
-								<i class="tim-icons icon-istanbul"></i>Home
+								<i class="tim-icons icon-globe-2"></i>Armenia
 							</span>
-							<img src="img/Solar.jpg" alt="AU"/>
+							<img src="img/Solar.jpg"/>
 							<br>
 							<br>
 							Collaboratively administrate empowered markets via plug-and-play
@@ -207,7 +207,7 @@
 
 						<tab-pane>
 							<span slot="label">
-								<i class="tim-icons icon-settings"></i>Settings
+								<i class="tim-icons icon-notes"></i>Details
 							</span>
 							Efficiently unleash cross-media information without cross-media
 							value. Quickly maximize timely deliverables for real-time schemas.
@@ -241,19 +241,18 @@
 					>
 						<tab-pane>
 							<span slot="label">
-								<i class="tim-icons icon-istanbul"></i>Home
+								<i class="tim-icons icon-globe-2"></i>Home
 							</span>
 							Collaboratively administrate empowered markets via plug-and-play
 							networks. Dynamically procrastinate B2C users after installed base
 							benefits. <br /><br />
 							Dramatically visualize customer directed convergence without
 							revolutionary ROI.
-							<img src="img/Solar.jfif" alt="AU"/>
 						</tab-pane>
 
 						<tab-pane>
 							<span slot="label">
-								<i class="tim-icons icon-settings"></i>Settings
+								<i class="tim-icons icon-notes"></i>Details
 							</span>
 							Efficiently unleash cross-media information without cross-media
 							value. Quickly maximize timely deliverables for real-time schemas.
@@ -279,7 +278,7 @@
 						>
 							<tab-pane>
 							<span slot="label">
-								<i class="tim-icons icon-istanbul"></i>Home
+								<i class="tim-icons icon-globe-2"></i>Home
 							</span>
 								Collaboratively administrate empowered markets via plug-and-play
 								networks. Dynamically procrastinate B2C users after installed base
@@ -292,7 +291,7 @@
 
 							<tab-pane>
 							<span slot="label">
-								<i class="tim-icons icon-settings"></i>Settings
+								<i class="tim-icons icon-notes"></i>Details
 							</span>
 								Efficiently unleash cross-media information without cross-media
 								value. Quickly maximize timely deliverables for real-time schemas.
