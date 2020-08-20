@@ -214,7 +214,7 @@ export default {
     return {
       statsCards: [
         {
-          title: '1850€',
+          title: '150€',
           subTitle: 'Earning',
           type: 'warning',
           icon: 'tim-icons icon-bank',
