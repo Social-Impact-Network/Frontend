@@ -22,8 +22,8 @@
               
               <!-- <h5 class="card-category" >Performance</h5> -->
               
-              <h2 class="card-title" v-if="bigLineChart.activeIndex===0">Earning</h2>
-              <h2 class="card-title" v-if="bigLineChart.activeIndex===1">Energy</h2>
+              <h3 class="card-title" v-if="bigLineChart.activeIndex===0">Personal earning</h3>
+              <h3 class="card-title" v-if="bigLineChart.activeIndex===1">Energy generated with  your help</h3>
               <!-- <h2 class="card-title"v-if="bigLineChart.activeIndex===2">Später rausgenommen</h2> -->
 
             </div>
@@ -229,7 +229,7 @@ export default {
         },
         {
           title: '2478 kWh',
-          subTitle: 'Generated Energy so far',
+          subTitle: 'Your generated Energy',
           type: 'info',
           icon: 'tim-icons icon-bulb-63',
           footer: '<i class="tim-icons icon-satisfied"></i> Impact'
