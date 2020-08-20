@@ -140,7 +140,6 @@
 			<div class="col-md-6">
 				<card>
 					<template slot="header">
-						<h5 class="card-category">Navigation Pills</h5>
 						<h3 class="card-title">Vertical Tabs With Icons</h3>
 					</template>
 					<tabs
@@ -155,6 +154,9 @@
 							<span slot="label">
 								<i class="tim-icons icon-istanbul"></i>Home
 							</span>
+							<img src="img/Solar.jpg" alt="AU"/>
+							<br>
+							<br>
 							Collaboratively administrate empowered markets via plug-and-play
 							networks. Dynamically procrastinate B2C users after installed base
 							benefits. <br /><br />
@@ -179,7 +181,6 @@
 			<div class="col-md-6">
 				<card>
 					<template slot="header">
-						<h5 class="card-category">Navigation Pills</h5>
 						<h3 class="card-title">Vertical Tabs With Icons</h3>
 					</template>
 					<tabs
@@ -194,6 +195,9 @@
 							<span slot="label">
 								<i class="tim-icons icon-istanbul"></i>Home
 							</span>
+							<img src="img/Solar.jpg" alt="AU"/>
+							<br>
+							<br>
 							Collaboratively administrate empowered markets via plug-and-play
 							networks. Dynamically procrastinate B2C users after installed base
 							benefits. <br /><br />
@@ -225,7 +229,6 @@
 			<div class="col-md-6">
 				<card>
 					<template slot="header">
-						<h5 class="card-category">Navigation Pills</h5>
 						<h3 class="card-title">Vertical Tabs With Icons</h3>
 					</template>
 					<tabs
@@ -245,6 +248,7 @@
 							benefits. <br /><br />
 							Dramatically visualize customer directed convergence without
 							revolutionary ROI.
+							<img src="img/Solar.jfif" alt="AU"/>
 						</tab-pane>
 
 						<tab-pane>
@@ -263,7 +267,6 @@
 				<div class="col-md-6">
 					<card>
 						<template slot="header">
-							<h5 class="card-category">Navigation Pills</h5>
 							<h3 class="card-title">Vertical Tabs With Icons</h3>
 						</template>
 						<tabs
@@ -283,6 +286,8 @@
 								benefits. <br /><br />
 								Dramatically visualize customer directed convergence without
 								revolutionary ROI.
+
+
 							</tab-pane>
 
 							<tab-pane>
@@ -299,10 +304,9 @@
 				</div>
 			</div>
 
-
 		</div>
 
-		<div class="container my-4">
+		<div class="col-md-6 ml-auto mr-auto">
 			<div class="text-center">
 				<base-button type="primary" @click="toggleText">{{ text }}</base-button>
 			</div>
@@ -521,8 +525,7 @@ export default {
       this.$refs.bigChart.updateGradients(chartData);
       this.bigLineChart.chartData = chartData;
       this.bigLineChart.activeIndex = index;
-      
-      /* console.log(index); */
+
     }
   },
   mounted() {
@@ -542,4 +545,6 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+
+</style>
