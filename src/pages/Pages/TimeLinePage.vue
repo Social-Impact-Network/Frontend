@@ -168,6 +168,30 @@
 							<span slot="label">
 								<i class="tim-icons icon-notes"></i>Details
 							</span>
+              <table style="width:100%">
+								<tr>
+									<th>Firstname</th>
+									<th>Lastname</th>
+									<th>Age</th>
+								</tr>
+								<tr>
+									<td>Jill</td>
+									<td>Smith</td>
+									<td>50</td>
+								</tr>
+								<tr>
+									<td>Eve</td>
+									<td>Jackson</td>
+									<td>94</td>
+								</tr>
+								<tr>
+									<td>John</td>
+									<td>Doe</td>
+									<td>80</td>
+								</tr>
+							</table>
+							<br>
+							<br>
 							Efficiently unleash cross-media information without cross-media
 							value. Quickly maximize timely deliverables for real-time schemas.
 							<br /><br />Dramatically maintain clicks-and-mortar solutions
@@ -302,7 +326,7 @@
 					</card>
 				</div>
 			</div>
-
+		
 		</div>
 
 		<div class="col-md-6 ml-auto mr-auto">
