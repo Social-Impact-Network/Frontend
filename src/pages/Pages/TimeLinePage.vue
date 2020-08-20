@@ -99,7 +99,7 @@
         <template slot="header">
           <h5 class="card-category">Total kWh generated</h5>
           <h3 class="card-title">
-            <i class="tim-icons icon-bell-55 text-primary "></i> 563,165
+            <i class="tim-icons icon-bulb-63 text-primary "></i> 156,786
           </h3>
         </template>
         <div class="chart-area">
@@ -120,7 +120,7 @@
         <template slot="header">
           <h5 class="card-category">Total Profit in €</h5>
           <h3 class="card-title">
-            <i class="tim-icons icon-send icon-money-coins"></i> 23,890
+            <i class="tim-icons icon-money-coins text-primary "></i> 23,890
           </h3>
         </template>
         <div class="chart-area">
