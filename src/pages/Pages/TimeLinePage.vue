@@ -101,33 +101,39 @@
 							<br>
 							Collaboratively administrate empowered markets via plug-and-play
 							networks. Dynamically procrastinate B2C users after installed base
-							benefits. <br /><br />
-							Dramatically visualize customer directed convergence without
-							revolutionary ROI.
+							benefits.
 						</tab-pane>
 
 						<tab-pane>
 							<span slot="label">
 								<i class="tim-icons icon-notes"></i>Details
 							</span>
+							Collaboratively administrate empowered markets via plug-and-play
+							networks. Dynamically procrastinate B2C users after installed base
+							benefits.
 
               <table style="width:100%">
-								<!--<tr>
-									<th></th>
-									<th></th>
-									<th></th>
-								</tr>-->
+								<br>
 								<tr>
 									<td>
-										<div title= 'Text input giving additional information regarding the project costs'>
+										<div title= 'project costs infos here'>
 											Project Cost <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
 										</div>
 									</td>
-									<td> 1 Mio EUR</td>
+									<td>1 Mio EUR</td>
 								</tr>
 
 								<tr>
-									<div title= 'project costs infos here'>
+									<td>
+										<div title= 'Estimated energy per year infos here'>
+											Estimated energy per year <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+										</div>
+									</td>
+									<td>139,43 MWh</td>
+								</tr>
+
+								<tr>
+									<div title= 'price per kWh infos here'>
 											Price per kWh <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
 									</div>
 									<td>0.15 USD</td>
@@ -155,14 +161,14 @@
 									<td>60%</td>
 								</tr>
 
+								<tr>
+									<div title= 'Expected Lifetime infos here'>
+										Expected Lifetime <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>20 years</td>
+								</tr>
 
 							</table>
-							<br>
-							<br>
-							Efficiently unleash cross-media information without cross-media
-							value. Quickly maximize timely deliverables for real-time schemas.
-							<br /><br />Dramatically maintain clicks-and-mortar solutions
-							without functional solutions.
 						</tab-pane>
 					</tabs>
 				</card>
@@ -191,19 +197,75 @@
 							<br>
 							Collaboratively administrate empowered markets via plug-and-play
 							networks. Dynamically procrastinate B2C users after installed base
-							benefits. <br /><br />
-							Dramatically visualize customer directed convergence without
-							revolutionary ROI.
+							benefits.
 						</tab-pane>
 
 						<tab-pane>
 							<span slot="label">
 								<i class="tim-icons icon-notes"></i>Details
 							</span>
-							Efficiently unleash cross-media information without cross-media
-							value. Quickly maximize timely deliverables for real-time schemas.
-							<br /><br />Dramatically maintain clicks-and-mortar solutions
-							without functional solutions.
+							Collaboratively administrate empowered markets via plug-and-play
+							networks. Dynamically procrastinate B2C users after installed base
+							benefits.
+
+							<table style="width:100%">
+								<br>
+								<tr>
+									<td>
+										<div title= 'project costs infos here'>
+											Project Cost <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+										</div>
+									</td>
+									<td>1 Mio EUR</td>
+								</tr>
+
+								<tr>
+									<td>
+										<div title= 'Estimated energy per year infos here'>
+											Estimated energy per year <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+										</div>
+									</td>
+									<td>139,43 MWh</td>
+								</tr>
+
+								<tr>
+									<div title= 'price per kWh infos here'>
+											Price per kWh <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>0.15 USD</td>
+								</tr>
+
+								<tr>
+									<div title= 'service fees infos here'>
+											Service fee <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>20%</td>
+								</tr>
+
+								<tr>
+									<div title= 'reinvest rate infos here'>
+											Reinvest rate <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>20%</td>
+								</tr>
+
+
+								<tr>
+									<div title= 'Network dividends infos here'>
+										Network dividends <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>60%</td>
+								</tr>
+
+								<tr>
+									<div title= 'Expected Lifetime infos here'>
+										Expected Lifetime <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>20 years</td>
+								</tr>
+
+							</table>
+
 						</tab-pane>
 					</tabs>
 				</card>
@@ -236,19 +298,73 @@
 							</span>
 							Collaboratively administrate empowered markets via plug-and-play
 							networks. Dynamically procrastinate B2C users after installed base
-							benefits. <br /><br />
-							Dramatically visualize customer directed convergence without
-							revolutionary ROI.
+							benefits.
 						</tab-pane>
 
 						<tab-pane>
 							<span slot="label">
 								<i class="tim-icons icon-notes"></i>Details
 							</span>
-							Efficiently unleash cross-media information without cross-media
-							value. Quickly maximize timely deliverables for real-time schemas.
-							<br /><br />Dramatically maintain clicks-and-mortar solutions
-							without functional solutions.
+							Collaboratively administrate empowered markets via plug-and-play
+							networks. Dynamically procrastinate B2C users after installed base
+							benefits.
+							<table style="width:100%">
+							<br>
+								<tr>
+									<td>
+										<div title= 'project costs infos here'>
+											Project Cost <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+										</div>
+									</td>
+									<td>1 Mio EUR</td>
+								</tr>
+
+								<tr>
+									<td>
+										<div title= 'Estimated energy per year infos here'>
+											Estimated energy per year <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+										</div>
+									</td>
+									<td>139,43 MWh</td>
+								</tr>
+
+								<tr>
+									<div title= 'price per kWh infos here'>
+											Price per kWh <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>0.15 USD</td>
+								</tr>
+
+								<tr>
+									<div title= 'service fees infos here'>
+											Service fee <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>20%</td>
+								</tr>
+
+								<tr>
+									<div title= 'reinvest rate infos here'>
+											Reinvest rate <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>20%</td>
+								</tr>
+
+
+								<tr>
+									<div title= 'Network dividends infos here'>
+										Network dividends <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>60%</td>
+								</tr>
+
+								<tr>
+									<div title= 'Expected Lifetime infos here'>
+										Expected Lifetime <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>20 years</td>
+								</tr>
+
+							</table>
 						</tab-pane>
 					</tabs>
 				</card>
@@ -276,18 +392,69 @@
 								benefits. <br /><br />
 								Dramatically visualize customer directed convergence without
 								revolutionary ROI.
-
-
 							</tab-pane>
 
 							<tab-pane>
 							<span slot="label">
 								<i class="tim-icons icon-notes"></i>Details
 							</span>
-								Efficiently unleash cross-media information without cross-media
-								value. Quickly maximize timely deliverables for real-time schemas.
-								<br /><br />Dramatically maintain clicks-and-mortar solutions
-								without functional solutions.
+								<table style="width:100%">
+								<br>
+								<tr>
+									<td>
+										<div title= 'project costs infos here'>
+											Project Cost <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+										</div>
+									</td>
+									<td>1 Mio EUR</td>
+								</tr>
+
+								<tr>
+									<td>
+										<div title= 'Estimated energy per year infos here'>
+											Estimated energy per year <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+										</div>
+									</td>
+									<td>139,43 MWh</td>
+								</tr>
+
+								<tr>
+									<div title= 'price per kWh infos here'>
+											Price per kWh <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>0.15 USD</td>
+								</tr>
+
+								<tr>
+									<div title= 'service fees infos here'>
+											Service fee <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>20%</td>
+								</tr>
+
+								<tr>
+									<div title= 'reinvest rate infos here'>
+											Reinvest rate <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>20%</td>
+								</tr>
+
+
+								<tr>
+									<div title= 'Network dividends infos here'>
+										Network dividends <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>60%</td>
+								</tr>
+
+								<tr>
+									<div title= 'Expected Lifetime infos here'>
+										Expected Lifetime <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>20 years</td>
+								</tr>
+
+							</table>
 							</tab-pane>
 						</tabs>
 					</card>
