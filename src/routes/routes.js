@@ -205,7 +205,7 @@ let pagesMenu = {
     },
     {
       path: 'timeline',
-      name: 'Timeline Page',
+      name: 'Network Page',
       components: { default: TimeLine }
     },
     {
