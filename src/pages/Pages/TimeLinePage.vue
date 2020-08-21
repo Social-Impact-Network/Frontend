@@ -82,7 +82,7 @@
 			<div class="col-md-6">
 				<card>
 					<template slot="header">
-						<h3 class="card-title">Project #1</h3>
+						<h3 class="card-title">CAHL - Armenian Elderly Home (Active)</h3>
 					</template>
 					<tabs
 						type="primary"
@@ -94,7 +94,7 @@
 					>
 						<tab-pane>
 							<span slot="label">
-								<i class="tim-icons icon-globe-2"></i>Libanon
+								<i class="tim-icons icon-globe-2"></i>Armenia
 							</span>
 							<img src="img/Solar.jpg"/>
 							<br>
@@ -110,31 +110,52 @@
 							<span slot="label">
 								<i class="tim-icons icon-notes"></i>Details
 							</span>
+
               <table style="width:100%">
+								<!--<tr>
+									<th></th>
+									<th></th>
+									<th></th>
+								</tr>-->
 								<tr>
-									<th>Firstname</th>
-									<th>Lastname</th>
-									<th>
-										<div title= 'Text input here'>
-												<i class="tim-icons icon-alert-circle-exc"></i>
+									<td>
+										<div title= 'Text input giving additional information regarding the project costs'>
+											Project Cost <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
 										</div>
-									</th>
+									</td>
+									<td> 1 Mio EUR</td>
 								</tr>
+
 								<tr>
-									<td>Jill</td>
-									<td>Smith</td>
-									<td>50</td>
+									<div title= 'project costs infos here'>
+											Price per kWh <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>0.15 USD</td>
 								</tr>
+
 								<tr>
-									<td>Eve</td>
-									<td>Jackson</td>
-									<td>94</td>
+									<div title= 'service fees infos here'>
+											Service fee <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>20%</td>
 								</tr>
+
 								<tr>
-									<td>John</td>
-									<td>Doe</td>
-									<td>80</td>
+									<div title= 'reinvest rate infos here'>
+											Reinvest rate <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>20%</td>
 								</tr>
+
+
+								<tr>
+									<div title= 'Network dividends infos here'>
+										Network dividends <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>60%</td>
+								</tr>
+
+
 							</table>
 							<br>
 							<br>
@@ -151,7 +172,7 @@
 			<div class="col-md-6">
 				<card>
 					<template slot="header">
-						<h3 class="card-title">Project #2</h3>
+						<h3 class="card-title">UNDP Country Office (Proposed)</h3>
 					</template>
 					<tabs
 						type="primary"
@@ -163,7 +184,7 @@
 					>
 						<tab-pane>
 							<span slot="label">
-								<i class="tim-icons icon-globe-2"></i>Armenia
+								<i class="tim-icons icon-globe-2"></i>Lebanon
 							</span>
 							<img src="img/Solar.jpg"/>
 							<br>
@@ -276,7 +297,7 @@
 		</div>
 
 		<div class="col-md-6 ml-auto mr-auto">
-			<div class="text-center">
+			<div class="width: 100%">
 				<base-button type="primary" class="btn btn-block" @click="toggleText">{{ text }}</base-button>
 			</div>
 		</div>
