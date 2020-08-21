@@ -140,7 +140,7 @@
 			<div class="col-md-6">
 				<card>
 					<template slot="header">
-						<h3 class="card-title">Vertical Tabs With Icons</h3>
+						<h3 class="card-title">Project #1</h3>
 					</template>
 					<tabs
 						type="primary"
@@ -172,7 +172,11 @@
 								<tr>
 									<th>Firstname</th>
 									<th>Lastname</th>
-									<th>Age</th>
+									<th>
+										<div title= 'Text input here'>
+												<i class="tim-icons icon-alert-circle-exc"></i>
+										</div>
+									</th>
 								</tr>
 								<tr>
 									<td>Jill</td>
@@ -205,7 +209,7 @@
 			<div class="col-md-6">
 				<card>
 					<template slot="header">
-						<h3 class="card-title">Vertical Tabs With Icons</h3>
+						<h3 class="card-title">Project #2</h3>
 					</template>
 					<tabs
 						type="primary"
@@ -253,7 +257,7 @@
 			<div class="col-md-6">
 				<card>
 					<template slot="header">
-						<h3 class="card-title">Vertical Tabs With Icons</h3>
+						<h3 class="card-title">Project #3</h3>
 					</template>
 					<tabs
 						type="primary"
@@ -290,7 +294,7 @@
 				<div class="col-md-6">
 					<card>
 						<template slot="header">
-							<h3 class="card-title">Vertical Tabs With Icons</h3>
+							<h3 class="card-title">Project #4</h3>
 						</template>
 						<tabs
 							type="primary"
@@ -331,7 +335,7 @@
 
 		<div class="col-md-6 ml-auto mr-auto">
 			<div class="text-center">
-				<base-button type="primary" @click="toggleText">{{ text }}</base-button>
+				<base-button type="primary" class="btn btn-block" @click="toggleText">{{ text }}</base-button>
 			</div>
 		</div>
     
@@ -375,7 +379,7 @@ let bigChartDatasetOptions = {
 
 export default {
 	show: false,
-	text: 'Show more',
+	text: 'Show more projects',
   components: {
     LineChart,
     BarChart,
@@ -390,7 +394,7 @@ export default {
   },
   data() {
     return {
-    	text: 'Show more',
+    	text: 'Show more projects',
     	showMore: false,
       statsCards: [
         {
@@ -529,11 +533,11 @@ export default {
   },
   methods: {
 		toggleText() {
-			if (this.text == 'Show more') {
-				this.text = 'Show less';
+			if (this.text == 'Show more projects') {
+				this.text = 'Show fewer projects';
 				this.showMore = true;
 			} else {
-				this.text = 'Show more'
+				this.text = 'Show more projects'
 				this.showMore = false;
 			}
 		},
