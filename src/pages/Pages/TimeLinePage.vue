@@ -8,70 +8,12 @@
         :type="card.type"
         :icon="card.icon"
       >
-        <div slot="footer" v-html="card.footer"></div>
+        <!--<div slot="footer" v-html="card.footer"></div>-->
       </stats-card>
     </div>
 
 
-    <!-- Big Chart -->
-    <!-- 
-    <div class="col-12">
-      <card type="chart">
-        <template slot="header">
-          <div class="row">
-            <div class="col-sm-6" :class="isRTL ? 'text-right' : 'text-left'">
-              
-              <h2 class="card-title" v-if="bigLineChart.activeIndex===0">Earning</h2>
-              <h2 class="card-title" v-if="bigLineChart.activeIndex===1">Energy</h2>
-
-            </div>
-            <div class="col-sm-6 d-flex d-sm-block">
-              <div
-                class="btn-group btn-group-toggle"
-                :class="isRTL ? 'float-left' : 'float-right'"
-                data-toggle="buttons"
-              >
-                <label
-                  v-for="(option, index) in bigLineChartCategories"
-                  :key="option.name"
-                  class="btn btn-sm btn-primary btn-simple"
-                  :class="{ active: bigLineChart.activeIndex === index }"
-                  :id="index"
-                >
-                  <input
-                    type="radio"
-                    @click="initBigChart(index)"
-                    name="options"
-                    autocomplete="off"
-                    :checked="bigLineChart.activeIndex === index"
-                  />
-                  <span class="d-none d-sm-block">{{ option.name }}</span>
-                  <span class="d-block d-sm-none">
-                    <i :class="option.icon"></i>
-                  </span>
-                </label>
-              </div>
-            </div>
-          </div>
-        </template>
-        <div class="chart-area">
-          <line-chart
-            style="height: 100%"
-            ref="bigChart"
-            :chart-data="bigLineChart.chartData"
-            :gradient-colors="bigLineChart.gradientColors"
-            :gradient-stops="bigLineChart.gradientStops"
-            :extra-options="bigLineChart.extraOptions"
-          >
-          </line-chart>
-        </div>
-      </card>
-    </div> -->
-    
-    
-
     <!-- Small charts -->
-
 
 
     <div class="col-lg-4" :class="{ 'text-right': isRTL }">
@@ -417,14 +359,28 @@ export default {
           type: 'primary',
           icon: 'tim-icons icon-user-run',
           /* footer: '<i class="tim-icons icon-chart-bar-32"></i> Progression' */
-        }/* ,
+        },
         {
-          title: 'Buy token',
-          subTitle: 'Go to the shop',
+          title: '23,93 kW ',
+          subTitle: 'Current PV Power',
           type: 'danger',
-          icon: 'tim-icons icon-cart',
-          footer: '<i class="tim-icons icon-wallet-43"></i> Purchase history'
-        } */
+          icon: 'tim-icons icon-spaceship',
+          /*footer: '<i class="tim-icons icon-wallet-43"></i> Purchase history'*/
+        },
+        {
+          title: '15 t',
+          subTitle: 'Total Avoided CO2 ',
+          type: 'success',
+          icon: 'tim-icons icon-trophy',
+          /*footer: '<i class="tim-icons icon-wallet-43"></i> Purchase history'*/
+        },
+        {
+          title: '49 kg ',
+          subTitle: 'Avoided CO2 for today ',
+          type: 'warning',
+          icon: 'tim-icons icon-watch-time',
+          /*footer: '<i class="tim-icons icon-wallet-43"></i> Purchase history'*/
+        }
       ],
       bigLineChart: {
         activeIndex: 0,
