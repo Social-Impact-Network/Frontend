@@ -279,7 +279,7 @@ const routes = [
       },
       {
         path: 'widgets',
-        name: 'Widgets',
+        name: 'Buy token here',
         components: { default: Widgets }
       }
     ]

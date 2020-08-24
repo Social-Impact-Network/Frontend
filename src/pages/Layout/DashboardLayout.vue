@@ -7,6 +7,7 @@
       :short-title="$t('sidebar.shortTitle')"
       :title="$t('sidebar.title')"
     >
+    <!-- Comment out or change here sidebar items -->
       <template slot-scope="" slot="links"> <!-- <template slot-scope="props" slot="links"> props was unused -->
         <sidebar-item
           :link="{
@@ -20,13 +21,19 @@
           :link="{ name: $t('sidebar.pages'), icon: 'tim-icons icon-image-02' }"
         >
           <sidebar-item
+            :link="{ name: $t('sidebar.timeline'), path: '/pages/timeline' }"
+          ></sidebar-item>
+          <sidebar-item
+          :link="{
+            name: $t('sidebar.widgets'),
+            path: '/widgets'
+          }"
+          ></sidebar-item>
+          <sidebar-item
             :link="{ name: $t('sidebar.pricing'), path: '/pricing' }"
           ></sidebar-item>
           <sidebar-item
             :link="{ name: $t('sidebar.rtl'), path: '/pages/rtl' }"
-          ></sidebar-item>
-          <sidebar-item
-            :link="{ name: $t('sidebar.timeline'), path: '/pages/timeline' }"
           ></sidebar-item>
           <sidebar-item
             :link="{ name: $t('sidebar.login'), path: '/login' }"
@@ -155,13 +162,13 @@
             :link="{ name: $t('sidebar.vectorMaps'), path: '/maps/vector-map' }"
           ></sidebar-item>
         </sidebar-item>
-        <sidebar-item
+        <!-- <sidebar-item
           :link="{
             name: $t('sidebar.widgets'),
             icon: 'tim-icons icon-settings',
             path: '/widgets'
           }"
-        ></sidebar-item>
+        ></sidebar-item> -->
         <sidebar-item
           :link="{
             name: $t('sidebar.charts'),
