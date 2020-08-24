@@ -39,31 +39,7 @@
     </div>
     <card>
       <div class="col-12">
-        <div class="row">
-          
-          <div class="col-md-6">
-            <!-- <h4 class="card-title">Choose currency</h4> -->
-            <div class="row">
-              <div class="col-md-6">
-                <el-select
-                  class="select-primary"
-                  size="large"
-                  placeholder="Choose currency"
-                  v-model="selects.simple"
-                >
-                  <el-option
-                    v-for="option in selects.countries"
-                    class="select-primary"
-                    :value="option.value"
-                    :label="option.label"
-                    :key="option.label"
-                  >
-                  </el-option>
-                </el-select>
-              </div>
-            </div>
-          </div>
-        </div>
+        
         
         <div class="row">
           <div class="col-md-6 offset-md-2">
@@ -76,20 +52,17 @@
               type="primary"
             /> -->
           </div>
-          
-          
         </div>
-        
       </div>
     </card>
     <!-- end card -->
 
-      <ValidationObserver v-slot="{ handleSubmit }">
+  <ValidationObserver v-slot="{ handleSubmit }">
   <form class="form-horizontal" @submit.prevent="handleSubmit(submit)">
     <card>
       <h4 slot="header" class="card-title">Type Validation</h4>
       <div>
-        <div class="row">
+        <!-- <div class="row">
           <label class="col-sm-2 col-form-label">Requred Text</label>
           <div class="col-sm-7">
             <ValidationProvider
@@ -105,12 +78,9 @@
             </base-input>
            </ValidationProvider>
           </div>
-          <label class="col-sm-3 label-on-right"
-            ><code>required="true"</code></label
-          >
-        </div>
+        </div> -->
 
-        <div class="row">
+        <!-- <div class="row">
           <label class="col-sm-2 col-form-label">Email</label>
           <div class="col-sm-7">
             <ValidationProvider
@@ -127,22 +97,19 @@
             </base-input>
            </ValidationProvider>
           </div>
-          <label class="col-sm-3 label-on-right"
-            ><code>email="true"</code></label
-          >
-        </div>
+        </div> -->
 
         <div class="row">
-          <label class="col-sm-2 col-form-label">Number</label>
+          <label class="col-sm-2 col-form-label">Invest</label>
           <div class="col-sm-4">
             <ValidationProvider
-              name="number"
+              name="investNumber"
               rules="required|numeric"
               v-slot="{ passed, failed, errors }"
             >
             <base-input
               required
-              v-model="number"
+              v-model="investNumber"
               :error="errors[0]"
               :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
             </base-input>
@@ -159,7 +126,8 @@
                   v-model="selects.simple"
                 >
                   <el-option
-                    v-for="option in selects.countries"
+                    required
+                    v-for="option in selects.currencies"
                     class="select-primary"
                     :value="option.value"
                     :label="option.label"
@@ -170,75 +138,87 @@
               </div>
             </div>
           </div>
-          <label class="col-sm-3 label-on-right"
+          <!-- <label class="col-sm-3 label-on-right"
             ><code>numeric="true"</code></label
-          >
+          > -->
         </div>
 
         <div class="row">
-          <label class="col-sm-2 col-form-label">Url</label>
-          <div class="col-sm-7">
+          <label class="col-sm-2 col-form-label">Reward</label>
+          <div class="col-sm-4">
             <ValidationProvider
-              name="url"
-              :rules="{
-                required: true,
-                regex: /(https?:\/\/(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9])(:?\d*)\/?([a-z_\/0-9\-#.]*)\??([a-z_\/0-9\-#=&]*)/g
-              }"
+              name="rewardNumber"
+              rules="required|numeric"
               v-slot="{ passed, failed, errors }"
             >
             <base-input
-              v-model="url"
-              type="text"
+              required
+              v-model="rewardNumber"
               :error="errors[0]"
               :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
             </base-input>
            </ValidationProvider>
-          </div>
-          <label class="col-sm-3 label-on-right"><code>url="true"</code></label>
-        </div>
-
-        <div class="row">
-          <label class="col-sm-2 col-form-label">Url</label>
-          <div class="col-sm-3">
-            <ValidationProvider
-            name="equal"
-            rules="required|confirmed:confirmation"
-            v-slot="{ passed, failed, errors }"
-            >
-            <base-input
-              v-model="equal"
-              type="text"
-              :error="errors[0]"
-              :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
-            </base-input>
-           </ValidationProvider>
-          </div>
-          <div class="col-sm-3">
-            <ValidationProvider
-            name="equalTo"
-            rules="required"
-            vid="confirmation"
-            v-slot="{ passed, failed, errors }"
-            >
-            <base-input
-              v-model="equalTo"
-              type="text"
-              :error="errors[0]"
-              :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
-            </base-input>
-           </ValidationProvider>
+           
           </div>
 
-          <label class="col-sm-4 label-on-right"
-            ><code>confirmed="equalToSource"</code></label
+          <label class="col-sm-3 label-on-right"
+            >SI Token</label
           >
         </div>
+
+      <div class="row">
+          <label class="col-sm-2 col-form-label">Energy</label>
+          <div class="col-sm-4">
+            <ValidationProvider
+              name="energyNumber"
+              rules="required|numeric"
+              v-slot="{ passed, failed, errors }"
+            >
+            <base-input
+              required
+              v-model="energyNumber"
+              :error="errors[0]"
+              :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
+            </base-input>
+           </ValidationProvider>
+           
+          </div>
+
+          <label class="col-sm-3 label-on-right"
+            >kWh</label
+          >
+        </div>
+        
+
+        <div class="row">
+          <label class="col-sm-2 col-form-label">Income return</label>
+          <div class="col-sm-4">
+            <ValidationProvider
+              name="incomeReturnNumber"
+              rules="required|numeric"
+              v-slot="{ passed, failed, errors }"
+            >
+            <base-input
+              required
+              v-model="incomeReturnNumber"
+              :error="errors[0]"
+              :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
+            </base-input>
+           </ValidationProvider>
+           
+          </div>
+
+          <label class="col-sm-3 label-on-right"
+            >USD</label
+          >
+        </div>
+
       </div>
       <div class="text-center">
         <base-button
           native-type="submit"
           type="primary"
-          >Validate inputs</base-button
+          >Buy</base-button
         >
       </div>
     </card>
@@ -278,14 +258,17 @@ export default {
     return {
       required: "",
       email: "",
-      number: "",
+      investNumber: "",
+      rewardNumber: "",
+      energyNumber: "",
+      incomeReturnNumber: "",
       url: "",
       equal: "",
       equalTo: "",
       
       selects: {
         simple: '',
-        countries: [
+        currencies: [
           { value: 'USD', label: 'USD $' },
           { value: 'EUR', label: 'EUR €' },
           { value: 'BTC', label: 'BTC ₿' }
