@@ -61,7 +61,6 @@
                   </el-option>
                 </el-select>
               </div>
-              
             </div>
           </div>
         </div>
@@ -135,7 +134,7 @@
 
         <div class="row">
           <label class="col-sm-2 col-form-label">Number</label>
-          <div class="col-sm-7">
+          <div class="col-sm-4">
             <ValidationProvider
               name="number"
               rules="required|numeric"
@@ -148,6 +147,28 @@
               :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
             </base-input>
            </ValidationProvider>
+          </div>
+          <div class="col-md-6">
+            <!-- <h4 class="card-title">Choose currency</h4> -->
+            <div class="row">
+              <div class="col-md-6">
+                <el-select
+                  class="select-primary"
+                  size="large"
+                  placeholder="Choose currency"
+                  v-model="selects.simple"
+                >
+                  <el-option
+                    v-for="option in selects.countries"
+                    class="select-primary"
+                    :value="option.value"
+                    :label="option.label"
+                    :key="option.label"
+                  >
+                  </el-option>
+                </el-select>
+              </div>
+            </div>
           </div>
           <label class="col-sm-3 label-on-right"
             ><code>numeric="true"</code></label
