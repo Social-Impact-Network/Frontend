@@ -1,6 +1,6 @@
 <template>
   <div class="extended-forms">
-    <div class="row">
+    <!-- <div class="row">
       <div class="col-md-4">
         <card>
           <h4 slot="header" class="card-title">Datetimepicker</h4>
@@ -36,11 +36,9 @@
           </base-input>
         </card>
       </div>
-    </div>
+    </div> -->
     <card>
       <div class="col-12">
-        
-        
         <div class="row">
           <div class="col-md-6 offset-md-2">
             <h4 class="card-title">Progress Bar</h4>
