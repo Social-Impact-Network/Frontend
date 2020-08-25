@@ -6,6 +6,12 @@
         <div class="row">
           
           <div class="col-md-7 offset-md-2">
+            
+            <h2>Current pending project</h2>
+            <br>
+            <br>
+            <br>
+            
             <h3 class="card-title">UNDP Country Office (Proposed)</h3>
             <div class="a">
               <p>600k / 1M USD</p>
@@ -161,7 +167,11 @@
             </div> -->
 
             <div class="row">
-              <label class="col-sm-2 col-form-label">Invest</label>
+              <label class="col-sm-2 col-form-label">
+                <div title= 'Invest infos here'>Invest
+                  <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                </div>
+              </label>
               <div class="col-sm-4">
                 <ValidationProvider
                   name="investNumber"
@@ -205,7 +215,11 @@
             </div>
 
             <div class="row">
-              <label class="col-sm-2 col-form-label">Reward</label>
+              <label class="col-sm-2 col-form-label">
+                <div title= 'Reward infos here'>Reward
+                  <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                </div>
+              </label>
               <div class="col-sm-5">
                 <ValidationProvider
                   name="rewardNumber"
@@ -228,7 +242,11 @@
             </div>
 
           <div class="row">
-              <label class="col-sm-2 col-form-label">Energy</label>
+              <label class="col-sm-2 col-form-label">
+                <div title= 'Energy infos here'>Energy
+                  <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                </div>
+              </label>
               <div class="col-sm-5">
                 <ValidationProvider
                   name="energyNumber"
@@ -252,7 +270,11 @@
             
 
             <div class="row">
-              <label class="col-sm-2 col-form-label">Income return</label>
+              <label class="col-sm-2 col-form-label">
+                <div title= 'Income return infos here'>Income return
+                  <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                </div>
+              </label>
               <div class="col-sm-5">
                 <ValidationProvider
                   name="incomeReturnNumber"
@@ -283,14 +305,14 @@
             >
           </div> -->
           
-          <div class="col-md-3 mr-auto">
+          <div class="text-center">
             <card>
               <div class="text-center">
-                <p class="card-text">A success message</p>
+                <p class="card-text">Check your form before submitting</p>
                 <base-button
                   type="primary"
-                  @click.native="showSwal('success-message')"
-                  >Try me!</base-button
+                  @click.native="submit('success-message')"
+                  >Buy now!</base-button
                 >
               </div>
             </card>
@@ -368,21 +390,24 @@ export default {
     };
   },
   methods: {
-    submit() {
+    /* submit() {
       alert("Form has been submitted!");
-    },
-    showSwal(type) {
-       if (type === 'success-message') {
-        swal.fire({
-          title: `Good job!`,
-          text: 'You clicked the button!',
-          buttonsStyling: false,
-          customClass: {
-            confirmButton: 'btn btn-success btn-fill'
-          },
-          icon: 'success'
-        });
-      } 
+    }, */
+    submit(type) {
+      if(this.investNumber > 0 & this.rewardNumber > 0 & this.energyNumber > 0 & this.incomeReturnNumber > 0) {
+        if (type === 'success-message') {
+          swal.fire({
+            title: `Good job!`,
+            text: 'Our team is now proccessing your investment order',
+            buttonsStyling: false,
+            customClass: {
+              confirmButton: 'btn btn-success btn-fill'
+            },
+            icon: 'success'
+          });
+        } 
+      }
+       
     }
   }
 };
