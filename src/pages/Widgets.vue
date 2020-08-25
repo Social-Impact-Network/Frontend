@@ -193,7 +193,7 @@
                     <el-select
                       class="select-primary"
                       size="large"
-                      placeholder="Choose currency"
+                      placeholder="Pick"
                       v-model="selects.simple"
                     >
                       <el-option
@@ -394,7 +394,7 @@ export default {
       alert("Form has been submitted!");
     }, */
     submit(type) {
-      if(this.investNumber > 0 & this.rewardNumber > 0 & this.energyNumber > 0 & this.incomeReturnNumber > 0) {
+      if(this.investNumber > 0 & this.rewardNumber > 0 & this.energyNumber > 0 & this.incomeReturnNumber > 0 & this.selects.simple!='') {
         if (type === 'success-message') {
           swal.fire({
             title: `Good job!`,
@@ -407,7 +407,6 @@ export default {
           });
         } 
       }
-       
     }
   }
 };
