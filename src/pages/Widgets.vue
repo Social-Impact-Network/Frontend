@@ -1,228 +1,308 @@
 <template>
-  <div class="extended-forms">
-    <!-- <div class="row">
-      <div class="col-md-4">
-        <card>
-          <h4 slot="header" class="card-title">Datetimepicker</h4>
-          <base-input>
-            <el-date-picker
-              type="datetime"
-              placeholder="Date Time Picker"
-              v-model="dateTimePicker"
-            >
-            </el-date-picker>
-          </base-input>
-        </card>
-      </div>
-      <div class="col-md-4">
-        <card>
-          <h4 slot="header" class="card-title">Date Picker</h4>
-          <base-input>
-            <el-date-picker
-              type="date"
-              placeholder="Date Picker"
-              v-model="datePicker"
-            >
-            </el-date-picker>
-          </base-input>
-        </card>
-      </div>
-      <div class="col-md-4">
-        <card>
-          <h4 slot="header" class="card-title">Time Picker</h4>
-          <base-input>
-            <el-time-select placeholder="Time Picker" v-model="timePicker">
-            </el-time-select>
-          </base-input>
-        </card>
-      </div>
-    </div> -->
+
+  <div class="extended-forms col-md-9-offset-md-2">
     <card>
       <div class="col-12">
         <div class="row">
-          <div class="col-md-6 offset-md-2">
-            <h4 class="card-title">Progress Bar</h4>
-            <base-progress label="Default" value-position="right" :value="67" />
-            <!-- <base-progress
-              label="Primary"
+          
+          <div class="col-md-7 offset-md-2">
+            <h3 class="card-title">UNDP Country Office (Proposed)</h3>
+            <div class="a">
+              <p>600k / 1M USD</p>
+            </div>
+            <!-- <base-progress label="Default" value-position="right" :value="67" /> -->
+            <base-progress
+              label="2020, June 15th"
               :value="60"
               value-position="right"
               type="primary"
-            /> -->
+            />
           </div>
+
+
+          <div class="col-md-7 offset-md-2">
+            <card>
+              <template slot="header">
+                <!-- <h3 class="card-title">Project #4</h3> -->
+              </template>
+              <tabs
+                type="primary"
+                tabNavWrapperClasses="col-lg-3 col-md-6"
+                tabContentClasses="col-md-8"
+                vertical
+                square
+                class="row"
+              >
+                <tab-pane>
+                  <span slot="label">
+                    <i class="tim-icons icon-globe-2"></i>Lebanon
+                  </span>
+                  <img src="img/Solar.jpg"/>
+                  <br>
+                  <br>
+                  Collaboratively administrate empowered markets via plug-and-play
+                  networks. Dynamically procrastinate B2C users after installed base
+                  benefits.
+						    </tab-pane>
+
+                <tab-pane>
+                <span slot="label">
+                  <i class="tim-icons icon-notes"></i>Details
+                </span>
+                  <table style="width:100%">
+                  <br>
+                  <tr>
+                    <td>
+                      <div title= 'project costs infos here'>
+                        Project Cost <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                      </div>
+                    </td>
+                    <td>1 Mio EUR</td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div title= 'Estimated energy per year infos here'>
+                        Estimated energy per year <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                      </div>
+                    </td>
+                    <td>139,43 MWh</td>
+                  </tr>
+
+                  <tr>
+                    <div title= 'price per kWh infos here'>
+                        Price per kWh <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                    </div>
+                    <td>0.15 USD</td>
+                  </tr>
+
+                  <tr>
+                    <div title= 'service fees infos here'>
+                        Service fee <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                    </div>
+                    <td>20%</td>
+                  </tr>
+
+                  <tr>
+                    <div title= 'reinvest rate infos here'>
+                        Reinvest rate <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                    </div>
+                    <td>20%</td>
+                  </tr>
+
+
+                  <tr>
+                    <div title= 'Network dividends infos here'>
+                      Network dividends <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                    </div>
+                    <td>60%</td>
+                  </tr>
+
+                  <tr>
+                    <div title= 'Expected Lifetime infos here'>
+                      Expected Lifetime <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                    </div>
+                    <td>20 years</td>
+                  </tr>
+
+                </table>
+                </tab-pane>
+              </tabs>
+            </card>  
+          </div>
+          
+
         </div>
       </div>
     </card>
     <!-- end card -->
+    
 
-  <ValidationObserver v-slot="{ handleSubmit }">
-  <form class="form-horizontal" @submit.prevent="handleSubmit(submit)">
-    <card>
-      <h4 slot="header" class="card-title">Type Validation</h4>
-      <div>
-        <!-- <div class="row">
-          <label class="col-sm-2 col-form-label">Requred Text</label>
-          <div class="col-sm-7">
-            <ValidationProvider
-              name="required"
-              rules="required"
-              v-slot="{ passed, failed, errors }"
-            >
-            <base-input
-              required
-              v-model="required"
-              :error="errors[0]"
-              :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
-            </base-input>
-           </ValidationProvider>
-          </div>
-        </div> -->
-
-        <!-- <div class="row">
-          <label class="col-sm-2 col-form-label">Email</label>
-          <div class="col-sm-7">
-            <ValidationProvider
-              name="email"
-              rules="required|email"
-              v-slot="{ passed, failed, errors }"
-            >
-            <base-input
-              required
-              v-model="email"
-              type="email"
-              :error="errors[0]"
-              :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
-            </base-input>
-           </ValidationProvider>
-          </div>
-        </div> -->
-
-        <div class="row">
-          <label class="col-sm-2 col-form-label">Invest</label>
-          <div class="col-sm-4">
-            <ValidationProvider
-              name="investNumber"
-              rules="required|numeric"
-              v-slot="{ passed, failed, errors }"
-            >
-            <base-input
-              required
-              v-model="investNumber"
-              :error="errors[0]"
-              :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
-            </base-input>
-           </ValidationProvider>
-          </div>
-          <div class="col-md-6">
-            <!-- <h4 class="card-title">Choose currency</h4> -->
-            <div class="row">
-              <div class="col-md-6">
-                <el-select
-                  class="select-primary"
-                  size="large"
-                  placeholder="Choose currency"
-                  v-model="selects.simple"
+    <ValidationObserver v-slot="{ handleSubmit }">
+      <form class="form-horizontal" @submit.prevent="handleSubmit(submit)">
+        <card>
+          <h4 slot="header" class="card-title">Type Validation</h4>
+          <div class="cold-md-9 offset-md-2">
+            <!-- <div class="row">
+              <label class="col-sm-2 col-form-label">Required Text</label>
+              <div class="col-sm-7">
+                <ValidationProvider
+                  name="required"
+                  rules="required"
+                  v-slot="{ passed, failed, errors }"
                 >
-                  <el-option
-                    required
-                    v-for="option in selects.currencies"
-                    class="select-primary"
-                    :value="option.value"
-                    :label="option.label"
-                    :key="option.label"
-                  >
-                  </el-option>
-                </el-select>
+                <base-input
+                  required
+                  v-model="required"
+                  :error="errors[0]"
+                  :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
+                </base-input>
+              </ValidationProvider>
               </div>
+            </div> -->
+
+            <!-- <div class="row">
+              <label class="col-sm-2 col-form-label">Email</label>
+              <div class="col-sm-7">
+                <ValidationProvider
+                  name="email"
+                  rules="required|email"
+                  v-slot="{ passed, failed, errors }"
+                >
+                <base-input
+                  required
+                  v-model="email"
+                  type="email"
+                  :error="errors[0]"
+                  :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
+                </base-input>
+              </ValidationProvider>
+              </div>
+            </div> -->
+
+            <div class="row">
+              <label class="col-sm-2 col-form-label">Invest</label>
+              <div class="col-sm-4">
+                <ValidationProvider
+                  name="investNumber"
+                  rules="required|numeric"
+                  v-slot="{ passed, failed, errors }"
+                >
+                <base-input
+                  required
+                  v-model="investNumber"
+                  :error="errors[0]"
+                  :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
+                </base-input>
+              </ValidationProvider>
+              </div>
+              <div class="col-md-5">
+                <!-- <h4 class="card-title">Choose currency</h4> -->
+                <div class="row">
+                  <div class="col-md-5">
+                    <el-select
+                      class="select-primary"
+                      size="large"
+                      placeholder="Choose currency"
+                      v-model="selects.simple"
+                    >
+                      <el-option
+                        required
+                        v-for="option in selects.currencies"
+                        class="select-primary"
+                        :value="option.value"
+                        :label="option.label"
+                        :key="option.label"
+                      >
+                      </el-option>
+                    </el-select>
+                  </div>
+                </div>
+              </div>
+              <!-- <label class="col-sm-3 label-on-right"
+                ><code>numeric="true"</code></label
+              > -->
+            </div>
+
+            <div class="row">
+              <label class="col-sm-2 col-form-label">Reward</label>
+              <div class="col-sm-5">
+                <ValidationProvider
+                  name="rewardNumber"
+                  rules="required|numeric"
+                  v-slot="{ passed, failed, errors }"
+                >
+                <base-input
+                  required
+                  v-model="rewardNumber"
+                  :error="errors[0]"
+                  :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
+                </base-input>
+              </ValidationProvider>
+              
+              </div>
+
+              <label class="col-sm-3 label-on-right"
+                >SI Token</label
+              >
+            </div>
+
+          <div class="row">
+              <label class="col-sm-2 col-form-label">Energy</label>
+              <div class="col-sm-5">
+                <ValidationProvider
+                  name="energyNumber"
+                  rules="required|numeric"
+                  v-slot="{ passed, failed, errors }"
+                >
+                <base-input
+                  required
+                  v-model="energyNumber"
+                  :error="errors[0]"
+                  :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
+                </base-input>
+              </ValidationProvider>
+              
+              </div>
+
+              <label class="col-sm-3 label-on-right"
+                >kWh/month</label
+              >
+            </div>
+            
+
+            <div class="row">
+              <label class="col-sm-2 col-form-label">Income return</label>
+              <div class="col-sm-5">
+                <ValidationProvider
+                  name="incomeReturnNumber"
+                  rules="required|numeric"
+                  v-slot="{ passed, failed, errors }"
+                >
+                <base-input
+                  required
+                  v-model="incomeReturnNumber"
+                  :error="errors[0]"
+                  :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
+                </base-input>
+              </ValidationProvider>
+              
+              </div>
+
+              <label class="col-sm-3 label-on-right"
+                >USD</label
+              >
             </div>
           </div>
-          <!-- <label class="col-sm-3 label-on-right"
-            ><code>numeric="true"</code></label
-          > -->
-        </div>
 
-        <div class="row">
-          <label class="col-sm-2 col-form-label">Reward</label>
-          <div class="col-sm-4">
-            <ValidationProvider
-              name="rewardNumber"
-              rules="required|numeric"
-              v-slot="{ passed, failed, errors }"
+          <!-- <div class="text-center">
+            <base-button
+              native-type="submit"
+              type="primary"
+              >Buy</base-button
             >
-            <base-input
-              required
-              v-model="rewardNumber"
-              :error="errors[0]"
-              :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
-            </base-input>
-           </ValidationProvider>
-           
+          </div> -->
+          
+          <div class="col-md-3 mr-auto">
+            <card>
+              <div class="text-center">
+                <p class="card-text">A success message</p>
+                <base-button
+                  type="primary"
+                  @click.native="showSwal('success-message')"
+                  >Try me!</base-button
+                >
+              </div>
+            </card>
           </div>
 
-          <label class="col-sm-3 label-on-right"
-            >SI Token</label
-          >
-        </div>
 
-      <div class="row">
-          <label class="col-sm-2 col-form-label">Energy</label>
-          <div class="col-sm-4">
-            <ValidationProvider
-              name="energyNumber"
-              rules="required|numeric"
-              v-slot="{ passed, failed, errors }"
-            >
-            <base-input
-              required
-              v-model="energyNumber"
-              :error="errors[0]"
-              :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
-            </base-input>
-           </ValidationProvider>
-           
-          </div>
 
-          <label class="col-sm-3 label-on-right"
-            >kWh</label
-          >
-        </div>
-        
-
-        <div class="row">
-          <label class="col-sm-2 col-form-label">Income return</label>
-          <div class="col-sm-4">
-            <ValidationProvider
-              name="incomeReturnNumber"
-              rules="required|numeric"
-              v-slot="{ passed, failed, errors }"
-            >
-            <base-input
-              required
-              v-model="incomeReturnNumber"
-              :error="errors[0]"
-              :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
-            </base-input>
-           </ValidationProvider>
-           
-          </div>
-
-          <label class="col-sm-3 label-on-right"
-            >USD</label
-          >
-        </div>
-
-      </div>
-      <div class="text-center">
-        <base-button
-          native-type="submit"
-          type="primary"
-          >Buy</base-button
-        >
-      </div>
-    </card>
-  </form>
-</ValidationObserver>
-  </div>
+        </card>
+      </form>
+    </ValidationObserver>
+    
+  </div>  
   
 </template>
 
@@ -237,6 +317,10 @@ import {
 import { extend } from "vee-validate";
 import { required, numeric, regex, confirmed } from "vee-validate/dist/rules";
 
+import { TabPane, Tabs, Collapse, CollapseItem } from 'src/components';
+
+import swal from 'sweetalert2';
+
 extend("required", required);
 extend("numeric", numeric);
 extend("regex", regex);
@@ -250,10 +334,15 @@ export default {
     [Select.name]: Select,
     BaseSwitch,
     BaseProgress,
-    Slider
+    Slider,
+    TabPane,
+    Tabs,
+    Collapse,
+    CollapseItem
   },
   data() {
     return {
+      activeName: 'first',
       required: "",
       email: "",
       investNumber: "",
@@ -281,11 +370,24 @@ export default {
   methods: {
     submit() {
       alert("Form has been submitted!");
+    },
+    showSwal(type) {
+       if (type === 'success-message') {
+        swal.fire({
+          title: `Good job!`,
+          text: 'You clicked the button!',
+          buttonsStyling: false,
+          customClass: {
+            confirmButton: 'btn btn-success btn-fill'
+          },
+          icon: 'success'
+        });
+      } 
     }
   }
 };
 </script>
-<style>
+<style lang="scss">
 .extended-forms .el-select {
   width: 100%;
   margin-bottom: 30px;
@@ -294,4 +396,7 @@ export default {
 .extended-forms .progress {
   margin-bottom: 30px;
 }
+div.a {
+  text-align: right;
+} 
 </style>
