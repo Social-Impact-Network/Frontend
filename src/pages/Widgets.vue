@@ -1,133 +1,11 @@
 <template>
 
   <div class="extended-forms col-md-9-offset-md-2">
-    <card>
-      <div class="col-12">
-        <div class="row">
-          
-          <div class="col-md-7 offset-md-2">
-            
-            <h2>Current pending project</h2>
-            <br>
-            <br>
-            <br>
-            
-            <h3 class="card-title">UNDP Country Office (Proposed)</h3>
-            <div class="a">
-              <p>600k / 1M USD</p>
-            </div>
-            <!-- <base-progress label="Default" value-position="right" :value="67" /> -->
-            <base-progress
-              label="2020, June 15th"
-              :value="60"
-              value-position="right"
-              type="primary"
-            />
-          </div>
-
-
-          <div class="col-md-7 offset-md-2">
-            <card>
-              <template slot="header">
-                <!-- <h3 class="card-title">Project #4</h3> -->
-              </template>
-              <tabs
-                type="primary"
-                tabNavWrapperClasses="col-lg-3 col-md-6"
-                tabContentClasses="col-md-8"
-                vertical
-                square
-                class="row"
-              >
-                <tab-pane>
-                  <span slot="label">
-                    <i class="tim-icons icon-globe-2"></i>Lebanon
-                  </span>
-                  <img src="img/Solar.jpg"/>
-                  <br>
-                  <br>
-                  Collaboratively administrate empowered markets via plug-and-play
-                  networks. Dynamically procrastinate B2C users after installed base
-                  benefits.
-						    </tab-pane>
-
-                <tab-pane>
-                <span slot="label">
-                  <i class="tim-icons icon-notes"></i>Details
-                </span>
-                  <table style="width:100%">
-                  <br>
-                  <tr>
-                    <td>
-                      <div title= 'project costs infos here'>
-                        Project Cost <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-                      </div>
-                    </td>
-                    <td>1 Mio EUR</td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <div title= 'Estimated energy per year infos here'>
-                        Estimated energy per year <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-                      </div>
-                    </td>
-                    <td>139,43 MWh</td>
-                  </tr>
-
-                  <tr>
-                    <div title= 'price per kWh infos here'>
-                        Price per kWh <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-                    </div>
-                    <td>0.15 USD</td>
-                  </tr>
-
-                  <tr>
-                    <div title= 'service fees infos here'>
-                        Service fee <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-                    </div>
-                    <td>20%</td>
-                  </tr>
-
-                  <tr>
-                    <div title= 'reinvest rate infos here'>
-                        Reinvest rate <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-                    </div>
-                    <td>20%</td>
-                  </tr>
-
-
-                  <tr>
-                    <div title= 'Network dividends infos here'>
-                      Network dividends <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-                    </div>
-                    <td>60%</td>
-                  </tr>
-
-                  <tr>
-                    <div title= 'Expected Lifetime infos here'>
-                      Expected Lifetime <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-                    </div>
-                    <td>20 years</td>
-                  </tr>
-
-                </table>
-                </tab-pane>
-              </tabs>
-            </card>  
-          </div>
-          
-
-        </div>
-      </div>
-    </card>
-    <!-- end card -->
-    
-
+  
     <ValidationObserver v-slot="{ handleSubmit }">
       <form class="form-horizontal" @submit.prevent="handleSubmit(submit)">
         <card>
-          <h4 slot="header" class="card-title">Type Validation</h4>
+          <h4 slot="header" class="card-title">Investment order</h4>
           <div class="cold-md-9 offset-md-2">
             <!-- <div class="row">
               <label class="col-sm-2 col-form-label">Required Text</label>
@@ -321,9 +199,129 @@
 
 
         </card>
+        
       </form>
     </ValidationObserver>
     
+
+    <card>
+      <div class="col-12">
+        <div class="row">
+          <h4 slot="header" class="card-title">Pending Project</h4>
+          <div class="col-md-7 offset-md-2">
+            <h3 class="card-title">UNDP Country Office (Proposed)</h3>
+            <div class="a">
+              <p>600k / 1M USD</p>
+            </div>
+            <!-- <base-progress label="Default" value-position="right" :value="67" /> -->
+            <base-progress
+              label="2020, June 15th"
+              :value="60"
+              value-position="right"
+              type="primary"
+            />
+          </div>
+
+
+          <div class="col-md-7 offset-md-2">
+            <card>
+              <template slot="header">
+                <!-- <h3 class="card-title">Project #4</h3> -->
+              </template>
+              <tabs
+                type="primary"
+                tabNavWrapperClasses="col-lg-3 col-md-6"
+                tabContentClasses="col-md-8"
+                vertical
+                square
+                class="row"
+              >
+                <tab-pane>
+                  <span slot="label">
+                    <i class="tim-icons icon-globe-2"></i>Lebanon
+                  </span>
+                  <img src="img/Solar.jpg"/>
+                  <br>
+                  <br>
+                  Collaboratively administrate empowered markets via plug-and-play
+                  networks. Dynamically procrastinate B2C users after installed base
+                  benefits.
+						    </tab-pane>
+
+                <tab-pane>
+                <span slot="label">
+                  <i class="tim-icons icon-notes"></i>Details
+                </span>
+                  <table style="width:100%">
+                  <br>
+                  <tr>
+                    <td>
+                      <div title= 'project costs infos here'>
+                        Project Cost <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                      </div>
+                    </td>
+                    <td>1 Mio EUR</td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div title= 'Estimated energy per year infos here'>
+                        Estimated energy per year <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                      </div>
+                    </td>
+                    <td>139,43 MWh</td>
+                  </tr>
+
+                  <tr>
+                    <div title= 'price per kWh infos here'>
+                        Price per kWh <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                    </div>
+                    <td>0.15 USD</td>
+                  </tr>
+
+                  <tr>
+                    <div title= 'service fees infos here'>
+                        Service fee <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                    </div>
+                    <td>20%</td>
+                  </tr>
+
+                  <tr>
+                    <div title= 'reinvest rate infos here'>
+                        Reinvest rate <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                    </div>
+                    <td>20%</td>
+                  </tr>
+
+
+                  <tr>
+                    <div title= 'Network dividends infos here'>
+                      Network dividends <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                    </div>
+                    <td>60%</td>
+                  </tr>
+
+                  <tr>
+                    <div title= 'Expected Lifetime infos here'>
+                      Expected Lifetime <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                    </div>
+                    <td>20 years</td>
+                  </tr>
+
+                </table>
+                </tab-pane>
+              </tabs>
+            </card>  
+          </div>
+          
+
+        </div>
+      </div>
+    </card>
+    <!-- end card -->
+
+
+
   </div>  
   
 </template>
