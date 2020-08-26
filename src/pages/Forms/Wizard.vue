@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div class="row d-flex justify-content-center">
       <div class="col-md-10">
         <simple-wizard>
@@ -20,7 +19,7 @@
               @on-validated="onStepValidated"
             ></first-step>
           </wizard-tab>
-
+          
           <wizard-tab :before-change="() => validateStep('step2')">
             <template slot="label">
               <i class="tim-icons icon-settings-gear-63"></i>
@@ -42,7 +41,6 @@
         </simple-wizard>
       </div>
     </div>
-  </div>
 </template>
 <script>
 import FirstStep from './Wizard/FirstStep.vue';
