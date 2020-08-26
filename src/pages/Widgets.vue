@@ -71,7 +71,7 @@
                     <el-select
                       class="select-primary"
                       size="large"
-                      placeholder="Pick"
+                      placeholder="Currency"
                       v-model="selects.simple"
                     >
                       <el-option
@@ -170,7 +170,7 @@
               </div>
 
               <label class="col-sm-3 label-on-right"
-                >USD</label
+                >USD/month</label
               >
             </div>
           </div>

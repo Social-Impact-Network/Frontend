@@ -29,7 +29,7 @@
             path: '/widgets'
           }"
           ></sidebar-item>
-          <sidebar-item
+          <!-- <sidebar-item
             :link="{ name: $t('sidebar.pricing'), path: '/pricing' }"
           ></sidebar-item>
           <sidebar-item
@@ -46,9 +46,11 @@
           ></sidebar-item>
           <sidebar-item
             :link="{ name: $t('sidebar.userProfile'), path: '/pages/user' }"
-          ></sidebar-item>
+          ></sidebar-item> -->
         </sidebar-item>
-        <sidebar-item
+
+
+        <!-- <sidebar-item
           :link="{
             name: $t('sidebar.components'),
             icon: 'tim-icons icon-molecule-40'
@@ -98,8 +100,8 @@
               path: '/components/typography'
             }"
           ></sidebar-item>
-        </sidebar-item>
-        <sidebar-item
+        </sidebar-item> -->
+        <!-- <sidebar-item
           :link="{ name: $t('sidebar.forms'), icon: 'tim-icons icon-notes' }"
         >
           <sidebar-item
@@ -120,7 +122,9 @@
           <sidebar-item
             :link="{ name: $t('sidebar.wizard'), path: '/forms/wizard' }"
           ></sidebar-item>
-        </sidebar-item>
+        </sidebar-item> -->
+
+        <!-- 
         <sidebar-item
           :link="{
             name: $t('sidebar.tables'),
@@ -145,8 +149,10 @@
               path: '/table-list/paginated'
             }"
           ></sidebar-item>
-        </sidebar-item>
-        <sidebar-item
+        </sidebar-item> -->
+
+
+        <!-- <sidebar-item
           :link="{ name: $t('sidebar.maps'), icon: 'tim-icons icon-pin' }"
         >
           <sidebar-item
@@ -161,7 +167,9 @@
           <sidebar-item
             :link="{ name: $t('sidebar.vectorMaps'), path: '/maps/vector-map' }"
           ></sidebar-item>
-        </sidebar-item>
+        </sidebar-item> -->
+
+
         <!-- <sidebar-item
           :link="{
             name: $t('sidebar.widgets'),
@@ -169,7 +177,9 @@
             path: '/widgets'
           }"
         ></sidebar-item> -->
-        <sidebar-item
+
+
+        <!-- <sidebar-item
           :link="{
             name: $t('sidebar.charts'),
             icon: 'tim-icons icon-chart-bar-32',
@@ -182,7 +192,7 @@
             icon: 'tim-icons icon-time-alarm',
             path: '/calendar'
           }"
-        ></sidebar-item>
+        ></sidebar-item> -->
       </template>
     </side-bar>
     <!--Share plugin (for demo purposes). You can remove it if don't plan on using it-->

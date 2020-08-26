@@ -54,7 +54,7 @@
         <footer class="footer">
           <div class="container-fluid">
             <nav>
-              <ul class="nav">
+              <!-- <ul class="nav">
                 <li class="nav-item">
                   <a
                     href="https://www.creative-tim.com"
@@ -85,9 +85,9 @@
                     Blog
                   </a>
                 </li>
-              </ul>
+              </ul> -->
             </nav>
-            <div class="copyright">
+            <!-- <div class="copyright">
               &copy; {{ year }}, made with
               <i class="tim-icons icon-heart-2"></i> by
               <a href="https://binarcode.com" target="_blank">BinarCode</a> and
@@ -98,7 +98,7 @@
                 >Creative Tim</a
               >
               for a better web.
-            </div>
+            </div> -->
           </div>
         </footer>
       </div>

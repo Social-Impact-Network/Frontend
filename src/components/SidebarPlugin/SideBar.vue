@@ -2,12 +2,29 @@
   <div class="sidebar" :data="backgroundColor">
     <div class="sidebar-wrapper" ref="sidebarScrollArea">
       <div class="logo">
-        <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+        
+        <!-- <sidebar-item
+          :link="{
+            name: $t('sidebar.dashboard'),
+            icon: 'tim-icons icon-chart-pie-36',
+            path: '/dashboard'
+          }"
+        >
+        </sidebar-item> -->
+
+        <a href="" class="simple-text logo-mini">
+          <img :src="logo" alt="app-logo" />
+        </a>
+        <a href="" class="simple-text logo-normal">
+          {{ title }}
+        </a>
+
+        <!-- <a href="http://www.creative-tim.com" class="simple-text logo-mini">
           <img :src="logo" alt="app-logo" />
         </a>
         <a href="http://www.creative-tim.com" class="simple-text logo-normal">
           {{ title }}
-        </a>
+        </a> -->
       </div>
       <slot></slot>
       <ul class="nav">

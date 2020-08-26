@@ -23,10 +23,10 @@
           </a>
         </li>
       </ul>
-      <div class="copyright">
+      <!-- <div class="copyright">
         &copy; {{ year }}, made with <i class="tim-icons icon-heart-2"></i> for
         a better web.
-      </div>
+      </div> -->
     </div>
   </footer>
 </template>
