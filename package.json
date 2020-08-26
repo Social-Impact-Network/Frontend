@@ -1,8 +1,8 @@
 {
-  "name": "vue-black-dashboard-pro",
+  "name": "social-impact-network-dashboard",
   "version": "1.2.3",
   "private": true,
-  "description": "Vue Black Dashboard PRO",
+  "description": "social-impact-network-dashboard",
   "author": "cristijora <joracristi@gmail.com>",
   "scripts": {
     "serve": "vue-cli-service serve --open",
