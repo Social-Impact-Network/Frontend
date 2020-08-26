@@ -1,6 +1,6 @@
 <template>
   <div class="fixed-plugin" v-click-outside="closeDropDown">
-    <div class="dropdown show-dropdown" :class="{ show: isOpen }">
+    <!-- <div class="dropdown show-dropdown" :class="{ show: isOpen }">
       <a data-toggle="dropdown" class="settings-icon">
         <i class="fa fa-cog fa-2x" @click="toggleDropDown"> </i>
       </a>
@@ -49,7 +49,7 @@
           >
             ML Crypt
           </a>
-          <!-- <a
+          <a
             href="https://creative-tim.com/product/vue-black-dashboard-pro"
             target="_blank"
             rel="noopener"
@@ -64,12 +64,12 @@
             class="btn btn-info btn-block btn-round"
           >
             Free Version
-          </a> -->
+          </a>
         </li>
 
       </ul>
-    </div>
-  </div>
+    </div>-->
+  </div> 
 </template>
 <script>
   import { BaseSwitch } from 'src/components';
