@@ -535,7 +535,7 @@ export default {
           /* footer: '<i class="tim-icons icon-notes"></i> Earning history' */
         },
         {
-          title: '2478 kWh',
+          title: '2479 kWh',
           subTitle: 'Your total generated energy',
           type: 'info',
           icon: 'tim-icons icon-bulb-63',
@@ -590,7 +590,7 @@ export default {
           labels: ['APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP'],
           datasets: [
             {
-              label: 'kWh generated so far up to this month by all projects',
+              label: 'kWh generated up to this month by all projects',
               fill: true,
               borderColor: config.colors.primary,
               borderWidth: 2,
