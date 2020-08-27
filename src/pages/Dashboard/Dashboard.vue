@@ -342,8 +342,8 @@ export default {
     },
     bigLineChartCategories() {
       return [
-        { name: 'Earning (€)', icon: 'tim-icons icon-single-02' }, 
-        { name: 'Energy (kwh)', icon: 'tim-icons icon-gift-2' }
+        { name: 'Earning (€)', icon: 'tim-icons icon-bank' }, 
+        { name: 'Energy (kwh)', icon: 'tim-icons icon-light-3' }
       ];
     }
   },
