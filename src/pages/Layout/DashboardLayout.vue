@@ -17,7 +17,26 @@
           }"
         >
         </sidebar-item>
+
         <sidebar-item
+          :link="{
+            name: $t('sidebar.timeline'),
+            icon: 'tim-icons icon-world',
+            path: '/pages/timeline'
+          }"
+        >
+        </sidebar-item>
+
+        <sidebar-item
+          :link="{
+            name: $t('sidebar.widgets'),
+            icon: 'tim-icons icon-credit-card',
+            path: '/widgets'
+          }"
+        >
+        </sidebar-item>
+
+        <!-- <sidebar-item
           :link="{ name: $t('sidebar.pages'), icon: 'tim-icons icon-image-02' }"
         >
           <sidebar-item
@@ -28,7 +47,7 @@
             name: $t('sidebar.widgets'),
             path: '/widgets'
           }"
-          ></sidebar-item>
+          ></sidebar-item> -->
           <!-- <sidebar-item
             :link="{ name: $t('sidebar.pricing'), path: '/pricing' }"
           ></sidebar-item>
@@ -46,8 +65,8 @@
           ></sidebar-item>
           <sidebar-item
             :link="{ name: $t('sidebar.userProfile'), path: '/pages/user' }"
-          ></sidebar-item> -->
-        </sidebar-item>
+          ></sidebar-item> 
+        </sidebar-item>-->
 
 
         <!-- <sidebar-item

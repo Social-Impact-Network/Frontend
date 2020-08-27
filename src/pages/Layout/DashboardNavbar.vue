@@ -21,11 +21,13 @@
     </div>
 
     <ul class="navbar-nav" :class="$rtl.isRTL ? 'mr-auto' : 'ml-auto'">
-      <div class="search-bar input-group" @click="searchModalVisible = true">
-        <!--
+      <!-- Search function -->
+      <!-- <div class="search-bar input-group" @click="searchModalVisible = true">
+
+          Following two lines hould be commented out
           <input type="text" class="form-control" placeholder="Search...">
           <div class="input-group-addon"><i class="tim-icons icon-zoom-split"></i></div>
-        -->
+        
         <button
           class="btn btn-link"
           id="search-button"
@@ -34,8 +36,10 @@
         >
           <i class="tim-icons icon-zoom-split"></i>
         </button>
-        <!-- You can choose types of search input -->
-      </div>
+        Following line be commented out
+         You can choose types of search input 
+      </div> -->
+
       <modal
         :show.sync="searchModalVisible"
         class="modal-search"
@@ -59,13 +63,14 @@
         title-classes="nav-link"
         class="nav-item"
       >
-        <template
+        <!-- Notification dropdown --> 
+        <!-- <template
           slot="title"
         >
           <div class="notification d-none d-lg-block d-xl-block"></div>
           <i class="tim-icons icon-sound-wave"></i>
           <p class="d-lg-none">New Notifications</p>
-        </template>
+        </template> -->
         <li class="nav-link">
           <a href="#" class="nav-item dropdown-item"
             >Mike John responded to your email</a
