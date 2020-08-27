@@ -52,13 +52,13 @@
               </label>
               <div class="col-sm-4">
                 <ValidationProvider
-                  name="investNumber"
+                  name="number"
                   rules="required|numeric"
                   v-slot="{ passed, failed, errors }"
                 >
                 <base-input
                   required
-                  v-model="investNumber"
+                  v-model="number"
                   :error="errors[0]"
                   :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
                 </base-input>
@@ -99,19 +99,9 @@
                 </div>
               </label>
               <div class="col-sm-5">
-                <ValidationProvider
-                  name="rewardNumber"
-                  rules="required|numeric"
-                  v-slot="{ passed, failed, errors }"
-                >
-                <base-input
-                  required
-                  v-model="rewardNumber"
-                  :error="errors[0]"
-                  :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
+                <base-input>
+                  <p class="form-control-static">{{ number*20/100 }}</p>
                 </base-input>
-              </ValidationProvider>
-              
               </div>
 
               <label class="col-sm-3 label-on-right"
@@ -126,19 +116,9 @@
                 </div>
               </label>
               <div class="col-sm-5">
-                <ValidationProvider
-                  name="energyNumber"
-                  rules="required|numeric"
-                  v-slot="{ passed, failed, errors }"
-                >
-                <base-input
-                  required
-                  v-model="energyNumber"
-                  :error="errors[0]"
-                  :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
+                <base-input>
+                  <p class="form-control-static">{{ number*15/100 }}</p>
                 </base-input>
-              </ValidationProvider>
-              
               </div>
 
               <label class="col-sm-3 label-on-right"
@@ -147,36 +127,19 @@
             </div>
             
             <div class="row">
-              <label class="col-sm-2 col-form-label">Placeholder</label>
-              <div class="col-sm-5">
-                <base-input placeholder="investNumber"> </base-input>
-              </div>
-            </div>
-
-            <div class="row">
               <label class="col-sm-2 col-form-label">
                 <div title= 'Income return infos here'>Income return
                   <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
                 </div>
               </label>
               <div class="col-sm-5">
-                <ValidationProvider
-                  name="incomeReturnNumber"
-                  rules="required|numeric"
-                  v-slot="{ passed, failed, errors }"
-                >
-                <base-input
-                  required
-                  v-model="incomeReturnNumber"
-                  :error="errors[0]"
-                  :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
+                <base-input>
+                  <p class="form-control-static">{{ number*5/100 }}</p>
                 </base-input>
-              </ValidationProvider>
-              
               </div>
 
               <label class="col-sm-3 label-on-right" v-if="selects.simple"
-                >{{ selects.simple}}/month</label
+                >{{ selects.simple }}/month</label
               >
               <label class="col-sm-3 label-on-right" v-if="!selects.simple"
                 >Please select currency</label
@@ -195,7 +158,7 @@
           <div class="text-center">
             <card>
               <div class="text-center">
-                <p class="card-text">Check your form before submitting</p>
+                <p class="card-text">Check your input before submitting</p>
                 <base-button
                   type="primary"
                   @click.native="submit('success-message')"
@@ -364,10 +327,7 @@ export default {
       activeName: 'first',
       required: "",
       email: "",
-      investNumber: '',
-      rewardNumber: '',
-      energyNumber: '',
-      incomeReturnNumber: '',
+      number: '',
       url: "",
       equal: "",
       equalTo: "",
@@ -391,7 +351,7 @@ export default {
       alert("Form has been submitted!");
     }, */
     submit(type) {
-      if(this.investNumber > 0 & this.rewardNumber > 0 & this.energyNumber > 0 & this.incomeReturnNumber > 0 & this.selects.simple!='') {
+      if(this.number > 0 & this.selects.simple!='') {
         if (type === 'success-message') {
           console.log(this.selects.simple);
           swal.fire({
