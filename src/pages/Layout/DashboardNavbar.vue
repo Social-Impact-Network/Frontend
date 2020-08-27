@@ -57,21 +57,24 @@
           placeholder="SEARCH"
         />
       </modal>
-      <base-dropdown
+      
+      <!-- Notification dropdown --> 
+      <!-- <base-dropdown
         tag="li"
         :menu-on-right="!$rtl.isRTL"
         title-tag="a"
         title-classes="nav-link"
         class="nav-item"
       >
-        <!-- Notification dropdown --> 
-        <!-- <template
+        
+        <template
           slot="title"
         >
           <div class="notification d-none d-lg-block d-xl-block"></div>
           <i class="tim-icons icon-sound-wave"></i>
           <p class="d-lg-none">New Notifications</p>
-        </template> -->
+        </template>
+        
         <li class="nav-link">
           <a href="#" class="nav-item dropdown-item"
             >Mike John responded to your email</a
@@ -91,7 +94,8 @@
         <li class="nav-link">
           <a href="#" class="nav-item dropdown-item">Another one</a>
         </li>
-      </base-dropdown>
+      </base-dropdown> -->
+
       <base-dropdown
         tag="li"
         :menu-on-right="!$rtl.isRTL"
