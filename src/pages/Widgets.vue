@@ -146,6 +146,12 @@
               >
             </div>
             
+            <div class="row">
+              <label class="col-sm-2 col-form-label">Placeholder</label>
+              <div class="col-sm-5">
+                <base-input placeholder="investNumber"> </base-input>
+              </div>
+            </div>
 
             <div class="row">
               <label class="col-sm-2 col-form-label">
@@ -169,8 +175,11 @@
               
               </div>
 
-              <label class="col-sm-3 label-on-right"
-                >{{ selects.simple }}/month</label
+              <label class="col-sm-3 label-on-right" v-if="selects.simple"
+                >{{ selects.simple}}/month</label
+              >
+              <label class="col-sm-3 label-on-right" v-if="!selects.simple"
+                >Please select currency</label
               >
             </div>
           </div>
@@ -196,10 +205,7 @@
             </card>
           </div>
 
-
-
         </card>
-        
       </form>
     </ValidationObserver>
     
@@ -249,81 +255,74 @@
 						    </tab-pane>
 
                 <tab-pane>
-                <span slot="label">
-                  <i class="tim-icons icon-notes"></i>Details
-                </span>
+                  <span slot="label">
+                    <i class="tim-icons icon-notes"></i>Details
+                  </span>
                   <table style="width:100%">
-                  <br>
-                  <tr>
-                    <td>
-                      <div title= 'project costs infos here'>
-                        Project Cost <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                    <br>
+                    <tr>
+                      <td>
+                        <div title= 'project costs infos here'>
+                          Project Cost <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                        </div>
+                      </td>
+                      <td>1 Mio EUR</td>
+                    </tr>
+
+                    <tr>
+                      <td>
+                        <div title= 'Estimated energy per year infos here'>
+                          Estimated energy per year <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                        </div>
+                      </td>
+                      <td>139,43 MWh</td>
+                    </tr>
+
+                    <tr>
+                      <div title= 'price per kWh infos here'>
+                          Price per kWh <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
                       </div>
-                    </td>
-                    <td>1 Mio EUR</td>
-                  </tr>
+                      <td>0.15 USD</td>
+                    </tr>
 
-                  <tr>
-                    <td>
-                      <div title= 'Estimated energy per year infos here'>
-                        Estimated energy per year <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                    <tr>
+                      <div title= 'service fees infos here'>
+                          Service fee <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
                       </div>
-                    </td>
-                    <td>139,43 MWh</td>
-                  </tr>
+                      <td>20%</td>
+                    </tr>
 
-                  <tr>
-                    <div title= 'price per kWh infos here'>
-                        Price per kWh <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-                    </div>
-                    <td>0.15 USD</td>
-                  </tr>
-
-                  <tr>
-                    <div title= 'service fees infos here'>
-                        Service fee <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-                    </div>
-                    <td>20%</td>
-                  </tr>
-
-                  <tr>
-                    <div title= 'reinvest rate infos here'>
-                        Reinvest rate <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-                    </div>
-                    <td>20%</td>
-                  </tr>
+                    <tr>
+                      <div title= 'reinvest rate infos here'>
+                          Reinvest rate <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                      </div>
+                      <td>20%</td>
+                    </tr>
 
 
-                  <tr>
-                    <div title= 'Network dividends infos here'>
-                      Network dividends <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-                    </div>
-                    <td>60%</td>
-                  </tr>
+                    <tr>
+                      <div title= 'Network dividends infos here'>
+                        Network dividends <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                      </div>
+                      <td>60%</td>
+                    </tr>
 
-                  <tr>
-                    <div title= 'Expected Lifetime infos here'>
-                      Expected Lifetime <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-                    </div>
-                    <td>20 years</td>
-                  </tr>
-
-                </table>
+                    <tr>
+                      <div title= 'Expected Lifetime infos here'>
+                        Expected Lifetime <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                      </div>
+                      <td>20 years</td>
+                    </tr>
+                  </table>
                 </tab-pane>
               </tabs>
             </card>  
           </div>
-          
-
         </div>
       </div>
     </card>
     <!-- end card -->
-
-
-
   </div>  
-  
 </template>
 
 <script>
@@ -365,10 +364,10 @@ export default {
       activeName: 'first',
       required: "",
       email: "",
-      investNumber: "",
-      rewardNumber: "",
-      energyNumber: "",
-      incomeReturnNumber: "",
+      investNumber: '',
+      rewardNumber: '',
+      energyNumber: '',
+      incomeReturnNumber: '',
       url: "",
       equal: "",
       equalTo: "",
