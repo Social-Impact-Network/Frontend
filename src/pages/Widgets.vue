@@ -170,7 +170,7 @@
               </div>
 
               <label class="col-sm-3 label-on-right"
-                >USD/month</label
+                >{{ selects.simple }}/month</label
               >
             </div>
           </div>
@@ -394,6 +394,7 @@ export default {
     submit(type) {
       if(this.investNumber > 0 & this.rewardNumber > 0 & this.energyNumber > 0 & this.incomeReturnNumber > 0 & this.selects.simple!='') {
         if (type === 'success-message') {
+          console.log(this.selects.simple);
           swal.fire({
             title: `Good job!`,
             text: 'Our team is now proccessing your investment order',
