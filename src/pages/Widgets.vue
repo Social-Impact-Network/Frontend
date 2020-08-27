@@ -205,7 +205,7 @@
     
 
     <card>
-      <div class="col-md-12 ">
+      <div class="col-md-12 col-sm-4">
         <div class="row">
           <h4 slot="header" class="card-title">Pending Project</h4>
           <div class="col-md-7 offset-md-2">
