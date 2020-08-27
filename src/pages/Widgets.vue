@@ -1,6 +1,6 @@
 <template>
 
-  <div class="extended-forms col-md-9-offset-md-2">
+  <div class="extended-forms col-md-12">
   
     <ValidationObserver v-slot="{ handleSubmit }">
       <form class="form-horizontal" @submit.prevent="handleSubmit(submit)">
@@ -205,7 +205,7 @@
     
 
     <card>
-      <div class="col-12">
+      <div class="col-md-12 ">
         <div class="row">
           <h4 slot="header" class="card-title">Pending Project</h4>
           <div class="col-md-7 offset-md-2">
@@ -223,7 +223,7 @@
           </div>
 
 
-          <div class="col-md-7 offset-md-2">
+          <div class="col-md-9 offset-md-2">
             <card>
               <template slot="header">
                 <!-- <h3 class="card-title">Project #4</h3> -->

@@ -29,7 +29,8 @@ export default {
       this.$notify({
         type: 'primary',
         message: `Sidebar mini ${isMinimizedText}...`,
-        icon: 'tim-icons icon-bell-55'
+        icon: 'tim-icons icon-bell-55',
+        timeout: 900 // Set duration of notification here (in ms: 1000ms = 1s)
       });
       this.$sidebar.toggleMinimize();
     }
