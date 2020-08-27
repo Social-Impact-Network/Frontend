@@ -18,9 +18,12 @@
               :class="{ 'float-left': $rtl.isRTL }"
             >
               <i slot="title" class="tim-icons icon-settings-gear-63"></i>
-              <a class="dropdown-item" href="#pablo">Action</a>
-              <a class="dropdown-item" href="#pablo">Another action</a>
-              <a class="dropdown-item" href="#pablo">Something else</a>
+              <!-- <a class="dropdown-item" href="#pablo">Action</a> -->
+              <a class="dropdown-item">Action</a>
+              <!-- <a class="dropdown-item" href="#pablo">Another action</a> -->
+              <a class="dropdown-item">Another action</a>
+              <!-- <a class="dropdown-item" href="#pablo">Something else</a> -->
+              <a class="dropdown-item">Something else</a>
             </base-dropdown>
           </template>
           <div class="table-full-width table-responsive">
