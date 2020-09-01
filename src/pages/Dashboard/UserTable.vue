@@ -19,7 +19,7 @@
           <el-table-column
             min-width="150"
             sortable
-            label="Amount of Token"
+            label="Token"
             property="amount"
           ></el-table-column>
           <!-- <el-table-column
