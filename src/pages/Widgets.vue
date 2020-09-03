@@ -72,7 +72,7 @@
                       class="select-primary"
                       size="large"
                       placeholder="Currency"
-                      v-model="selects.simple"
+                      v-model="selects.currency"
                     >
                       <el-option
                         required
@@ -138,10 +138,10 @@
                 </base-input>
               </div>
 
-              <label class="col-sm-3 label-on-right" v-if="selects.simple"
-                >{{ selects.simple }}/month</label
+              <label class="col-sm-3 label-on-right" v-if="selects.currency"
+                >{{ selects.currency }}/month</label
               >
-              <label class="col-sm-3 label-on-right" v-if="!selects.simple"
+              <label class="col-sm-3 label-on-right" v-if="!selects.currency"
                 >Please select currency</label
               >
             </div>
@@ -333,7 +333,7 @@ export default {
       equalTo: "",
       
       selects: {
-        simple: '',
+        currency: '',
         currencies: [
           { value: 'USD', label: 'USD $' },
           { value: 'EUR', label: 'EUR €' },
@@ -351,9 +351,9 @@ export default {
       alert("Form has been submitted!");
     }, */
     submit(type) {
-      if(this.number > 0 & this.selects.simple!='') {
+      if(this.number > 0 & this.selects.currency!='') {
         if (type === 'success-message') {
-          console.log(this.selects.simple);
+          console.log(this.selects.currency);
           swal.fire({
             title: `Good job!`,
             text: 'Our team is now proccessing your investment order',
