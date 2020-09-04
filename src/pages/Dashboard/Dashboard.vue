@@ -133,30 +133,7 @@
     </div> -->
 
 
-    <div class="col-lg-5">
-      <!-- <card type="tasks" :header-classes="{ 'text-right': isRTL }">
-        <template slot="header">
-          <h6 class="title d-inline">Tasks (5)</h6>
-          <p class="card-category d-inline">Today</p>
-          <base-dropdown
-            menu-on-right=""
-            tag="div"
-            title-classes="btn btn-link btn-icon"
-            :class="{ 'float-left': isRTL }"
-          >
-            <i slot="title" class="tim-icons icon-settings-gear-63"></i>
-            <a class="dropdown-item" href="#pablo"> Action </a>
-            <a class="dropdown-item" href="#pablo"> Another action </a>
-            <a class="dropdown-item" href="#pablo"> Something else </a>
-          </base-dropdown>
-        </template>
-        <div class="table-full-width table-responsive">
-          <task-list></task-list>
-        </div>
-
-        
-      </card> -->
-    </div>
+    
     <div class="col-md-12">
       <card class="card" :header-classes="{ 'text-right': isRTL }">
         <div class=""><user-table></user-table></div>
