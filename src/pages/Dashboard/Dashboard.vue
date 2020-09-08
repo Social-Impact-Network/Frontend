@@ -24,7 +24,7 @@
               
               <h3 class="card-title" v-if="bigLineChart.activeIndex===0">Personal earning</h3>
               <h3 class="card-title" v-if="bigLineChart.activeIndex===1">Energy generated with  your help</h3>
-              <!-- <h2 class="card-title"v-if="bigLineChart.activeIndex===2">Später rausgenommen</h2> -->
+              <!-- <h2 class="card-title"v-if="bigLineChart.activeIndex===2">Third array was commented out</h2> -->
 
             </div>
             <div class="col-sm-6 d-flex d-sm-block">
