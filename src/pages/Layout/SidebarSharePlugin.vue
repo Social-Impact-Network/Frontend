@@ -1,6 +1,6 @@
 <template>
   <div class="fixed-plugin" v-click-outside="closeDropDown">
-    <!-- <div class="dropdown show-dropdown" :class="{ show: isOpen }">
+    <div class="dropdown show-dropdown" :class="{ show: isOpen }">
       <a data-toggle="dropdown" class="settings-icon">
         <i class="fa fa-cog fa-2x" @click="toggleDropDown"> </i>
       </a>
@@ -68,7 +68,7 @@
         </li>
 
       </ul>
-    </div>-->
+    </div>
   </div> 
 </template>
 <script>
