@@ -69,7 +69,7 @@
 
       </ul>
     </div>
-  </div> 
+  </div>
 </template>
 <script>
   import { BaseSwitch } from 'src/components';
@@ -96,6 +96,9 @@
           { color: 'danger', active: false, value: 'red' }
         ]
       };
+    },
+    created: function () {
+      this.toggleMode();
     },
     methods: {
       toggleDropDown() {
