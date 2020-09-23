@@ -128,7 +128,7 @@
             
             <div class="row">
               <label class="col-sm-2 col-form-label">
-                <div title= 'Income return infos here' class="b">Income return
+                <div title= 'Income return infos here'>Income return
                   <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
                 </div>
               </label>
