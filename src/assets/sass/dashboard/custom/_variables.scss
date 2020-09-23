@@ -26,7 +26,7 @@ $gray-800: #32325d !default;   // Line heading color
 $gray-900: #212529 !default;
 $link-disabled:              #666666 !default;
 $transparent-bg:             transparent !default;
-$light-bg:                   #f5f6fa !default;
+$light-bg:                   #f5f6fa !default; // default light-mode background color (originally f5f6fa)
 $dark-background:            #555555 !default;
 
 
@@ -117,10 +117,10 @@ $success-states:       #0098f0 !default;
 $info-states:          #3358f4 !default;
 $warning-states:       #ff6491 !default;
 $danger-states:        #ec250d !default;
-$black-states:         #1d253b !default;
+$black-states:         #1d253b !default; // default font color in light mode (originally #1d253b)
 $vue-states:           #389466 !default;
 
-$background-black:           #f5f6fa !default; // change default background color here originally: #1e1e2f
+$background-black:           #1e1e2f !default; // change default background color here originally: #1e1e2f
 $background-states-black:    #1e1e24 !default;
 
 // opacity
