@@ -347,9 +347,6 @@ export default {
     };
   },
   methods: {
-    /* submit() {
-      alert("Form has been submitted!");
-    }, */
     submit(type) {
       if(this.number > 0 & this.selects.currency!='') {
         if (type === 'success-message') {
