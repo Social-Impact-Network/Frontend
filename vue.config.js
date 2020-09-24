@@ -22,7 +22,7 @@ module.exports = {
     ]
   },
   pwa: {
-    name: 'Social Impact Network Dshboard',
+    name: 'Social Impact Network Dashboard',
     themeColor: '#344675',
     msTileColor: '#344675',
     appleMobileWebAppCapable: 'yes',
