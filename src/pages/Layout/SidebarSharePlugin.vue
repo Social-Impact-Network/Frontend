@@ -1,6 +1,7 @@
 <template>
-  <!--
-  <div class="fixed-plugin" v-click-outside="closeDropDown">
+
+  <div class="fixed-plugin" v-click-outside="closeDropDown">  
+    <!--
     <div class="dropdown show-dropdown" :class="{ show: isOpen }">
       <a data-toggle="dropdown" class="settings-icon">
         <i class="fa fa-cog fa-2x" @click="toggleDropDown"> </i>
@@ -69,9 +70,9 @@
         </li>
 
       </ul>
-    </div>
-  </div> 
-  -->
+    </div> 
+    -->
+  </div>
 </template>
 <script>
   import { BaseSwitch } from 'src/components';
