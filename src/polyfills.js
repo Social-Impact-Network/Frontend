@@ -10,10 +10,10 @@ export default (function initPollyFills () {
           throw new TypeError('"this" is null or not defined');
         }
 
-        var o = Object(this);
+        let o = Object(this);
 
         // 2. Let len be ? ToLength(? Get(O, "length")).
-        var len = o.length >>> 0;
+        let len = o.length >>> 0;
 
         // 3. If IsCallable(predicate) is false, throw a TypeError exception.
         if (typeof predicate !== 'function') {
@@ -21,10 +21,10 @@ export default (function initPollyFills () {
         }
 
         // 4. If thisArg was supplied, let T be thisArg; else let T be undefined.
-        var thisArg = arguments[1];
+        let thisArg = arguments[1];
 
         // 5. Let k be 0.
-        var k = 0;
+        let k = 0;
 
         // 6. Repeat, while k < len
         while (k < len) {
@@ -32,7 +32,7 @@ export default (function initPollyFills () {
           // b. Let kValue be ? Get(O, Pk).
           // c. Let testResult be ToBoolean(? Call(predicate, T, « kValue, k, O »)).
           // d. If testResult is true, return kValue.
-          var kValue = o[k];
+          let kValue = o[k];
           if (predicate.call(thisArg, kValue, k, o)) {
             return kValue;
           }
@@ -54,13 +54,13 @@ export default (function initPollyFills () {
           throw new TypeError('Cannot convert undefined or null to object');
         }
 
-        var to = Object(target);
+        let to = Object(target);
 
-        for (var index = 1; index < arguments.length; index++) {
-          var nextSource = arguments[index];
+        for (let index = 1; index < arguments.length; index++) {
+          let nextSource = arguments[index];
 
           if (nextSource != null) { // Skip over if undefined or null
-            for (var nextKey in nextSource) {
+            for (let nextKey in nextSource) {
               // Avoid bugs when hasOwnProperty is shadowed
               if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
                 to[nextKey] = nextSource[nextKey];
