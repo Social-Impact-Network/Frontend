@@ -1,5 +1,7 @@
 <template>
   <div class="row">
+     <metamask/>
+     <Fund v-if="this.$store.state.web3.coinbase"/>
     <!-- Stats Cards -->
     <div class="col-lg-3 col-md-6" v-for="card in statsCards" :key="card.title">
       <stats-card
@@ -7,10 +9,12 @@
         :sub-title="card.subTitle"
         :type="card.type"
         :icon="card.icon"
-      >
+      > 
         <div slot="footer" v-html="card.footer"></div>
       </stats-card>
     </div>
+    <button type="button" @click="updateComponent">test</button>
+
 
 
     <!-- Big Chart -->
@@ -152,6 +156,10 @@ import UserTable from './UserTable';
 import CountryMapCard from './CountryMapCard';
 import StatsCard from 'src/components/Cards/StatsCard';
 import config from '@/config';
+import Metamask from '@/components/metamask'
+import Fund from '@/components/Fund'
+
+
 
 let bigChartData = [
   [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100],
@@ -185,40 +193,16 @@ export default {
     StatsCard,
     TaskList,
     CountryMapCard,
-    UserTable
+    UserTable,
+    Metamask,
+    Fund
+  },
+   beforeCreate() {
+    console.log('registerWeb3 Action dispatched from Dashboard')
+    this.$store.dispatch('registerWeb3')
   },
   data() {
     return {
-      statsCards: [
-        {
-          title: '150€',
-          subTitle: 'Earning',
-          type: 'warning',
-          icon: 'tim-icons icon-bank',
-          footer: '<i class="tim-icons icon-notes"></i> Earning history'
-        },
-        {
-          title: '2460',
-          subTitle: 'Token',
-          type: 'primary',
-          icon: 'tim-icons icon-coins',
-          footer: '<i class="tim-icons icon-chart-bar-32"></i> Progression'
-        },
-        {
-          title: '2478 kWh',
-          subTitle: 'Your generated Energy',
-          type: 'info',
-          icon: 'tim-icons icon-bulb-63',
-          footer: '<i class="tim-icons icon-satisfied"></i> Impact'
-        },
-        {
-          title: 'Buy token',
-          subTitle: 'Go to the shop',
-          type: 'danger',
-          icon: 'tim-icons icon-cart',
-          footer: '<i class="tim-icons icon-wallet-43"></i> Purchase history'
-        }
-      ],
       bigLineChart: {
         activeIndex: 0,
         chartData: {
@@ -311,6 +295,40 @@ export default {
     };
   },
   computed: {
+    
+    statsCards() {
+      return [
+        {
+          title: this.$store.state.userDetails.earnings.toString() + '  claimable: ' + this.$store.state.userDetails.claimableAmount.toString(),
+          subTitle: 'Earning',
+          type: 'warning',
+          icon: 'tim-icons icon-bank',
+          footer: '<i class="tim-icons icon-notes"></i> Earning history'
+        },
+        {
+          title: this.$store.state.userDetails.tokenAmount.toString(),
+          subTitle: 'Token',
+          type: 'primary',
+          icon: 'tim-icons icon-coins',
+          footer: '<i class="tim-icons icon-chart-bar-32"></i> Progression'
+        },
+        {
+          title: '2478 kWh',
+          subTitle: 'Your generated Energy',
+          type: 'info',
+          icon: 'tim-icons icon-bulb-63',
+          footer: '<i class="tim-icons icon-satisfied"></i> Impact'
+        },
+        {
+          title: 'Buy token',
+          subTitle: 'Go to the shop',
+          type: 'danger',
+          icon: 'tim-icons icon-cart',
+          footer: '<i class="tim-icons icon-wallet-43"></i> Purchase history'
+        }
+      ]
+    },
+          
     enableRTL() {
       return this.$route.query.enableRTL;
     },
@@ -325,6 +343,42 @@ export default {
     }
   },
   methods: {
+
+    
+      updateComponent(){    
+    this.statsCards = [
+        {
+          title: this.$store.state.userDetails.tokenAmount.toString(),
+          subTitle: 'Earning',
+          type: 'warning',
+          icon: 'tim-icons icon-bank',
+          footer: '<i class="tim-icons icon-notes"></i> Earning history'
+        },
+        {
+          title: '2460',
+          subTitle: 'Token',
+          type: 'primary',
+          icon: 'tim-icons icon-coins',
+          footer: '<i class="tim-icons icon-chart-bar-32"></i> Progression'
+        },
+        {
+          title: '2478 kWh',
+          subTitle: 'Your generated Energy',
+          type: 'info',
+          icon: 'tim-icons icon-bulb-63',
+          footer: '<i class="tim-icons icon-satisfied"></i> Impact'
+        },
+        {
+          title: 'Buy token',
+          subTitle: 'Go to the shop',
+          type: 'danger',
+          icon: 'tim-icons icon-cart',
+          footer: '<i class="tim-icons icon-wallet-43"></i> Purchase history'
+        }
+      ]
+     console.log('test')
+
+   },
     initBigChart(index) {
       let chartData = {
         datasets: [{
