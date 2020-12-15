@@ -356,6 +356,7 @@ export default {
       this.bigLineChart.chartData = chartData;
       this.bigLineChart.activeIndex = index;
       
+      /* console.log(index); */
     }
   },
   mounted() {

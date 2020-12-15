@@ -122,7 +122,7 @@ export default {
   },
   data() {
 
-      let tableData = []
+     /* let tableData = []
       let  newID=0
       this.$store.state.userDetails.tokenPurchased.forEach((purchasedEvent) => { 
         tableData.push(
@@ -132,44 +132,11 @@ export default {
           amount: purchasedEvent.amountToken + 'SIP (Value: ' + purchasedEvent.valueUSD+ ' USD)'})
           newID++
         }
-        )
+        )*/
 
 return {
-  tableData
   
-      /*tableData: [
-        {
-          id: 1,
-          date: '2020-10-28',
-          action: 'bought',
-          amount: 2400
-          
-        },
-        {
-          id: 2,
-          date: '2020-10-13',
-          action: 'bought',
-          amount: 120
-        },
-        {
-          id: 3,
-          date: '2020-09-14',
-          action: 'sent',
-          amount: 220
-        },
-        {
-          id: 4,
-          date: '2020-09-02',
-          action: 'bought',
-          amount: 140
-        },
-        {
-          id: 5,
-          date: '2020-03-16',
-          action: 'bought',
-          amount: 20
-        }
-      ]*/
+    
     };
   },
   methods: {
@@ -185,7 +152,29 @@ return {
       }
       return '';
     }
+  },
+  computed:{
+    tableData() {
+
+let tableData = []
+      let  newID=0
+      if (Array.isArray(this.$store.state.userDetails.tokenPurchased)){
+      this.$store.state.userDetails.tokenPurchased.forEach((purchasedEvent) => { 
+        tableData.push(
+          {id:newID,
+          date: purchasedEvent.timestamp,
+          action: 'purchased',
+          amount: purchasedEvent.amountToken + 'SIP (Value: ' + purchasedEvent.valueUSD+ ' USD)'})
+          newID++
+        }
+        )} else {
+          tableData = [{id:'0', date:'', action:'', amount:''}]
+        }
+
+      return tableData
+    }
   }
+          
 };
 </script>
 <style>
