@@ -13,7 +13,6 @@
         <div slot="footer" v-html="card.footer"></div>
       </stats-card>
     </div>
-    <button type="button" @click="updateComponent">test</button>
 
 
 
@@ -345,40 +344,6 @@ export default {
   methods: {
 
     
-      updateComponent(){    
-    this.statsCards = [
-        {
-          title: this.$store.state.userDetails.tokenAmount.toString(),
-          subTitle: 'Earning',
-          type: 'warning',
-          icon: 'tim-icons icon-bank',
-          footer: '<i class="tim-icons icon-notes"></i> Earning history'
-        },
-        {
-          title: '2460',
-          subTitle: 'Token',
-          type: 'primary',
-          icon: 'tim-icons icon-coins',
-          footer: '<i class="tim-icons icon-chart-bar-32"></i> Progression'
-        },
-        {
-          title: '2478 kWh',
-          subTitle: 'Your generated Energy',
-          type: 'info',
-          icon: 'tim-icons icon-bulb-63',
-          footer: '<i class="tim-icons icon-satisfied"></i> Impact'
-        },
-        {
-          title: 'Buy token',
-          subTitle: 'Go to the shop',
-          type: 'danger',
-          icon: 'tim-icons icon-cart',
-          footer: '<i class="tim-icons icon-wallet-43"></i> Purchase history'
-        }
-      ]
-     console.log('test')
-
-   },
     initBigChart(index) {
       let chartData = {
         datasets: [{
@@ -391,7 +356,6 @@ export default {
       this.bigLineChart.chartData = chartData;
       this.bigLineChart.activeIndex = index;
       
-      /* console.log(index); */
     }
   },
   mounted() {

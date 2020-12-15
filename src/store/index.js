@@ -48,7 +48,13 @@ export const store = new Vuex.Store({
         state.userDetails.earningsWei = payload['wei']
         state.userDetails.earnings = payload['eth']
   
-        }
+        },
+        registerPurchasedEvents (state, payload) {
+          console.log('Purchased Events Store: ', payload)
+          state.userDetails.tokenPurchased = payload
+    
+          }
+
   },
   actions: {
     registerWeb3 ({commit}) {
@@ -97,6 +103,14 @@ export const store = new Vuex.Store({
                 eth: state.web3.web3Instance().utils.fromWei(payload)
             }
             commit('registerEarnings', payloadWithEth)
+        }
+        catch(e){console.log(e)}
+    },
+    getPurchasedEvents ({commit}, payload) {
+        console.log("getPurchasedEvents")
+        try {
+            
+            commit('registerPurchasedEvents', payload)
         }
         catch(e){console.log(e)}
     }

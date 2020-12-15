@@ -33,23 +33,50 @@ export default {
  async mounted () {
     
     console.log('dispatching getContractInstance')
-    try{
+    try{ //@todo: improvement: check dependencies and concurrencies to fasten it up.. 
         await this.$store.dispatch('getContractInstance')
         let tokenAmount = await this.$store.state.contractInstance().methods.balanceOf(this.$store.state.web3.coinbase).call()
         let claimableAmount = await this.$store.state.contractInstance().methods.claimableAmountOf(this.$store.state.web3.coinbase).call()
         this.$store.dispatch('getUserTokenAmount', tokenAmount)
         this.$store.dispatch('getClaimableAmount', claimableAmount)
-        let result = await this.$store.state.contractInstance().getPastEvents("AmountPaidOut",{
+        let resultAmountPaidOut = await this.$store.state.contractInstance().getPastEvents("AmountPaidOut",{
             filter: {tokenholder: this.$store.state.web3.coinbase},
             fromBlock: 1})
        
-       var BN = this.$store.state.web3.web3Instance().utils.BN;
+        var BN = this.$store.state.web3.web3Instance().utils.BN;
         let earnings = new BN(0)
-        result.forEach((amount) => { 
+        resultAmountPaidOut.forEach((amount) => { 
             earnings = earnings.add(new BN(amount.returnValues.amount))
         })
         this.$store.dispatch('getEarnings', earnings)
-    
+
+        let resultTokensPurchase = await this.$store.state.contractInstance().getPastEvents("TokensPurchased",{
+            filter: {buyer: this.$store.state.web3.coinbase},
+            fromBlock: 1})
+            console.log("tokens purchased")
+        let purchasedEventPayload = []
+        
+        for await (let purchasedEvent of resultTokensPurchase) { //@todo: test with multiple purchasedEvents committed
+        purchasedEventPayload.push( {
+                amountToken: purchasedEvent.returnValues.amount, //@todo: has to be changed to new FundContract
+                valueUSD: purchasedEvent.returnValues.value,
+                timestamp: (await this.$store.state.web3.web3Instance().eth.getBlock(purchasedEvent.blockNumber)).timestamp //@todo: improvement: check if ts could be added to contract to save alot of time here..
+            })
+        }
+        this.$store.dispatch('getPurchasedEvents', purchasedEventPayload)
+
+
+
+
+
+  //return blockData.timestamp
+        /**
+         * Add tokenpurchased (if buyer == coinbase) -> Add to event log (purchase los)
+         * Calculate token added (beneficary payout * (meine token/tokenfull amount)) für jeden Zeitpunkt individuell berehcnen
+         * 
+         */
+
+
     }
 
 

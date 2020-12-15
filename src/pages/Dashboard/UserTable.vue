@@ -121,8 +121,23 @@ export default {
     [TableColumn.name]: TableColumn
   },
   data() {
-    return {
-      tableData: [
+
+      let tableData = []
+      let  newID=0
+      this.$store.state.userDetails.tokenPurchased.forEach((purchasedEvent) => { 
+        tableData.push(
+          {id:newID,
+          date: purchasedEvent.timestamp,
+          action: 'purchased',
+          amount: purchasedEvent.amountToken + 'SIP (Value: ' + purchasedEvent.valueUSD+ ' USD)'})
+          newID++
+        }
+        )
+
+return {
+  tableData
+  
+      /*tableData: [
         {
           id: 1,
           date: '2020-10-28',
@@ -154,7 +169,7 @@ export default {
           action: 'bought',
           amount: 20
         }
-      ]
+      ]*/
     };
   },
   methods: {

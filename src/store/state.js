@@ -13,7 +13,12 @@ let state = {
         claimableAmount: 0,
         claimableAmountWei: 0,
         earnings: 0,
-        earningsWei: 0
+        earningsWei: 0,
+        tokenPurchased: {
+            timestamp: 0,
+            amountToken: 0,
+            valueUSD: 0
+        }
     },
     contractInstance: null
   }
