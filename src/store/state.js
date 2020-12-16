@@ -18,6 +18,18 @@ let state = {
             timestamp: 0,
             amountToken: 0,
             valueUSD: 0
+        },
+        transferReceived:{
+            timestamp: 0,
+            amountToken: 0
+        },
+        transferSent:{
+            timestamp: 0,
+            amountToken: 0
+        },
+        tokenClaimed:{
+            timestamp: 0,
+            amountUSD: 0
         }
     },
     contractInstance: null

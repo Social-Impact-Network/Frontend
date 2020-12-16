@@ -53,9 +53,22 @@ export const store = new Vuex.Store({
           console.log('Purchased Events Store: ', payload)
           state.userDetails.tokenPurchased = payload
     
-          }
+          },
+        registerTransferSentEvents (state, payload) {
+          console.log('Transfer Events Store: ', payload)
+          state.userDetails.transferSent = payload
+          },
+        registerTransferReceivedEvents (state, payload) {
+            console.log('Transfer Events Received Store: ', payload)
+            state.userDetails.transferReceived = payload
+        },
+        registerTokenClaimedEvents (state, payload) {
+            console.log('Token Claimed Store: ', payload)
+            state.userDetails.tokenClaimed = payload
+        }
 
   },
+  
   actions: {
     registerWeb3 ({commit}) {
       console.log('registerWeb3 Action being executed')
@@ -113,6 +126,30 @@ export const store = new Vuex.Store({
             commit('registerPurchasedEvents', payload)
         }
         catch(e){console.log(e)}
+    },
+    getTransferSentEvents ({commit}, payload) {
+        console.log("getTransferSentEvent")
+        try {
+            
+            commit('registerTransferSentEvents', payload)
+        }
+        catch(e){console.log(e)}
+    },
+    getTransferReceivedEvents ({commit}, payload) {
+      console.log("getTransferReceivedEvent")
+      try {
+          
+          commit('registerTransferReceivedEvents', payload)
+      }
+      catch(e){console.log(e)}
+  },
+  getTokenClaimedEvents ({commit}, payload) {
+    console.log("getTokenClaimed")
+    try {
+        
+        commit('registerTokenClaimedEvents', payload)
     }
+    catch(e){console.log(e)}
+}
   }
 })

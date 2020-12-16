@@ -167,11 +167,45 @@ let tableData = []
           amount: purchasedEvent.amountToken + 'SIP (Value: ' + purchasedEvent.valueUSD+ ' USD)'})
           newID++
         }
-        )} else {
-          tableData = [{id:'0', date:'', action:'', amount:''}]
+        )}
+        
+      if (Array.isArray(this.$store.state.userDetails.transferSent)){
+        this.$store.state.userDetails.transferSent.forEach((transferSentEvent) => { 
+          tableData.push(
+            {id:newID,
+            date: transferSentEvent.timestamp,
+            action: 'Token sent',
+            amount: transferSentEvent.amountToken + ' SIP' })
+            newID++
+          }
+        )
+        }
+console.log(this.$store.state.userDetails.transferReceived)
+      if (Array.isArray(this.$store.state.userDetails.transferReceived)){
+        this.$store.state.userDetails.transferReceived.forEach((transferReceivedEvent) => { 
+          tableData.push(
+            {id:newID,
+            date: transferReceivedEvent.timestamp,
+            action: 'Token received',
+            amount: transferReceivedEvent.amountToken + ' SIP' })
+            newID++
+          }
+        )
         }
 
-      return tableData
+        if (Array.isArray(this.$store.state.userDetails.tokenClaimed)){
+        this.$store.state.userDetails.tokenClaimed.forEach((tokenClaimedEvent) => { 
+          tableData.push(
+            {id:newID,
+            date: tokenClaimedEvent.timestamp,
+            action: 'USD claimed',
+            amount: tokenClaimedEvent.amountUSD + ' USD' })
+            newID++
+          }
+        )
+        }
+
+        return tableData
     }
   }
           

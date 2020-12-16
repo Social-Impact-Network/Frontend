@@ -50,6 +50,7 @@ export default {
         })
         this.$store.dispatch('getEarnings', earnings)
 
+        //Event: Token purchased
         let resultTokensPurchase = await this.$store.state.contractInstance().getPastEvents("TokensPurchased",{
             filter: {buyer: this.$store.state.web3.coinbase},
             fromBlock: 1})
@@ -64,17 +65,90 @@ export default {
             })
         }
         this.$store.dispatch('getPurchasedEvents', purchasedEventPayload)
+        //Event: Token sent (transfer)
+        let resultTokenSent = await this.$store.state.contractInstance().getPastEvents("Transfer",{
+            filter: {from: this.$store.state.web3.coinbase},
+            fromBlock: 1})
+
+        let tokenSentEventPayload = []
+        for await (let tokenSentEvent of resultTokenSent) { //@todo: test with multiple purchasedEvents committed
+        tokenSentEventPayload.push( {
+                amountToken: tokenSentEvent.returnValues.value, //@todo: has to be changed to new FundContract
+                timestamp: (await this.$store.state.web3.web3Instance().eth.getBlock(tokenSentEvent.blockNumber)).timestamp //@todo: improvement: check if ts could be added to contract to save alot of time here..
+            })
+        }
+        this.$store.dispatch('getTransferSentEvents', tokenSentEventPayload)
 
 
 
+        //Event: Token received (transfer)
+        let resultTokenReceived = await this.$store.state.contractInstance().getPastEvents("Transfer",{
+            filter: {to: this.$store.state.web3.coinbase},
+            fromBlock: 1})
 
+        let tokenReceivedEventPayload = []
+        for await (let tokenReceivedEvent of resultTokenReceived) { //@todo: test with multiple purchasedEvents committed
+        tokenReceivedEventPayload.push( {
+                amountToken: tokenReceivedEvent.returnValues.value, //@todo: has to be changed to new FundContract
+                timestamp: (await this.$store.state.web3.web3Instance().eth.getBlock(tokenReceivedEvent.blockNumber)).timestamp //@todo: improvement: check if ts could be added to contract to save alot of time here..
+            })
+        }
+        console.log("received")
+        console.log(tokenReceivedEventPayload)
+        this.$store.dispatch('getTransferReceivedEvents', tokenReceivedEventPayload)
+    
+    
+        //Event: Token claimed
+        let resultTokenClaimed = await this.$store.state.contractInstance().getPastEvents("AmountPaidOut",{
+            filter: {tokenholder: this.$store.state.web3.coinbase},
+            fromBlock: 1})
 
-  //return blockData.timestamp
-        /**
-         * Add tokenpurchased (if buyer == coinbase) -> Add to event log (purchase los)
-         * Calculate token added (beneficary payout * (meine token/tokenfull amount)) für jeden Zeitpunkt individuell berehcnen
-         * 
-         */
+        let tokenClaimedEventPayload = []
+        for await (let tokenClaimedEvent of resultTokenClaimed) { //@todo: test with multiple purchasedEvents committed
+        tokenClaimedEventPayload.push( {
+                amountUSD: tokenClaimedEvent.returnValues.amount, //@todo: has to be changed to new FundContract
+                timestamp: (await this.$store.state.web3.web3Instance().eth.getBlock(tokenClaimedEvent.blockNumber)).timestamp //@todo: improvement: check if ts could be added to contract to save alot of time here..
+            })
+        }
+        this.$store.dispatch('getTokenClaimedEvents', tokenClaimedEventPayload)
+
+    
+
+        //New claimable amount received
+
+        // 1. get token supply (fix)
+        // 1.1 Get all events last 12 months
+        // 1.2 Calculate Claimable amount before 12 months
+        // 1.3 calculate claimable amount each month
+      let today = new Date();
+      let tsLastYear = new Date(today.getFullYear()-1 , today.getMonth(), today.getDate()).getTime()/1000;
+      
+      let dateArray=[]
+      for (let i=11; i >= 0; i--) {
+	      let dt = new Date();
+	      dt.setMonth(dt.getMonth()-i);
+	      dt.setDate(1);
+	      dt.setHours(0, 0, 0);
+	      dt.setMilliseconds(0);
+        dateArray.push(dt)
+      }
+      
+      
+
+      //balances[12] = [];
+      //console.log("events:\r\n received")
+      //console.log(this.$store.state.userDetails.transferReceived)
+      //console.log("sent")
+      //console.log(this.$store.state.userDetails.transferSent)
+      
+      //Calculating how balance has been 12 months ago
+      let initBalance = 0 
+      this.$store.state.userDetails.transferReceived.forEach((received) => {if (received.timestamp<(dateArray[0].getTime()/1000)){initBalance += received.amount} })
+      this.$store.state.userDetails.transferReceived.forEach((received) => {if (received.timestamp<(dateArray[0].getTime()/1000)){initBalance -= received.amount} })
+      console.log(initBalance)
+      
+
+  
 
 
     }
