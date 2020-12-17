@@ -204,6 +204,19 @@ console.log(this.$store.state.userDetails.transferReceived)
           }
         )
         }
+ console.log(this.$store.state.userDetails)
+        if (Array.isArray(this.$store.state.userDetails.receivedClaims)){
+          console.log("456")
+        this.$store.state.userDetails.receivedClaims.forEach((receivedClaims) => { 
+          tableData.push(
+            {id:newID,
+            date: receivedClaims.timestamp,
+            action: 'Beneficary payout',
+            amount: 'Received '+ receivedClaims.claimableAmountUSD + ' (Token: ' + receivedClaims.amountToken + ', total Supply: ' + this.$store.state.tokenSupplyTotal + ')'})
+            newID++
+          }
+        )
+        }
 
         return tableData
     }

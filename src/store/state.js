@@ -29,9 +29,20 @@ let state = {
         },
         tokenClaimed:{
             timestamp: 0,
-            amountUSD: 0
+            amountToken: 0
+        },
+        receivedClaims:{
+            timestamp: 0,
+            amountToken:0,
+            claimableAmountUSD: 0,
+            beneficiaryPayoutTotalUSD: 0
         }
     },
+    beneficiaryPayout:{
+        timestamp: 0,
+        amountUSD: 0
+    },
+    tokenSupplyTotal: 0,
     contractInstance: null
   }
   export default state

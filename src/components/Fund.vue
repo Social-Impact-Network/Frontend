@@ -112,18 +112,25 @@ export default {
         }
         this.$store.dispatch('getTokenClaimedEvents', tokenClaimedEventPayload)
 
-    
+      //Event: BeneficiaryPayout
+       let resultBeneficiaryPayout = await this.$store.state.contractInstance().getPastEvents("PaymentReceived",{
+            fromBlock: 1})
+      let beneficiaryPayoutPayload = []
+        for await (let  beneficiaryPayoutEvent of resultBeneficiaryPayout) { //@todo: test with multiple purchasedEvents committed
+        beneficiaryPayoutPayload.push( {
+                amountUSD: beneficiaryPayoutEvent.returnValues.amount, //@todo: has to be changed to new FundContract
+                timestamp: (await this.$store.state.web3.web3Instance().eth.getBlock(beneficiaryPayoutEvent.blockNumber)).timestamp //@todo: improvement: check if ts could be added to contract to save alot of time here..
+            })
+        }
+      this.$store.dispatch('beneficiaryPayoutEvents', beneficiaryPayoutPayload)
 
-        //New claimable amount received
 
-        // 1. get token supply (fix)
-        // 1.1 Get all events last 12 months
-        // 1.2 Calculate Claimable amount before 12 months
-        // 1.3 calculate claimable amount each month
+
+       // Calculate how much of beneficary payout user receives
       let today = new Date();
-      let tsLastYear = new Date(today.getFullYear()-1 , today.getMonth(), today.getDate()).getTime()/1000;
+      let tsLastYear = new Date(today.getFullYear()-1 , today.getMonth(), today.getDate()).getTime()/1000; // Graph will show last year
       
-      let dateArray=[]
+      let dateArray=[] // Setting array with [0] => timestamp of beginning of 12 months ago, [1] => timestamo of beginning of month 11 months ago, ..
       for (let i=11; i >= 0; i--) {
 	      let dt = new Date();
 	      dt.setMonth(dt.getMonth()-i);
@@ -133,22 +140,82 @@ export default {
         dateArray.push(dt)
       }
       
+      const tokenSupply = 1000000000000000000 // fix maximum tokensupply
+        this.$store.dispatch('setTokenSupplyTotal', tokenSupply)
+        console.log(this.$store.state.tokenSupplyTotal)
+
+
+      //Copying store for editing
+      let tranferReceivedTest = this.$store.state.userDetails.transferReceived.map((b, idx) => Object.assign({ index: idx }, b));//JSON.parse('[{"amountToken":"100","timestamp":1574121600},{"amountToken":"150","timestamp":1576108800},{"amountToken":"50","timestamp":1572912000},{"amountToken":"50","timestamp":1577836800}]')
+      let transferSentTest =  this.$store.state.userDetails.transferSent.map((b, idx) => Object.assign({ index: idx }, b));//JSON.parse('[{"amountToken":"10","timestamp":1576108800},{"amountToken":"10","timestamp":1575504000},{"amountToken":"10","timestamp":1573084800}]')
+      let claimedTest = this.$store.state.userDetails.tokenClaimed.map((b, idx) => Object.assign({ index: idx }, b));//JSON.parse('[{"amountUSD":"10000000000000000000","timestamp":1607965360},{"amountUSD":"8699999999999999999","timestamp":1607967920},{"amountUSD":"8775674653587905446","timestamp":1607968413},{"amountUSD":"7898107188229114901","timestamp":1608048329}]')
+      let beneficiaryPayoutTest = this.$store.state.beneficiaryPayout.map((b, idx) => Object.assign({ index: idx }, b));//JSON.parse('[{"amountUSD":"100","timestamp":1572998400},{"amountUSD":"100","timestamp":1575936000},{"amountUSD":"100","timestamp":1578182400}]')
+      //sorting each store based on timestamp
+      function sortingTimestamps(a, b) {
+        if (a.timestamp === b.timestamp) {
+        return 0;
+          }
+          else {
+          return (a.timestamp < b.timestamp) ? -1 : 1;
+          }
+      }
+
+      tranferReceivedTest.sort(sortingTimestamps)
+      transferSentTest.sort(sortingTimestamps)
+      claimedTest.sort(sortingTimestamps)
+      beneficiaryPayoutTest.sort(sortingTimestamps)
+
+			let tokenBalancePayout = 0
+      let claimableAmountPayout = 0
+      let claimableAmountTotalPayout = 0
+      let receivedClaim = []
+      beneficiaryPayoutTest.forEach( // For each Payout calculate how much tokens the user has at the given moment
+        (payout) => {
+
+          tranferReceivedTest.every(function(element, index) {
+              
+              if (element.timestamp > payout.timestamp) return false // if timestamp of payout is later than timestemp of transferreceived event -> breal
+              
+              else {
+              			if(element.used !== true){ //check that element is not multiple times used for calculation
+              				tokenBalancePayout += parseInt(element.amountToken) // add to tokenbalance
+              				element.used = true;
+             					}
+             	return true
+             	}
+         })
+
+          transferSentTest.every(function(element, index) {
+              if (element.timestamp > payout.timestamp) return false
+              else {
+              			if(element.used !== true){
+                          tokenBalancePayout -= parseInt(element.amountToken) //substract from token balance
+                          element.used = true
+                    			}
+
+              			return true
+              
+              		} 
+              })
+
+            claimableAmountPayout = payout.amountUSD*(tokenBalancePayout/this.$store.state.tokenSupplyTotal) // calculate which porportion the user receives of payout (based on token amount, token supply amount of payout)
+            console.log("Tokenamount" + tokenBalancePayout + " Total Supply: " + tokenSupply + " Payout:" + claimableAmountPayout)
+            claimableAmountTotalPayout += claimableAmountPayout
+          receivedClaim.push({
+            timestamp: payout.timestamp,
+            amountToken: tokenBalancePayout,
+            claimableAmountUSD: claimableAmountPayout,
+            beneficiaryPayoutTotalUSD: payout.amountUSD
+          })
       
 
-      //balances[12] = [];
-      //console.log("events:\r\n received")
-      //console.log(this.$store.state.userDetails.transferReceived)
-      //console.log("sent")
-      //console.log(this.$store.state.userDetails.transferSent)
-      
-      //Calculating how balance has been 12 months ago
-      let initBalance = 0 
-      this.$store.state.userDetails.transferReceived.forEach((received) => {if (received.timestamp<(dateArray[0].getTime()/1000)){initBalance += received.amount} })
-      this.$store.state.userDetails.transferReceived.forEach((received) => {if (received.timestamp<(dateArray[0].getTime()/1000)){initBalance -= received.amount} })
-      console.log(initBalance)
-      
+          }
+        
+        )
+   
+       this.$store.dispatch('getReceivedClaims', receivedClaim)
 
-  
+
 
 
     }
@@ -157,24 +224,7 @@ export default {
     catch (error){
         console.log("error: " + error)
     }
-     /*this.$store.dispatch('getContractInstance').then(result =>   {
-        this.pending = true
-        this.$store.state.contractInstance().methods.balanceOf(this.$store.state.web3.coinbase).call( (err, result) => {
-            if (err) {
-            this.pending = false
-            console.log("Error while retrieving Balance")
-            } else {
-            this.$store.dispatch('getUserTokenAmount', result).then(result => {
-            this.balance = result //@Todo: irgendwie über die ganze APP sharen (hier stehen geblieben.. vuex) und in Dashboard anzeigen lassen
-            console.log(this.balance)
-            console.log("new")
-            console.log(this.$store.state.userDetails.tokenAmount)
-            this.pending = false
-
-            })
-        
-            }
-        })})*/
+     
    
 }
 }

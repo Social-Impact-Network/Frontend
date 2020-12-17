@@ -65,8 +65,20 @@ export const store = new Vuex.Store({
         registerTokenClaimedEvents (state, payload) {
             console.log('Token Claimed Store: ', payload)
             state.userDetails.tokenClaimed = payload
-        }
-
+        },
+        registerBeneficiaryPayoutEvents (state, payload) {
+            console.log('Amount Paid out: ', payload)
+            state.beneficiaryPayout = payload
+        },
+        registerTokenSupply (state, payload) {
+          console.log('Token Supply: ', payload)
+          state.tokenSupplyTotal = payload
+      },
+      registerReceivedClaims (state, payload) {
+        console.log('Token Supply: ', payload)
+        state.userDetails.receivedClaims = payload
+    }
+      
   },
   
   actions: {
@@ -150,6 +162,30 @@ export const store = new Vuex.Store({
         commit('registerTokenClaimedEvents', payload)
     }
     catch(e){console.log(e)}
+},
+setTokenSupplyTotal ({commit}, payload) {
+  console.log("setTokenSupply Total")
+  try {
+      
+      commit('registerTokenSupply', payload)
+  }
+  catch(e){console.log(e)}
+},
+getReceivedClaims ({commit}, payload) {
+  console.log("setTokenSupply Total")
+  try {
+      
+      commit('registerReceivedClaims', payload)
+  }
+  catch(e){console.log(e)}
+},
+beneficiaryPayoutEvents ({commit}, payload) {
+  console.log("beneficiaryPayout")
+  try {
+      
+      commit('registerBeneficiaryPayoutEvents', payload)
+  }
+  catch(e){console.log(e)}
 }
   }
 })
