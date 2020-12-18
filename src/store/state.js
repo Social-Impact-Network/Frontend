@@ -36,6 +36,10 @@ let state = {
             amountToken:0,
             claimableAmountUSD: 0,
             beneficiaryPayoutTotalUSD: 0
+        },
+        receidClaimsDateArray:{
+            timestamp:0,
+            claimableAmountUSD: 0
         }
     },
     beneficiaryPayout:{

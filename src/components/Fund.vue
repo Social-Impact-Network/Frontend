@@ -130,15 +130,7 @@ export default {
       let today = new Date();
       let tsLastYear = new Date(today.getFullYear()-1 , today.getMonth(), today.getDate()).getTime()/1000; // Graph will show last year
       
-      let dateArray=[] // Setting array with [0] => timestamp of beginning of 12 months ago, [1] => timestamo of beginning of month 11 months ago, ..
-      for (let i=11; i >= 0; i--) {
-	      let dt = new Date();
-	      dt.setMonth(dt.getMonth()-i);
-	      dt.setDate(1);
-	      dt.setHours(0, 0, 0);
-	      dt.setMilliseconds(0);
-        dateArray.push(dt)
-      }
+      
       
       const tokenSupply = 1000000000000000000 // fix maximum tokensupply
         this.$store.dispatch('setTokenSupplyTotal', tokenSupply)
@@ -146,10 +138,10 @@ export default {
 
 
       //Copying store for editing
-      let tranferReceivedTest = this.$store.state.userDetails.transferReceived.map((b, idx) => Object.assign({ index: idx }, b));//JSON.parse('[{"amountToken":"100","timestamp":1574121600},{"amountToken":"150","timestamp":1576108800},{"amountToken":"50","timestamp":1572912000},{"amountToken":"50","timestamp":1577836800}]')
-      let transferSentTest =  this.$store.state.userDetails.transferSent.map((b, idx) => Object.assign({ index: idx }, b));//JSON.parse('[{"amountToken":"10","timestamp":1576108800},{"amountToken":"10","timestamp":1575504000},{"amountToken":"10","timestamp":1573084800}]')
-      let claimedTest = this.$store.state.userDetails.tokenClaimed.map((b, idx) => Object.assign({ index: idx }, b));//JSON.parse('[{"amountUSD":"10000000000000000000","timestamp":1607965360},{"amountUSD":"8699999999999999999","timestamp":1607967920},{"amountUSD":"8775674653587905446","timestamp":1607968413},{"amountUSD":"7898107188229114901","timestamp":1608048329}]')
-      let beneficiaryPayoutTest = this.$store.state.beneficiaryPayout.map((b, idx) => Object.assign({ index: idx }, b));//JSON.parse('[{"amountUSD":"100","timestamp":1572998400},{"amountUSD":"100","timestamp":1575936000},{"amountUSD":"100","timestamp":1578182400}]')
+      let tranferReceived = this.$store.state.userDetails.transferReceived.map((b, idx) => Object.assign({ index: idx }, b));//JSON.parse('[{"amountToken":"100","timestamp":1574121600},{"amountToken":"150","timestamp":1576108800},{"amountToken":"50","timestamp":1572912000},{"amountToken":"50","timestamp":1577836800}]')
+      let transferSent =  this.$store.state.userDetails.transferSent.map((b, idx) => Object.assign({ index: idx }, b));//JSON.parse('[{"amountToken":"10","timestamp":1576108800},{"amountToken":"10","timestamp":1575504000},{"amountToken":"10","timestamp":1573084800}]')
+      let claimed = this.$store.state.userDetails.tokenClaimed.map((b, idx) => Object.assign({ index: idx }, b));//JSON.parse('[{"amountUSD":"10000000000000000000","timestamp":1607965360},{"amountUSD":"8699999999999999999","timestamp":1607967920},{"amountUSD":"8775674653587905446","timestamp":1607968413},{"amountUSD":"7898107188229114901","timestamp":1608048329}]')
+      let beneficiaryPayout = this.$store.state.beneficiaryPayout.map((b, idx) => Object.assign({ index: idx }, b));//JSON.parse('[{"amountUSD":"100","timestamp":1572998400},{"amountUSD":"100","timestamp":1575936000},{"amountUSD":"100","timestamp":1578182400}]')
       //sorting each store based on timestamp
       function sortingTimestamps(a, b) {
         if (a.timestamp === b.timestamp) {
@@ -160,19 +152,19 @@ export default {
           }
       }
 
-      tranferReceivedTest.sort(sortingTimestamps)
-      transferSentTest.sort(sortingTimestamps)
-      claimedTest.sort(sortingTimestamps)
-      beneficiaryPayoutTest.sort(sortingTimestamps)
+      tranferReceived.sort(sortingTimestamps)
+      transferSent.sort(sortingTimestamps)
+      claimed.sort(sortingTimestamps)
+      beneficiaryPayout.sort(sortingTimestamps)
 
 			let tokenBalancePayout = 0
       let claimableAmountPayout = 0
       let claimableAmountTotalPayout = 0
-      let receivedClaim = []
-      beneficiaryPayoutTest.forEach( // For each Payout calculate how much tokens the user has at the given moment
+      let receivedClaims = []
+      beneficiaryPayout.forEach( // For each Payout calculate how much tokens the user has at the given moment
         (payout) => {
 
-          tranferReceivedTest.every(function(element, index) {
+          tranferReceived.every(function(element, index) {
               
               if (element.timestamp > payout.timestamp) return false // if timestamp of payout is later than timestemp of transferreceived event -> breal
               
@@ -185,7 +177,7 @@ export default {
              	}
          })
 
-          transferSentTest.every(function(element, index) {
+          transferSent.every(function(element, index) {
               if (element.timestamp > payout.timestamp) return false
               else {
               			if(element.used !== true){
@@ -201,22 +193,57 @@ export default {
             claimableAmountPayout = payout.amountUSD*(tokenBalancePayout/this.$store.state.tokenSupplyTotal) // calculate which porportion the user receives of payout (based on token amount, token supply amount of payout)
             console.log("Tokenamount" + tokenBalancePayout + " Total Supply: " + tokenSupply + " Payout:" + claimableAmountPayout)
             claimableAmountTotalPayout += claimableAmountPayout
-          receivedClaim.push({
+           
+            receivedClaims.push({
             timestamp: payout.timestamp,
             amountToken: tokenBalancePayout,
             claimableAmountUSD: claimableAmountPayout,
-            beneficiaryPayoutTotalUSD: payout.amountUSD
-          })
+            beneficiaryPayout: payout.amountUSD
+            })
       
 
           }
         
         )
-   
-       this.$store.dispatch('getReceivedClaims', receivedClaim)
+      receivedClaims.sort(sortingTimestamps)
+
+       this.$store.dispatch('getReceivedClaims', receivedClaims)
 
 
+       let dateArray=[{
+        timestamp: 0,
+        claimableAmountUSD: 0
+      }] // Setting array with [0] => timestamp of beginning of 12 months ago, [1] => timestamo of beginning of month 11 months ago, ..
+      for (let i=10; i >= 0; i--) {
+	      let dt = new Date();
+	      dt.setMonth(dt.getMonth()-i);
+	      dt.setDate(1);
+	      dt.setHours(0, 0, 0);
+	      dt.setMilliseconds(0);
+        dateArray.push({timestamp: dt, claimableAmountUSD:0})
+      }
 
+      receivedClaims.forEach(function(element, index){
+          //@todo: change to loop    
+          switch(true){
+
+            case (element.timestamp < dateArray[1].timestamp.getTime()/1000): {dateArray[0].claimableAmountUSD += element.claimableAmountUSD; break;}
+            case (dateArray[1].timestamp.getTime()/1000 <= element.timestamp && element.timestamp< dateArray[2].timestamp.getTime()/1000): {dateArray[1].claimableAmountUSD += element.claimableAmountUSD; break;}
+            case (dateArray[2].timestamp.getTime()/1000 <= element.timestamp && element.timestamp< dateArray[3].timestamp.getTime()/1000): {dateArray[2].claimableAmountUSD += element.claimableAmountUSD; break;}
+            case (dateArray[3].timestamp.getTime()/1000 <= element.timestamp && element.timestamp< dateArray[4].timestamp.getTime()/1000): {dateArray[3].claimableAmountUSD += element.claimableAmountUSD; break;}
+            case (dateArray[4].timestamp.getTime()/1000 <= element.timestamp && element.timestamp< dateArray[5].timestamp.getTime()/1000): {dateArray[4].claimableAmountUSD += element.claimableAmountUSD; break;}
+            case (dateArray[5].timestamp.getTime()/1000 <= element.timestamp && element.timestamp< dateArray[6].timestamp.getTime()/1000): {dateArray[5].claimableAmountUSD += element.claimableAmountUSD; break;}
+            case (dateArray[6].timestamp.getTime()/1000 <= element.timestamp && element.timestamp< dateArray[7].timestamp.getTime()/1000): {dateArray[6].claimableAmountUSD += element.claimableAmountUSD; break;}
+            case (dateArray[7].timestamp.getTime()/1000 <= element.timestamp && element.timestamp< dateArray[8].timestamp.getTime()/1000): {dateArray[7].claimableAmountUSD += element.claimableAmountUSD; break;}
+            case (dateArray[8].timestamp.getTime()/1000 <= element.timestamp && element.timestamp< dateArray[9].timestamp.getTime()/1000): {dateArray[8].claimableAmountUSD += element.claimableAmountUSD; break;}
+            case (dateArray[9].timestamp.getTime()/1000 <= element.timestamp && element.timestamp< dateArray[10].timestamp.getTime()/1000): {dateArray[9].claimableAmountUSD += element.claimableAmountUSD; break;}
+            case (dateArray[10].timestamp.getTime()/1000 <= element.timestamp && element.timestamp< dateArray[11].timestamp.getTime()/1000): {dateArray[10].claimableAmountUSD += element.claimableAmountUSD; break;}
+            case (dateArray[11].timestamp.getTime()/1000 <= element.timestamp ): {dateArray[11].claimableAmountUSD += element.claimableAmountUSD; break;}
+          }
+
+      })
+
+       this.$store.dispatch('getReceivedClaimsDateArray', dateArray)
 
     }
 

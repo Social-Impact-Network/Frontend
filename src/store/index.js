@@ -77,8 +77,12 @@ export const store = new Vuex.Store({
       registerReceivedClaims (state, payload) {
         console.log('Token Supply: ', payload)
         state.userDetails.receivedClaims = payload
-    }
-      
+    },
+    registerReceivedClaimsDateArray (state, payload) {
+      console.log('Token Supply: ', payload)
+      state.userDetails.receidClaimsDateArray = payload
+  }
+    
   },
   
   actions: {
@@ -176,6 +180,14 @@ getReceivedClaims ({commit}, payload) {
   try {
       
       commit('registerReceivedClaims', payload)
+  }
+  catch(e){console.log(e)}
+},
+getReceivedClaimsDateArray ({commit}, payload) {
+  console.log("setTokenSupply Total")
+  try {
+      
+      commit('registerReceivedClaimsDateArray', payload)
   }
   catch(e){console.log(e)}
 },
