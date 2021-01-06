@@ -162,9 +162,9 @@ let tableData = []
       this.$store.state.userDetails.tokenPurchased.forEach((purchasedEvent) => { 
         tableData.push(
           {id:newID,
-          date: purchasedEvent.timestamp,
+          date: new Date(purchasedEvent.timestamp*1000).toLocaleString(),
           action: 'purchased',
-          amount: purchasedEvent.amountToken + 'SIP (Value: ' + purchasedEvent.valueUSD+ ' USD)'})
+          amount: this.$store.state.web3.web3Instance().utils.fromWei(purchasedEvent.amountToken.toString()) + ' SIP (Value: ' + this.$store.state.web3.web3Instance().utils.fromWei(purchasedEvent.valueUSD.toString())+ ' USD)'})
           newID++
         }
         )}
@@ -173,9 +173,9 @@ let tableData = []
         this.$store.state.userDetails.transferSent.forEach((transferSentEvent) => { 
           tableData.push(
             {id:newID,
-            date: transferSentEvent.timestamp,
+            date: new Date(transferSentEvent.timestamp*1000).toLocaleString(),
             action: 'Token sent',
-            amount: transferSentEvent.amountToken + ' SIP' })
+            amount: this.$store.state.web3.web3Instance().utils.fromWei(transferSentEvent.amountToken.toString()) + ' SIP' })
             newID++
           }
         )
@@ -185,34 +185,36 @@ console.log(this.$store.state.userDetails.transferReceived)
         this.$store.state.userDetails.transferReceived.forEach((transferReceivedEvent) => { 
           tableData.push(
             {id:newID,
-            date: transferReceivedEvent.timestamp,
+            date: new Date(transferReceivedEvent.timestamp*1000).toLocaleString(),
             action: 'Token received',
-            amount: transferReceivedEvent.amountToken + ' SIP' })
+            amount: this.$store.state.web3.web3Instance().utils.fromWei(transferReceivedEvent.amountToken.toString()) + ' SIP' })
             newID++
           }
         )
         }
 
         if (Array.isArray(this.$store.state.userDetails.tokenClaimed)){
+          
         this.$store.state.userDetails.tokenClaimed.forEach((tokenClaimedEvent) => { 
           tableData.push(
             {id:newID,
-            date: tokenClaimedEvent.timestamp,
+            date: new Date(tokenClaimedEvent.timestamp*1000).toLocaleString(),
             action: 'USD claimed',
-            amount: tokenClaimedEvent.amountUSD + ' USD' })
+            amount: this.$store.state.web3.web3Instance().utils.fromWei(tokenClaimedEvent.amountUSD.toString()) + ' USD' })
             newID++
           }
         )
         }
- console.log(this.$store.state.userDetails)
+console.log("claimm");
+ console.log(this.$store.state.userDetails.receivedClaims)
         if (Array.isArray(this.$store.state.userDetails.receivedClaims)){
           console.log("456")
         this.$store.state.userDetails.receivedClaims.forEach((receivedClaims) => { 
           tableData.push(
             {id:newID,
-            date: receivedClaims.timestamp,
+            date: new Date(receivedClaims.timestamp*1000).toLocaleString(),
             action: 'Beneficary payout',
-            amount: 'Received '+ receivedClaims.claimableAmountUSD + ' (Token: ' + receivedClaims.amountToken + ', total Supply: ' + this.$store.state.tokenSupplyTotal + ')'})
+            amount: 'Received '+  this.$store.state.web3.web3Instance().utils.fromWei(receivedClaims.claimableAmountUSD.toString()) + ' USD (Token: ' + this.$store.state.web3.web3Instance().utils.fromWei(receivedClaims.amountToken.toString()) + ', total Supply: ' + this.$store.state.web3.web3Instance().utils.fromWei(this.$store.state.tokenSupplyTotal.toString()) + ')'})
             newID++
           }
         )

@@ -38,7 +38,8 @@ export const store = new Vuex.Store({
       },
     registerUserClaimableAmount (state, payload) {
         console.log('User Claimable Amount: ', payload)
-        state.userDetails.claimableAmount = payload
+        state.userDetails.claimableAmount = payload['eth']
+        state.userDetails.claimableAmountWei = payload['wei']
         console.log("test22_ " + state.userDetails.claimableAmount)
         //state.userDetails.tokenAmount = payload['eth']
 
@@ -81,6 +82,10 @@ export const store = new Vuex.Store({
     registerReceivedClaimsDateArray (state, payload) {
       console.log('Token Supply: ', payload)
       state.userDetails.receidClaimsDateArray = payload
+  },
+  registerDAIPrice(state, payload){
+    console.log('Dai Price : ', payload)
+    state.DAIPrice = payload
   }
     
   },
@@ -119,8 +124,12 @@ export const store = new Vuex.Store({
     getClaimableAmount ({commit}, payload) {
         console.log("getClaimableAmount")
         try {
-           
-            commit('registerUserClaimableAmount', payload)
+          let payloadWithEth = {
+            wei: payload,
+            eth: state.web3.web3Instance().utils.fromWei(payload)
+        }
+        
+            commit('registerUserClaimableAmount', payloadWithEth)
         }
         catch(e){console.log(e)}
     },
@@ -180,6 +189,14 @@ getReceivedClaims ({commit}, payload) {
   try {
       
       commit('registerReceivedClaims', payload)
+  }
+  catch(e){console.log(e)}
+},
+setDAIPrice ({commit}, payload) {
+  console.log("set Dai Price Total")
+  try {
+      
+      commit('registerDAIPrice', payload)
   }
   catch(e){console.log(e)}
 },

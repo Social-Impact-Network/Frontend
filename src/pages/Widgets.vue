@@ -7,42 +7,7 @@
         <card>
           <h4 slot="header" class="card-title">Investment order</h4>
           <div class="cold-md-9 offset-md-2">
-            <!-- <div class="row">
-              <label class="col-sm-2 col-form-label">Required Text</label>
-              <div class="col-sm-7">
-                <ValidationProvider
-                  name="required"
-                  rules="required"
-                  v-slot="{ passed, failed, errors }"
-                >
-                <base-input
-                  required
-                  v-model="required"
-                  :error="errors[0]"
-                  :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
-                </base-input>
-              </ValidationProvider>
-              </div>
-            </div> -->
 
-            <!-- <div class="row">
-              <label class="col-sm-2 col-form-label">Email</label>
-              <div class="col-sm-7">
-                <ValidationProvider
-                  name="email"
-                  rules="required|email"
-                  v-slot="{ passed, failed, errors }"
-                >
-                <base-input
-                  required
-                  v-model="email"
-                  type="email"
-                  :error="errors[0]"
-                  :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
-                </base-input>
-              </ValidationProvider>
-              </div>
-            </div> -->
 
             <div class="row">
               <label class="col-sm-2 col-form-label">
@@ -309,6 +274,7 @@ extend("regex", regex);
 extend("confirmed", confirmed);
 
 export default {
+
   components: {
     [DatePicker.name]: DatePicker,
     [TimeSelect.name]: TimeSelect,
@@ -346,8 +312,42 @@ export default {
       timePicker: ''
     };
   },
+    mounted() {
+      const axios = require('axios')
+
+axios.post('https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2', {
+  query: `
+  {
+    token(id: "0x6b175474e89094c44da98b954eedeac495271d0f") {
+      derivedETH
+    }
+  }
+   
+  `
+})
+.then((res) => {
+  this.$store.dispatch('setDAIPrice', res.data.data.token.derivedETH)
+  
+})
+.catch((error) => {
+  console.error(error)
+})
+  },
   methods: {
     submit(type) {
+      //calculate eth amount to pay with 5% addition
+      let amountToPay = this.$store.state.DAIPrice*this.number*3 // @Todo: fix (security) of this calculation; not important since user gets left coins back
+      let amountToPayWei = this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(amountToPay), 'ether'))
+
+      let daiAmount = this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(this.number), 'ether'))
+                     
+      console.log(amountToPayWei.toString())
+      console.log(daiAmount.toString())
+
+      //this.$store.state.contractInstance().methods.buyTokens(this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(100), 'ether'))).send( {from: this.$store.state.web3.coinbase, value: this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(0.47941561331302246), 'ether'))})
+
+      this.$store.state.contractInstance().methods.buyTokens(daiAmount).send({value: amountToPayWei, from: this.$store.state.web3.coinbase}).then((result) => {console.log(result)})
+     
       if(this.number > 0 & this.selects.currency!='') {
         if (type === 'success-message') {
           console.log(this.selects.currency);

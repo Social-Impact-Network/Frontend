@@ -47,6 +47,7 @@ let state = {
         amountUSD: 0
     },
     tokenSupplyTotal: 0,
+    DAIPrice: 0,
     contractInstance: null
   }
   export default state

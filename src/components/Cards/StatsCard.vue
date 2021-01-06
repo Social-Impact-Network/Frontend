@@ -7,10 +7,12 @@
         </div>
       </div>
       <div class="col-7" v-if="$slots.content || title || subTitle">
+
         <div class="numbers">
           <slot>
             <p v-if="subTitle" class="card-category">{{ subTitle }}</p>
             <h3 v-if="title" class="card-title">{{ title }}</h3>
+            <button class="btn btn-primary btn-sm" v-if="claimButtonShow" @click="claim" :disabled="!claimButtonDisable">Claim</button>
           </slot>
         </div>
       </div>
@@ -28,6 +30,12 @@ export default {
   components: {
     Card
   },
+  methods: {
+    claim(){
+      this.$parent.claim();
+    }
+
+  },
   props: {
     type: {
       type: String,
@@ -35,7 +43,9 @@ export default {
     },
     icon: String,
     title: String,
-    subTitle: String
+    subTitle: String,
+    claimButtonShow: Boolean,
+    claimButtonDisable: Boolean
   }
 };
 </script>

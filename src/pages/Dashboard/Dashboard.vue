@@ -2,7 +2,6 @@
   <div class="row">
      <metamask/>
      <Fund v-if="this.$store.state.web3.coinbase"/>
-       <button v-on:click="updateChart">test</button>
 
     <!-- Stats Cards -->
     <div class="col-lg-3 col-md-6" v-for="card in statsCards" :key="card.title">
@@ -11,6 +10,9 @@
         :sub-title="card.subTitle"
         :type="card.type"
         :icon="card.icon"
+        :claimButtonShow="card.claimButtonShow"
+        :claimButtonDisable="card.claimButtonDisable"
+
       > 
         <div slot="footer" v-html="card.footer"></div>
       </stats-card>
@@ -21,7 +23,6 @@
     <!-- Big Chart -->
     <div class="col-12">
       <card type="chart">
-       
         <div class="chart-area">
           <line-chart
             style="height: 100%"
@@ -64,14 +65,25 @@ import Fund from '@/components/Fund'
 
 
 let bigChartData = [
-  [100, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100,],
-  [80, 120, 156, 222, 286, 380, 421, 409, 321, 231, 180, 133, 99]
+  [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,]//,
+  //[80, 120, 156, 222, 286, 380, 421, 409, 321, 231, 180, 133, 99]
 ]
-let bigChartLabels = [
-  ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'],
-  ["January '19", 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', "January '20"],
-  /* ['a','b','c','d','e','f','g','h','i','k','l','m','n'] */
-]
+
+
+let bigChartLabels = [[]]
+let dtPrimary = new Date()
+
+for (let i=11; i>=0; i--){
+let dt = new Date()
+dt.setMonth(dtPrimary.getMonth()-i)
+bigChartLabels[0].push(dt.toLocaleString('default', { month: 'short' }))
+}
+/*let bigChartLabels = [
+  ['J2N', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
+ // ["January '19", 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', "January '20"],
+  /* ['a','b','c','d','e','f','g','h','i','k','l','m','n'] 
+]*/
+
 let bigChartDatasetOptions = {
   fill: true,
   borderColor: config.colors.primary,
@@ -121,37 +133,42 @@ export default {
     };
   },
   computed: {
-   
-   
+    receidClaimsDateArray(){
+        return this.$store.state.userDetails.receidClaimsDateArray;
+    },
     statsCards() {
+      
+      
       return [
         {
-          title: this.$store.state.userDetails.earnings.toString() + '  claimable: ' + this.$store.state.userDetails.claimableAmount.toString(),
-          subTitle: 'Earning',
-          type: 'warning',
-          icon: 'tim-icons icon-bank',
-          footer: '<i class="tim-icons icon-notes"></i> Earning history'
-        },
-        {
-          title: this.$store.state.userDetails.tokenAmount.toString(),
+          title: Number(this.$store.state.userDetails.tokenAmount).toFixed(2) + ' SIP',
           subTitle: 'Token',
           type: 'primary',
           icon: 'tim-icons icon-coins',
-          footer: '<i class="tim-icons icon-chart-bar-32"></i> Progression'
+          //footer: '<i class="tim-icons icon-chart-bar-32"></i> Progression'
+        },
+        {
+          title: Number(this.$store.state.userDetails.earnings).toFixed(2) + ' claimable: ' + Number(this.$store.state.userDetails.claimableAmount).toFixed(2),
+          subTitle: 'Earning',
+          type: 'warning',
+          icon: 'tim-icons icon-bank',
+          //footer: '<i class="tim-icons icon-notes"></i> Earning history',
+          claimButtonShow: true,
+          claimButtonDisable: Boolean(Number(this.$store.state.userDetails.claimableAmount))
         },
         {
           title: '2478 kWh',
           subTitle: 'Your generated Energy',
           type: 'info',
           icon: 'tim-icons icon-bulb-63',
-          footer: '<i class="tim-icons icon-satisfied"></i> Impact'
+          //footer: '<i class="tim-icons icon-satisfied"></i> Impact'
         },
         {
           title: 'Buy token',
-          subTitle: 'Go to the shop',
+          //subTitle: 'Go to the shop',
           type: 'danger',
           icon: 'tim-icons icon-cart',
-          footer: '<i class="tim-icons icon-wallet-43"></i> Purchase history'
+          //footer: '<i class="tim-icons icon-wallet-43"></i> Purchase history'
         }
       ]
     },
@@ -170,18 +187,21 @@ export default {
     }
   },
   methods: {
+
+    claim(){
+        this.$store.state.contractInstance().methods.withdrawAmount().send({from: this.$store.state.web3.coinbase}).then((result) => {console.log(result)})
+    },
+
     updateChart(){
-      bigChartData = [
+      /*bigChartData = [
   [10000, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100,]
-  //[80, 120, 156, 222, 286, 380, 421, 409, 321, 231, 180, 133, 99]
-]
-console.log(bigChartData)
+]*/
+console.log("hier error")
+
 this.$store.state.userDetails.receidClaimsDateArray.forEach((element, index) => {
   bigChartData[0][index] = parseInt(this.$store.state.web3.web3Instance().utils.fromWei(element.claimableAmountUSD.toString()))
 
-
 })
-console.log(bigChartData)
     
 
       this.bigLineChart = {
@@ -216,6 +236,12 @@ console.log(bigChartData)
       
       /* console.log(index); */
     }
+  },
+  watch:{
+    receidClaimsDateArray (newVal, oldVal) {
+      this.updateChart()
+    }
+
   },
   mounted() {/*
     console.log("test")

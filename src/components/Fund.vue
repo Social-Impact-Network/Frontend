@@ -37,6 +37,7 @@ export default {
         await this.$store.dispatch('getContractInstance')
         let tokenAmount = await this.$store.state.contractInstance().methods.balanceOf(this.$store.state.web3.coinbase).call()
         let claimableAmount = await this.$store.state.contractInstance().methods.claimableAmountOf(this.$store.state.web3.coinbase).call()
+        
         this.$store.dispatch('getUserTokenAmount', tokenAmount)
         this.$store.dispatch('getClaimableAmount', claimableAmount)
         let resultAmountPaidOut = await this.$store.state.contractInstance().getPastEvents("AmountPaidOut",{
@@ -102,7 +103,8 @@ export default {
         let resultTokenClaimed = await this.$store.state.contractInstance().getPastEvents("AmountPaidOut",{
             filter: {tokenholder: this.$store.state.web3.coinbase},
             fromBlock: 1})
-
+        console.log("123444444")
+        console.log(resultTokenClaimed)
         let tokenClaimedEventPayload = []
         for await (let tokenClaimedEvent of resultTokenClaimed) { //@todo: test with multiple purchasedEvents committed
         tokenClaimedEventPayload.push( {
@@ -113,8 +115,12 @@ export default {
         this.$store.dispatch('getTokenClaimedEvents', tokenClaimedEventPayload)
 
       //Event: BeneficiaryPayout
+      
        let resultBeneficiaryPayout = await this.$store.state.contractInstance().getPastEvents("PaymentReceived",{
             fromBlock: 1})
+            console.log("beneficiracy...")
+                    console.log(resultBeneficiaryPayout)
+
       let beneficiaryPayoutPayload = []
         for await (let  beneficiaryPayoutEvent of resultBeneficiaryPayout) { //@todo: test with multiple purchasedEvents committed
         beneficiaryPayoutPayload.push( {
@@ -132,7 +138,9 @@ export default {
       
       
       
-      const tokenSupply = 1000000000000000000 // fix maximum tokensupply
+      const tokenSupply =  await this.$store.state.contractInstance().methods.totalSupply().call(); //1000000000000000000 // fix maximum tokensupply
+      console.log("total supply")
+      console.log(tokenSupply)
         this.$store.dispatch('setTokenSupplyTotal', tokenSupply)
         console.log(this.$store.state.tokenSupplyTotal)
 
@@ -190,7 +198,12 @@ export default {
               		} 
               })
 
-            claimableAmountPayout = payout.amountUSD*(tokenBalancePayout/this.$store.state.tokenSupplyTotal) // calculate which porportion the user receives of payout (based on token amount, token supply amount of payout)
+            console.log("amountUSD: " + payout.amountUSD)
+            console.log("tokenBalancePayout: " + tokenBalancePayout)
+            console.log("totalsupply: " + this.$store.state.tokenSupplyTotal)
+            console.log(payout)
+
+            claimableAmountPayout = parseInt(payout.amountUSD*(tokenBalancePayout/this.$store.state.tokenSupplyTotal)) // calculate which porportion the user receives of payout (based on token amount, token supply amount of payout)
             console.log("Tokenamount" + tokenBalancePayout + " Total Supply: " + tokenSupply + " Payout:" + claimableAmountPayout)
             claimableAmountTotalPayout += claimableAmountPayout
            
