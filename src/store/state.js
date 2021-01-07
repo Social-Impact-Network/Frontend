@@ -46,7 +46,20 @@ let state = {
         timestamp: 0,
         amountUSD: 0
     },
+    projectsGeneral:{
+        projectAmount: 0,
+        energyGeneratedMTotal:0,
+        energyGeneratedMonthly: [],
+        co2AvoidedTotal: 0,
+        co2AvoidedMonthly: [],
+        dividendPayoutsMonthly:[],
+        apyMonthly: [],
+        averageApy: 0
+    },
+    projects:[],
     tokenSupplyTotal: 0,
+    tokenSupplyTotalWei: 0,
+    tokenHolderTotal:0,
     DAIPrice: 0,
     contractInstance: null
   }

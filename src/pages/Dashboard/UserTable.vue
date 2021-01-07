@@ -214,7 +214,7 @@ console.log("claimm");
             {id:newID,
             date: new Date(receivedClaims.timestamp*1000).toLocaleString(),
             action: 'Beneficary payout',
-            amount: 'Received '+  this.$store.state.web3.web3Instance().utils.fromWei(receivedClaims.claimableAmountUSD.toString()) + ' USD (Token: ' + this.$store.state.web3.web3Instance().utils.fromWei(receivedClaims.amountToken.toString()) + ', total Supply: ' + this.$store.state.web3.web3Instance().utils.fromWei(this.$store.state.tokenSupplyTotal.toString()) + ')'})
+            amount: 'Received '+  this.$store.state.web3.web3Instance().utils.fromWei(receivedClaims.claimableAmountUSD.toString()) + ' USD (Token: ' + this.$store.state.web3.web3Instance().utils.fromWei(receivedClaims.amountToken.toString()) + ', total Supply: ' + this.$store.state.tokenSupplyTotal.toString() + ')'})
             newID++
           }
         )

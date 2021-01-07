@@ -73,7 +73,15 @@ export const store = new Vuex.Store({
         },
         registerTokenSupply (state, payload) {
           console.log('Token Supply: ', payload)
-          state.tokenSupplyTotal = payload
+          state.tokenSupplyTotalWei = payload['wei']
+          state.tokenSupplyTotal = payload['eth']
+
+      },
+      
+        registerTokenHolder (state, payload) {
+          
+          state.tokenHolderTotal = payload
+
       },
       registerReceivedClaims (state, payload) {
         console.log('Token Supply: ', payload)
@@ -86,6 +94,9 @@ export const store = new Vuex.Store({
   registerDAIPrice(state, payload){
     console.log('Dai Price : ', payload)
     state.DAIPrice = payload
+  },
+  registerProject(state, payload){
+    state.projects.push(payload)
   }
     
   },
@@ -120,7 +131,15 @@ export const store = new Vuex.Store({
             commit('registerUserTokenAmount', payloadWithEth)
         }
         catch(e){console.log(e)}
-    },
+    },getTokenHolderTotal ({commit}, payload) {
+      console.log("getTokenHolder")
+      try {
+          
+          commit('registerTokenHolder', payload)
+      }
+      catch(e){console.log(e)}
+  },
+
     getClaimableAmount ({commit}, payload) {
         console.log("getClaimableAmount")
         try {
@@ -179,8 +198,12 @@ export const store = new Vuex.Store({
 setTokenSupplyTotal ({commit}, payload) {
   console.log("setTokenSupply Total")
   try {
+    let payloadWithEth = {
+      wei: payload,
+      eth: state.web3.web3Instance().utils.fromWei(payload)
+  }
       
-      commit('registerTokenSupply', payload)
+      commit('registerTokenSupply', payloadWithEth)
   }
   catch(e){console.log(e)}
 },
@@ -213,6 +236,14 @@ beneficiaryPayoutEvents ({commit}, payload) {
   try {
       
       commit('registerBeneficiaryPayoutEvents', payload)
+  }
+  catch(e){console.log(e)}
+},
+addProject ({commit}, payload) {
+  console.log("beneficiaryPayout")
+  try {
+      
+      commit('registerProject', payload)
   }
   catch(e){console.log(e)}
 }

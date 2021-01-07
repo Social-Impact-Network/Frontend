@@ -10,9 +10,15 @@
 
         <div class="numbers">
           <slot>
+            <div v-if="buyToken">
+            <button class="btn btn-primary btn-round" v-if="buyToken">Buy Tokens</button>
+            </div>
+            <div v-else>
             <p v-if="subTitle" class="card-category">{{ subTitle }}</p>
             <h3 v-if="title" class="card-title">{{ title }}</h3>
+            <!--<h3 v-if="buyToken" class="card-title">test</h3>-->
             <button class="btn btn-primary btn-sm" v-if="claimButtonShow" @click="claim" :disabled="!claimButtonDisable">Claim</button>
+            </div>
           </slot>
         </div>
       </div>
@@ -45,7 +51,9 @@ export default {
     title: String,
     subTitle: String,
     claimButtonShow: Boolean,
-    claimButtonDisable: Boolean
+    claimButtonDisable: Boolean,
+    buyToken: Boolean
+
   }
 };
 </script>

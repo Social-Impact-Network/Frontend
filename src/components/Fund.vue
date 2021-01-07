@@ -139,10 +139,7 @@ export default {
       
       
       const tokenSupply =  await this.$store.state.contractInstance().methods.totalSupply().call(); //1000000000000000000 // fix maximum tokensupply
-      console.log("total supply")
-      console.log(tokenSupply)
         this.$store.dispatch('setTokenSupplyTotal', tokenSupply)
-        console.log(this.$store.state.tokenSupplyTotal)
 
 
       //Copying store for editing
@@ -200,10 +197,10 @@ export default {
 
             console.log("amountUSD: " + payout.amountUSD)
             console.log("tokenBalancePayout: " + tokenBalancePayout)
-            console.log("totalsupply: " + this.$store.state.tokenSupplyTotal)
+            console.log("totalsupply: " + this.$store.state.tokenSupplyTotalWei)
             console.log(payout)
 
-            claimableAmountPayout = parseInt(payout.amountUSD*(tokenBalancePayout/this.$store.state.tokenSupplyTotal)) // calculate which porportion the user receives of payout (based on token amount, token supply amount of payout)
+            claimableAmountPayout = parseInt(payout.amountUSD*(tokenBalancePayout/this.$store.state.tokenSupplyTotalWei)) // calculate which porportion the user receives of payout (based on token amount, token supply amount of payout)
             console.log("Tokenamount" + tokenBalancePayout + " Total Supply: " + tokenSupply + " Payout:" + claimableAmountPayout)
             claimableAmountTotalPayout += claimableAmountPayout
            

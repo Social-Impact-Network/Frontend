@@ -12,7 +12,7 @@
         :icon="card.icon"
         :claimButtonShow="card.claimButtonShow"
         :claimButtonDisable="card.claimButtonDisable"
-
+        :buyToken="card.buyToken"
       > 
         <div slot="footer" v-html="card.footer"></div>
       </stats-card>
@@ -164,10 +164,11 @@ export default {
           //footer: '<i class="tim-icons icon-satisfied"></i> Impact'
         },
         {
-          title: 'Buy token',
-          //subTitle: 'Go to the shop',
+          title: 'Buy Token',
+          subTitle: 'Invest',
           type: 'danger',
           icon: 'tim-icons icon-cart',
+          buyToken: true
           //footer: '<i class="tim-icons icon-wallet-43"></i> Purchase history'
         }
       ]
@@ -193,11 +194,6 @@ export default {
     },
 
     updateChart(){
-      /*bigChartData = [
-  [10000, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100,]
-]*/
-console.log("hier error")
-
 this.$store.state.userDetails.receidClaimsDateArray.forEach((element, index) => {
   bigChartData[0][index] = parseInt(this.$store.state.web3.web3Instance().utils.fromWei(element.claimableAmountUSD.toString()))
 
