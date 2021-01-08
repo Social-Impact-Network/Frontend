@@ -1,6 +1,5 @@
 <template>
   <div class="row">
-	<base-button  @click="updateChart()">test</base-button>
 
     <!-- Stats Cards -->
     <div class="col-lg-4" v-for="card in statsCards" :key="card.title">
@@ -84,8 +83,118 @@
 
     <div class="row">
 			<!-- Big quadratic tabs with icons -->
-			<div class="col-md-6">
-				<card>
+			<!--<div class="col-md-6">v-for="card in statsCards" :key="card.title"-->
+<div class="col-md-6" v-for="card in projectCards" :key="card.title">
+	<card>
+			<template slot="header">
+				<h3 class="card-title">{{card.title}}</h3>
+			</template>
+				<tabs
+					type="primary"
+					tabNavWrapperClasses="col-lg-3 col-md-6"
+					tabContentClasses="col-md-8"
+					vertical
+					square
+					class="row"
+					>
+					<tab-pane>
+							<span slot="label">
+								<i class="tim-icons icon-globe-2"></i>Description
+							</span>
+							<img src="img/Solar.jpg"/>
+							<br>
+							<br>
+							{{card.description}}
+					</tab-pane>
+					<tab-pane>
+							<span slot="label">
+								<i class="tim-icons icon-globe-2"></i>News
+							</span>
+							<img src="img/Solar.jpg"/>
+							<br>
+							<br>
+							{{card.news}}
+					</tab-pane>
+						<tab-pane>
+							<span slot="label">
+								<i class="tim-icons icon-notes"></i>Details
+							</span> 
+							
+							{{card.details}}
+									
+              					<table style="width:100%">
+								<br>
+								<tr>
+									<td>
+										<div title= 'project costs infos here'>
+											Location <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+										</div>
+									</td>
+									<td>{{card.location}}</td>
+								</tr>
+								<tr>
+									<td>
+										<div title= 'project costs infos here'>
+											Estimated energy per year <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+										</div>
+									</td>
+									<td>{{card.energyEstimation}} kwH</td>
+								</tr>
+
+								<tr>
+									<td>
+										<div title= 'Estimated energy per year infos here'>
+											Project costs <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+										</div>
+									</td>
+									<td>{{card.costs}} $</td>
+								</tr>
+
+								<tr>
+									<div title= 'price per kWh infos here'>
+											System power <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>{{card.power}} kwp</td>
+								</tr>
+
+								<tr>
+									<div title= 'service fees infos here'>
+											Expected lifetime <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>{{card.expectedLifetime}} years</td>
+								</tr>
+								<tr>
+									<div title= 'service fees infos here'>
+											Price per kwH <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>{{card.pricePerKwH}} $</td>
+								</tr>
+								<tr>
+									<div title= 'service fees infos here'>
+											APY <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+									</div>
+									<td>{{card.apy}} %</td>
+								</tr>
+
+							</table>
+						</tab-pane>
+				</tabs>
+
+				
+	</card>
+      <!--<stats-card
+        :title="card.title"
+        :sub-title="card.subTitle"
+        :type="card.type"
+        :icon="card.icon"
+        :claimButtonShow="card.claimButtonShow"
+        :claimButtonDisable="card.claimButtonDisable"
+        :buyToken="card.buyToken"
+      > 
+      </stats-card>-->
+    
+				
+				<!--<card>
 					<template slot="header">
 						<h3 class="card-title">CAHL - Armenian Elderly Home (Active)</h3>
 					</template>
@@ -187,7 +296,7 @@
 							</table>
 						</tab-pane>
 					</tabs>
-				</card>
+				</card>-->
 			</div>
 
 			 <!-- Big quadratic tabs with icons 
@@ -613,12 +722,34 @@ export default {
   },
   computed: {
 
+projectCards(){
+	/*console.log("hier")
+	console.log(this.$store.state.projects)*/
+let projectCard = []
 
+this.$store.state.projects.forEach((project) => {
+	projectCard.push({
+		title: project.name.toString(),
+        news: 'to add ',
+		description: 'to add',
+		details: 'to add',
+		costs: String(project.hardwareCosts + project.installationCosts + project.planningCosts),
+		expectedLifetime: 'to add',
+		pricePerKwH: String(project.priceKwh),
+		power: String(project.power),
+		energyEstimation: String(project.outcomePredictionSum),
+		apy: 'to add',
+		location: String(project.location)
+
+	})
+})
+
+return projectCard
+},
 statsCards() {
-
       return [
 		{
-          title: 'todo',
+          title: this.$store.state.apy.toString(),
           subTitle: 'Average APY ',
           type: 'warning',
           icon: 'tim-icons icon-single-02',
@@ -636,19 +767,19 @@ statsCards() {
           icon: 'tim-icons icon-user-run',
         },
         {
-          title: 'todo ',
+          title: this.$store.state.numberOfProjects.toString(),
           subTitle: 'Total Solar Projects',
           type: 'danger',
           icon: 'tim-icons icon-spaceship',
         },
         {
-          title: 'todo t',
+          title: this.$store.state.totalEnergyGenerated.toString(),
           subTitle: 'Total Energy Generated',
           type: 'success',
           icon: 'tim-icons icon-trophy',
         },
         {
-          title: 'todo kg ',
+          title: this.$store.state.totalCO2Avoided.toString(),
           subTitle: 'Total Co2',
           type: 'warning',
           icon: 'tim-icons icon-watch-time',
@@ -684,31 +815,52 @@ let response = (await axios
 	  .get('https://ropsten.etherscan.io/token/generic-tokenholders2?a='+ address)).data
 	  let tokenHolderTotal = Number(response.match(/(?<=A total of \s*).*?(?=\s*token holders)/gs)[0])
 	this.$store.dispatch('getTokenHolderTotal', tokenHolderTotal)
-let projectAssetIDs = (await axios
-	  .get('https://test.ipdb.io/api/v1/transactions?asset_id=fa1896a2c9cb0e118de2ba46b6fcf1f5f291a33f05f7c97f988399040f3a3e06')).data
-console.log(projectAssetIDs)
 	let projects = []
-	projectAssetIDs.forEach(function(projectIDs){
-		if(projectIDs.operation === "TRANSFER"){
 
-  	projects.push({ 'id': projectIDs.asset.id
-	  });
-		}
-	});
-	console.log(projects)
-	/*let projectJSON = JSON.parse('[{"inputs": [{"owners_before": ["A7uDV4NCPM4yMqhiZauXL6zygQivnXbyLXh93UWEQVFQ"], "fulfills": null, "fulfillment": "pGSAIId9tQewYLCMP3uLO8Gya6HoqacrTpd_aYRlxIHOki97gUCkmFPpC2F9TBvRdoR8ORp8VtMNBHh4OFfmt8DTEiwqElb4oaijCqIFxIwojm_FTugb78lZGUHlVXEfU-tYsEID"}], "outputs": [{"public_keys": ["A7uDV4NCPM4yMqhiZauXL6zygQivnXbyLXh93UWEQVFQ"], "condition": {"details": {"type": "ed25519-sha-256", "public_key": "A7uDV4NCPM4yMqhiZauXL6zygQivnXbyLXh93UWEQVFQ"}, "uri": "ni:///sha-256;XGsbC5wzJH4wEOmCjaAn4UDly2Fj84otVl7Vf1fz9W8?fpt=ed25519-sha-256&cost=131072"}, "amount": "1"}], "operation": "CREATE", "metadata": {"1564682400000": {"date": "2019-august-01", "time": "20:00:00", "event": "CREATE"}}, "asset": {"data": {"timestamp": 1564682400000, "date": "2019-august-01", "time": "20:00:00", "project_name": "Project_name_here", "beneficiary_id": "Beneficiary_here", "location": "Address_here", "system_power_in_kWp": 135, "planning_cost_in_USD": 3000, "hardware_cost_in_USD": 100000, "installation_cost_in_USD": 23000, "predicted_outcome_per_year_in_kWh": 197500, "riskmanagement_deviation_in_percent": 10, "degradation_in_percent": 0.5, "fair_price_start_per_kWh_in_USD": 0.15, "price_adjustment_per_year_in_percent": 101, "annual_maintenance_cost_in_USD": 3969, "cf_discount_rate_in_percent": 5, "predicted_outcome_table": {"year_01": {"january": 14813, "february": 14813, "march": 14813, "april": 14813, "may": 14813, "june": 14813, "july": 14813, "august": 14813, "september": 14813, "october": 14813, "november": 14813, "december": 14813}, "year_02": {"january": 14730, "february": 14730, "march": 14730, "april": 14730, "may": 14730, "june": 14730, "july": 14730, "august": 14730, "september": 14730, "october": 14730, "november": 14730, "december": 14730}, "year_03": {"january": 14647, "february": 14647, "march": 14647, "april": 14647, "may": 14647, "june": 14647, "july": 14647, "august": 14647, "september": 14647, "october": 14647, "november": 14647, "december": 14647}, "year_04": {"january": 14565, "february": 14565, "march": 14565, "april": 14565, "may": 14565, "june": 14565, "july": 14565, "august": 14565, "september": 14565, "october": 14565, "november": 14565, "december": 14565}, "year_05": {"january": 14483, "february": 14483, "march": 14483, "april": 14483, "may": 14483, "june": 14483, "july": 14483, "august": 14483, "september": 14483, "october": 14483, "november": 14483, "december": 14483}, "year_06": {"january": 14401, "february": 14401, "march": 14401, "april": 14401, "may": 14401, "june": 14401, "july": 14401, "august": 14401, "september": 14401, "october": 14401, "november": 14401, "december": 14401}, "year_07": {"january": 14318, "february": 14318, "march": 14318, "april": 14318, "may": 14318, "june": 14318, "july": 14318, "august": 14318, "september": 14318, "october": 14318, "november": 14318, "december": 14318}, "year_08": {"january": 14236, "february": 14236, "march": 14236, "april": 14236, "may": 14236, "june": 14236, "july": 14236, "august": 14236, "september": 14236, "october": 14236, "november": 14236, "december": 14236}, "year_09": {"january": 14154, "february": 14154, "march": 14154, "april": 14154, "may": 14154, "june": 14154, "july": 14154, "august": 14154, "september": 14154, "october": 14154, "november": 14154, "december": 14154}, "year_10": {"january": 14071, "february": 14071, "march": 14071, "april": 14071, "may": 14071, "june": 14071, "july": 14071, "august": 14071, "september": 14071, "october": 14071, "november": 14071, "december": 14071}}}}, "version": "2.0", "id": "c75a967f437b9b66fcaf3064b5e800fa7dd62fd098f4865aaa6e87fdb8647e89"}]')
-	let project = {
-		//'assetID': projectJSON[0].
-		'name': projectJSON[0].asset.data.project_name,
-		'beneficiary': projectJSON[0].asset.data.beneficiary_id,
-		'location': projectJSON[0].asset.data.location,
-		'planning_cost_in_USD': projectJSON[0].asset.data.planning_cost_in_USD,
-		'hardware_cost_in_USD': projectJSON[0].asset.data.hardware_cost_in_USD,
-		'installation_cost_in_USD': projectJSON[0].asset.data.installation_cost_in_USD,
-		'annual_maintenance_cost_in_USD': projectJSON[0].asset.data.annual_maintenance_cost_in_USD,
-		'prediction': projectJSON[0].asset.data.project_name.predicted_outcome_table
+let projectAssetIDs = (await axios
+	  .get('https://acren.org/listProjectAssetIds.php')).data.metadata
+
+//@todo: add some validation (check if its the correct asset)
+projectAssetIDs.projects.forEach(function(projectID)
+	{  
+	projects.push({ 'id': projectID})
 	}
-	this.$store.dispatch('addProject', project)*/
+)
+//foreach project
+
+//@todo: add some validation (check if its the correct asset)
+
+	let projetDetails = (await axios.get('https://acren.org/project_details.php')).data[0].asset.data
+	let project = projects[0]
+	let projetAssetID = "c75a967f437b9b66fcaf3064b5e800fa7dd62fd098f4865aaa6e87fdb8647e89"
+	project = {
+		'assetID': projetAssetID,
+		'name': projetDetails.project_name,
+		'beneficiary': projetDetails.beneficiary_id,
+		'location': projetDetails.location,
+		'planningCosts': projetDetails.planning_cost_in_USD,
+		'hardwareCosts': projetDetails.hardware_cost_in_USD,
+		'installationCosts': projetDetails.installation_cost_in_USD,
+		'maintenanceCostsAnnually': projetDetails.annual_maintenance_cost_in_USD,
+		'outcomePredictionFull': projetDetails.predicted_outcome_table,
+		'power': projetDetails.system_power_in_kWp,
+		'outcomePredictionSum': projetDetails.predicted_outcome_per_year_in_kWh,
+		'priceKwh': projetDetails.fair_price_start_per_kWh_in_USD
+	}
+/**
+ * @todo: These values should be gathered through projectlist and through iterating through list
+ */
+const numberOfProject = 500
+const apy = 500
+const totalEnergyGenerated = 500
+const totalCO2Avoided = 500
+	this.$store.dispatch('addNumberOfProjects', numberOfProject)
+	this.$store.dispatch('addTotalEnergyGenerated', totalEnergyGenerated)
+	this.$store.dispatch('addTotalCO2Avoided', totalCO2Avoided)
+	this.$store.dispatch('addAPY', apy)
+
+	this.$store.dispatch('addProject', project)
+	this.$store.dispatch('addProject', project)
 
 
 		  this.enegeryGeneratedChart.chartData = {

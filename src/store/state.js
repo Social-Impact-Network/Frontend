@@ -57,6 +57,10 @@ let state = {
         averageApy: 0
     },
     projects:[],
+    numberOfProjects:0,
+    totalEnergyGenerated:0,
+    totalCO2Avoided:0,
+    apy:0,
     tokenSupplyTotal: 0,
     tokenSupplyTotalWei: 0,
     tokenHolderTotal:0,

@@ -97,7 +97,21 @@ export const store = new Vuex.Store({
   },
   registerProject(state, payload){
     state.projects.push(payload)
+  },
+  registerNumberOfProjects(state, payload){
+    state.numberOfProjects = payload
+  },
+  registerTotalEnergyGenerated(state, payload){
+    state.totalEnergyGenerated = payload
+  },
+  registerTotalCO2Avoided(state, payload){
+    state.totalCO2Avoided = payload
+  },
+  registerAPY(state, payload){
+    state.apy = payload
   }
+
+
     
   },
   
@@ -244,6 +258,34 @@ addProject ({commit}, payload) {
   try {
       
       commit('registerProject', payload)
+  }
+  catch(e){console.log(e)}
+},
+addNumberOfProjects ({commit}, payload) {
+  try {
+      
+      commit('registerNumberOfProjects', payload)
+  }
+  catch(e){console.log(e)}
+},
+addTotalEnergyGenerated ({commit}, payload) {
+  try {
+      
+      commit('registerTotalEnergyGenerated', payload)
+  }
+  catch(e){console.log(e)}
+},
+addTotalCO2Avoided({commit}, payload) {
+  try {
+      
+      commit('registerTotalCO2Avoided', payload)
+  }
+  catch(e){console.log(e)}
+},
+addAPY({commit}, payload) {
+  try {
+      
+      commit('registerAPY', payload)
   }
   catch(e){console.log(e)}
 }
