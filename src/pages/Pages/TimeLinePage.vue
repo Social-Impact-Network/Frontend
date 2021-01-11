@@ -850,18 +850,18 @@ projectAssetIDs.projects.forEach(function(projectID)
 /**
  * @todo: These values should be gathered through projectlist and through iterating through list
  */
-const numberOfProject = 500
 const apy = 500
 const totalEnergyGenerated = 500
 const totalCO2Avoided = 500
-	this.$store.dispatch('addNumberOfProjects', numberOfProject)
+	this.$store.dispatch('addNumberOfProjects', projects.length)
 	this.$store.dispatch('addTotalEnergyGenerated', totalEnergyGenerated)
 	this.$store.dispatch('addTotalCO2Avoided', totalCO2Avoided)
 	this.$store.dispatch('addAPY', apy)
 
 	this.$store.dispatch('addProject', project)
 	this.$store.dispatch('addProject', project)
-
+	this.$store.dispatch('setPendingProject', project)
+	console.log(this.$store.state.pendingProject)
 
 		  this.enegeryGeneratedChart.chartData = {
           labels: ['Auu', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP'],

@@ -52,73 +52,15 @@
                   </div>
                 </div>
               </div>
-              <!-- <label class="col-sm-3 label-on-right"
-                ><code>numeric="true"</code></label
-              > -->
+              
             </div>
 
-            <div class="row">
-              <label class="col-sm-2 col-form-label">
-                <div title= 'Reward infos here'>Reward
-                  <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-                </div>
-              </label>
-              <div class="col-sm-5">
-                <base-input>
-                  <p class="form-control-static">{{ number*20/100 }}</p>
-                </base-input>
-              </div>
+           
 
-              <label class="col-sm-3 label-on-right"
-                >SI Token</label
-              >
-            </div>
-
-          <div class="row">
-              <label class="col-sm-2 col-form-label">
-                <div title= 'Energy infos here'>Energy
-                  <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-                </div>
-              </label>
-              <div class="col-sm-5">
-                <base-input>
-                  <p class="form-control-static">{{ number*15/100 }}</p>
-                </base-input>
-              </div>
-
-              <label class="col-sm-3 label-on-right"
-                >kWh/month</label
-              >
-            </div>
-            
-            <div class="row">
-              <label class="col-sm-2 col-form-label">
-                <div title= 'Income return infos here'>Income return
-                  <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-                </div>
-              </label>
-              <div class="col-sm-5">
-                <base-input>
-                  <p class="form-control-static">{{ number*5/100 }}</p>
-                </base-input>
-              </div>
-
-              <label class="col-sm-3 label-on-right" v-if="selects.currency"
-                >{{ selects.currency }}/month</label
-              >
-              <label class="col-sm-3 label-on-right" v-if="!selects.currency"
-                >Please select currency</label
-              >
-            </div>
+          
           </div>
 
-          <!-- <div class="text-center">
-            <base-button
-              native-type="submit"
-              type="primary"
-              >Buy</base-button
-            >
-          </div> -->
+         
           
           <div class="text-center">
             <card>
@@ -138,127 +80,7 @@
     </ValidationObserver>
     
 
-    <card>
-      <div class="col-md-12 col-sm-4">
-        <div class="row">
-          <h4 slot="header" class="card-title">Pending Project</h4>
-          <div class="col-md-7 offset-md-2">
-            <h3 class="card-title">{{card.title}}</h3>
-            <div class="a">
-              <p>{{card.tokenSupplyTotal}} / {{card.capLimit}} USD</p>
-            </div>
-            <!-- <base-progress label="Default" value-position="right" :value="67" /> -->
-            <base-progress
-              label="2020, June 15th"
-              :value="card.alreadyFunded"
-              value-position="right"
-              type="primary"
-            />
-          </div>
-
-
-          <div class="col-md-9 offset-md-2">
-            <card>
-              <template slot="header">
-                <!-- <h3 class="card-title">Project #4</h3> -->
-              </template>
-              <tabs
-                type="primary"
-                tabNavWrapperClasses="col-lg-3 col-md-6"
-                tabContentClasses="col-md-8"
-                vertical
-                square
-                class="row"
-              >
-                
-
-               <tab-pane>
-							<span slot="label">
-								<i class="tim-icons icon-globe-2"></i>Description
-							</span>
-							<img src="img/Solar.jpg"/>
-							<br>
-							<br>
-							{{card.description}}
-					</tab-pane>
-					<tab-pane>
-							<span slot="label">
-								<i class="tim-icons icon-globe-2"></i>News
-							</span>
-							<img src="img/Solar.jpg"/>
-							<br>
-							<br>
-							{{card.news}}
-					</tab-pane>
-						<tab-pane>
-							<span slot="label">
-								<i class="tim-icons icon-notes"></i>Details
-							</span> 
-							
-							{{card.details}}
-									
-              					<table style="width:100%">
-								<br>
-								<tr>
-									<td>
-										<div title= 'project costs infos here'>
-											Location <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-										</div>
-									</td>
-									<td>{{card.location}}</td>
-								</tr>
-								<tr>
-									<td>
-										<div title= 'project costs infos here'>
-											Estimated energy per year <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-										</div>
-									</td>
-									<td>{{card.energyEstimation}} kwH</td>
-								</tr>
-
-								<tr>
-									<td>
-										<div title= 'Estimated energy per year infos here'>
-											Project costs <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-										</div>
-									</td>
-									<td>{{card.costs}} $</td>
-								</tr>
-
-								<tr>
-									<div title= 'price per kWh infos here'>
-											System power <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>{{card.power}} kwp</td>
-								</tr>
-
-								<tr>
-									<div title= 'service fees infos here'>
-											Expected lifetime <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>{{card.expectedLifetime}} years</td>
-								</tr>
-								<tr>
-									<div title= 'service fees infos here'>
-											Price per kwH <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>{{card.pricePerKwH}} $</td>
-								</tr>
-								<tr>
-									<div title= 'service fees infos here'>
-											APY <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>{{card.apy}} %</td>
-								</tr>
-
-							</table>
-						</tab-pane>
-              </tabs>
-            </card>  
-          </div>
-        </div>
-      </div>
-    </card>
+ 
     <!-- end card -->
   </div>  
 </template>

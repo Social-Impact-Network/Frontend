@@ -109,7 +109,17 @@ export const store = new Vuex.Store({
   },
   registerAPY(state, payload){
     state.apy = payload
+  },
+  registerPendingProject(state, payload){
+    state.pendingProject = payload
+  },
+  registerCapLimit(state, payload){
+
+    state.capLimitWei = payload['wei']
+    state.capLimit = payload['eth']
+
   }
+
 
 
     
@@ -286,6 +296,23 @@ addAPY({commit}, payload) {
   try {
       
       commit('registerAPY', payload)
+  }
+  catch(e){console.log(e)}
+},
+setPendingProject({commit}, payload) {
+  try {
+      
+      commit('registerPendingProject', payload)
+  }
+  catch(e){console.log(e)}
+},
+setCapLimit({commit}, payload) {
+  try {
+      let payloadWithEth = {
+        wei: payload,
+        eth: state.web3.web3Instance().utils.fromWei(payload)
+      }
+      commit('registerCapLimit', payloadWithEth)
   }
   catch(e){console.log(e)}
 }

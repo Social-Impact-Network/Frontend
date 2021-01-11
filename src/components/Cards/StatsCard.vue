@@ -15,9 +15,9 @@
             </div>
             <div v-else>
             <p v-if="subTitle" class="card-category">{{ subTitle }}</p>
-            <h3 v-if="title" class="card-title">{{ title }}</h3>
+            <h3 v-if="title" class="card-title">{{ title }} <button class="btn btn-primary btn-sm" v-if="claimButtonShow" @click="claim" :disabled="!claimButtonDisable">Claim</button>
+</h3>
             <!--<h3 v-if="buyToken" class="card-title">test</h3>-->
-            <button class="btn btn-primary btn-sm" v-if="claimButtonShow" @click="claim" :disabled="!claimButtonDisable">Claim</button>
             </div>
           </slot>
         </div>
@@ -27,6 +27,7 @@
       <slot name="footer"></slot>
     </div>
   </card>
+
 </template>
 <script>
 import Card from './Card.vue';

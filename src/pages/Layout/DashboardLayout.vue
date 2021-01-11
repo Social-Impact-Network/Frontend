@@ -35,6 +35,14 @@
           }"
         >
         </sidebar-item>
+         <sidebar-item
+          :link="{
+            name: $t('sidebar.admin'),
+            icon: 'tim-icons icon-credit-card',
+            path: '/admin'
+          }"
+        >
+        </sidebar-item>
 
         <!-- <sidebar-item
           :link="{ name: $t('sidebar.pages'), icon: 'tim-icons icon-image-02' }"

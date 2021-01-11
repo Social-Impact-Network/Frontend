@@ -16,8 +16,11 @@
       > 
         <div slot="footer" v-html="card.footer"></div>
       </stats-card>
+
     </div>
 
+               <button class="btn btn-primary btn-round">Buy Tokens</button>
+               <button class="btn btn-primary btn-round">Not connected</button>
 
 
     <!-- Big Chart -->
@@ -148,8 +151,17 @@ export default {
           //footer: '<i class="tim-icons icon-chart-bar-32"></i> Progression'
         },
         {
-          title: Number(this.$store.state.userDetails.earnings).toFixed(2) + ' claimable: ' + Number(this.$store.state.userDetails.claimableAmount).toFixed(2),
+          title: Number(this.$store.state.userDetails.earnings).toFixed(2) + ' $',
           subTitle: 'Earning',
+          type: 'warning',
+          icon: 'tim-icons icon-bank',
+          //footer: '<i class="tim-icons icon-notes"></i> Earning history',
+          //claimButtonShow: true,
+          //claimButtonDisable: Boolean(Number(this.$store.state.userDetails.claimableAmount))
+        },
+        {
+          title: Number(this.$store.state.userDetails.claimableAmount).toFixed(2)+ ' $',
+          subTitle: 'Claimable',
           type: 'warning',
           icon: 'tim-icons icon-bank',
           //footer: '<i class="tim-icons icon-notes"></i> Earning history',
@@ -162,7 +174,7 @@ export default {
           type: 'info',
           icon: 'tim-icons icon-bulb-63',
           //footer: '<i class="tim-icons icon-satisfied"></i> Impact'
-        },
+        }/*,
         {
           title: 'Buy Token',
           subTitle: 'Invest',
@@ -170,7 +182,7 @@ export default {
           icon: 'tim-icons icon-cart',
           buyToken: true
           //footer: '<i class="tim-icons icon-wallet-43"></i> Purchase history'
-        }
+        }*/
       ]
     },
           

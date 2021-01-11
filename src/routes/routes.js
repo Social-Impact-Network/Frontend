@@ -30,6 +30,8 @@ const Typography = () =>
 const Dashboard = () =>
   import(/* webpackChunkName: "dashboard" */ 'src/pages/Dashboard/Dashboard.vue');
 import Widgets from 'src/pages/Widgets.vue';
+import Admin from 'src/pages/Admin.vue';
+
 
 // Forms pages
 const RegularForms = () => import('src/pages/Forms/RegularForms.vue');
@@ -281,6 +283,12 @@ const routes = [
         path: 'widgets',
         name: 'Buy token here',
         components: { default: Widgets }
+      }
+      ,
+      {
+        path: 'admin',
+        name: 'Admin',
+        components: { default: Admin }
       }
     ]
   },

@@ -138,10 +138,11 @@ export default {
       
       
       
-      const tokenSupply =  await this.$store.state.contractInstance().methods.totalSupply().call(); //1000000000000000000 // fix maximum tokensupply
+      const tokenSupply =  await this.$store.state.contractInstance().methods.totalSupply().call(); //1000000000000000000 // tokensupply
         this.$store.dispatch('setTokenSupplyTotal', tokenSupply)
-
-
+      const capLimit = await this.$store.state.contractInstance().methods.cap().call();
+        this.$store.dispatch('setCapLimit', capLimit)
+        
       //Copying store for editing
       let tranferReceived = this.$store.state.userDetails.transferReceived.map((b, idx) => Object.assign({ index: idx }, b));//JSON.parse('[{"amountToken":"100","timestamp":1574121600},{"amountToken":"150","timestamp":1576108800},{"amountToken":"50","timestamp":1572912000},{"amountToken":"50","timestamp":1577836800}]')
       let transferSent =  this.$store.state.userDetails.transferSent.map((b, idx) => Object.assign({ index: idx }, b));//JSON.parse('[{"amountToken":"10","timestamp":1576108800},{"amountToken":"10","timestamp":1575504000},{"amountToken":"10","timestamp":1573084800}]')
