@@ -95,7 +95,10 @@
           <a href="#" class="nav-item dropdown-item">Another one</a>
         </li>
       </base-dropdown> -->
-
+  <base-button type="danger" round >
+        Not connected
+      </base-button>
+      <!--
       <base-dropdown
         tag="li"
         :menu-on-right="!$rtl.isRTL"
@@ -104,6 +107,7 @@
         title-classes="nav-link"
         menu-classes="dropdown-navbar"
       >
+     
         <template
           slot="title"
         >
@@ -121,7 +125,7 @@
         <li class="nav-link">
           <a href="#" class="nav-item dropdown-item">Log out</a>
         </li>
-      </base-dropdown>
+      </base-dropdown>-->
     </ul>
   </base-nav>
 </template>

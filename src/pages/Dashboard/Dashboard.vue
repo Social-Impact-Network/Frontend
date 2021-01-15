@@ -18,9 +18,9 @@
       </stats-card>
 
     </div>
-
+<!--
                <button class="btn btn-primary btn-round">Buy Tokens</button>
-               <button class="btn btn-primary btn-round">Not connected</button>
+               <button class="btn btn-primary btn-round">Not connected</button> -->
 
 
     <!-- Big Chart -->
@@ -112,10 +112,6 @@ export default {
     UserTable,
     Metamask,
     Fund
-  },
-   beforeCreate() {
-    console.log('registerWeb3 Action dispatched from Dashboard')
-    this.$store.dispatch('registerWeb3')
   },
   data() {
     return {

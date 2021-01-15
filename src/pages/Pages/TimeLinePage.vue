@@ -41,7 +41,7 @@
     <div class="col-lg-4" :class="{ 'text-right': isRTL }">
       <card type="chart">
         <template slot="header">
-          <h3 class="card-title">Earnings (USD)</h3>
+          <h3 class="card-title">Payouts (USD)</h3>
           <!--<h3 class="card-title">
             <i class="tim-icons icon-light-3"></i> 563,165
           </h3>-->
@@ -703,12 +703,13 @@ export default {
               pointBackgroundColor: config.colors.danger,
               pointBorderColor: 'rgba(255,255,255,0)',
               pointHoverBackgroundColor: config.colors.danger,
-              pointBorderWidth: 20,
-              pointHoverRadius: 4,
-              pointHoverBorderWidth: 15,
-              pointRadius: 4,
-              data: [0, 0, 0, 0, 0, 0]
-            }
+              //pointBorderWidth: 0.5,
+              //pointHoverRadius: 4,
+              //pointHoverBorderWidth: 15,
+              //pointRadius: 4,
+              data: [7, 7, 6, 7, 7, 7]
+			},
+			
           ]
         },
         gradientColors: [
@@ -726,19 +727,20 @@ projectCards(){
 	/*console.log("hier")
 	console.log(this.$store.state.projects)*/
 let projectCard = []
+console.log("cards")
+console.log(this.$store.state.projects)
 
 this.$store.state.projects.forEach((project) => {
 	projectCard.push({
 		title: project.name.toString(),
-        news: 'to add ',
-		description: 'to add',
-		details: 'to add',
+        news: 'to add',
+		description: project.details,
 		costs: String(project.hardwareCosts + project.installationCosts + project.planningCosts),
-		expectedLifetime: 'to add',
+		expectedLifetime: project.predictedLifetime,
 		pricePerKwH: String(project.priceKwh),
 		power: String(project.power),
 		energyEstimation: String(project.outcomePredictionSum),
-		apy: 'to add',
+		apy: project.apy,
 		location: String(project.location)
 
 	})
@@ -747,6 +749,7 @@ this.$store.state.projects.forEach((project) => {
 return projectCard
 },
 statsCards() {
+	
       return [
 		{
           title: this.$store.state.apy.toString(),
@@ -773,13 +776,13 @@ statsCards() {
           icon: 'tim-icons icon-spaceship',
         },
         {
-          title: this.$store.state.totalEnergyGenerated.toString(),
+          title: this.$store.state.totalEnergyGenerated.toString() + ' kwh',
           subTitle: 'Total Energy Generated',
           type: 'success',
           icon: 'tim-icons icon-trophy',
         },
         {
-          title: this.$store.state.totalCO2Avoided.toString(),
+          title: this.$store.state.totalCO2Avoided.toString() + ' kg',
           subTitle: 'Total Co2',
           type: 'warning',
           icon: 'tim-icons icon-watch-time',
@@ -795,10 +798,9 @@ statsCards() {
     },
   },
   methods: {
-	  updateChart(){
-		  
-	
-	  },
+	  
+    
+	  
     
 		toggleText() {
 			if (this.text == 'Show more projects') {
@@ -811,6 +813,12 @@ statsCards() {
 		}
   },
    async mounted() {
+
+
+    
+    
+	  
+
 let response = (await axios
 	  .get('https://ropsten.etherscan.io/token/generic-tokenholders2?a='+ address)).data
 	  let tokenHolderTotal = Number(response.match(/(?<=A total of \s*).*?(?=\s*token holders)/gs)[0])
@@ -819,22 +827,19 @@ let response = (await axios
 
 let projectAssetIDs = (await axios
 	  .get('https://acren.org/listProjectAssetIds.php')).data.metadata
+let project;
+let totalEnergyGenerated = 0
+let energyTabData = [0,0,0,0,0,0]
 
-//@todo: add some validation (check if its the correct asset)
-projectAssetIDs.projects.forEach(function(projectID)
-	{  
-	projects.push({ 'id': projectID})
+function mod(n, m) {
+  		return ((n % m) + m) % m;
 	}
-)
-//foreach project
+  await Promise.all(projectAssetIDs.projects.map(async (projectID) => {
+    try {
+	  let projetDetails = (await axios.get('https://acren.org/project_details.php')).data[0].asset.data //@todo: add projectID here
 
-//@todo: add some validation (check if its the correct asset)
-
-	let projetDetails = (await axios.get('https://acren.org/project_details.php')).data[0].asset.data
-	let project = projects[0]
-	let projetAssetID = "c75a967f437b9b66fcaf3064b5e800fa7dd62fd098f4865aaa6e87fdb8647e89"
-	project = {
-		'assetID': projetAssetID,
+		project = {
+		'assetID': projectID,
 		'name': projetDetails.project_name,
 		'beneficiary': projetDetails.beneficiary_id,
 		'location': projetDetails.location,
@@ -843,28 +848,60 @@ projectAssetIDs.projects.forEach(function(projectID)
 		'installationCosts': projetDetails.installation_cost_in_USD,
 		'maintenanceCostsAnnually': projetDetails.annual_maintenance_cost_in_USD,
 		'outcomePredictionFull': projetDetails.predicted_outcome_table,
-		'power': projetDetails.system_power_in_kWp,
-		'outcomePredictionSum': projetDetails.predicted_outcome_per_year_in_kWh,
-		'priceKwh': projetDetails.fair_price_start_per_kWh_in_USD
+		'power': projetDetails.system_power_in_kwp,
+		'outcomePredictionSum': projetDetails.predicted_outcome_per_year_in_kwh,
+		'priceKwh': projetDetails.fair_price_start_per_kwh_in_USD,
+		'predictedLifetime': projetDetails.expected_lifetime_in_years,
+		'apy': projetDetails.annual_percentage_yield,
+		'details': projetDetails.details,
 	}
+
+	
+	
+	let lastTx = (await axios.get('https://acren.org/measurements.php')).data[0]//.metadata.summary.kwh_total //@todo: add projectID here
+	totalEnergyGenerated += lastTx.metadata.summary.kwh_total 
+	let kwhStatisticYear = lastTx.metadata.summary.kwh_by_year
+	const yearToday = new Date().getUTCFullYear()
+	const monthToday = new Date().getMonth()
+	kwhStatisticYear.forEach((el)=>{
+		
+		if(el.year == yearToday){
+			//@todo: create for-loop for this calculaions
+			for(let i=0; i<6; i++){
+				energyTabData[i] += el.kwh_by_month[mod((monthToday-(5-i)), el.kwh_by_month.length)].kwh
+
+			}
+
+		}
+	})
+		projects.push(project)
+    } catch (error) {
+      console.log('error'+ error);
+    }
+  }))
+
+
+
+	this.$store.dispatch('addProjects', projects)
+
+	
 /**
  * @todo: These values should be gathered through projectlist and through iterating through list
  */
-const apy = 500
-const totalEnergyGenerated = 500
-const totalCO2Avoided = 500
+
+const apy = "6.17"
+const totalCO2Avoided = (totalEnergyGenerated*0.6).toFixed(2)
 	this.$store.dispatch('addNumberOfProjects', projects.length)
 	this.$store.dispatch('addTotalEnergyGenerated', totalEnergyGenerated)
 	this.$store.dispatch('addTotalCO2Avoided', totalCO2Avoided)
 	this.$store.dispatch('addAPY', apy)
 
-	this.$store.dispatch('addProject', project)
-	this.$store.dispatch('addProject', project)
+
 	this.$store.dispatch('setPendingProject', project)
 	console.log(this.$store.state.pendingProject)
 
 		  this.enegeryGeneratedChart.chartData = {
-          labels: ['Auu', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP'],
+          labels: chartLabels,
           datasets: [
             {
               label: 'kWh generated up to this month by all projects',
@@ -880,19 +917,78 @@ const totalCO2Avoided = 500
               pointHoverRadius: 4,
               pointHoverBorderWidth: 15,
               pointRadius: 4,
-              data: [107416, 115055, 126064, 134793, 143798, 156786]
+              data: energyTabData
             }
-          ]}
+		  ]}
+		  
 
 
+
+	 let dateArray=[] // Setting array with [0] => timestamp of beginning of 12 months ago, [1] => timestamo of beginning of month 11 months ago, ..
+      for (let i=5; i >= 0; i--) {
+	      let dt = new Date();
+	      dt.setMonth(dt.getMonth()-i);
+	      dt.setDate(1);
+	      dt.setHours(0, 0, 0);
+	      dt.setMilliseconds(0);
+        dateArray.push({timestamp: dt, payouts:0})
+	  }
 	  
+	let payouts = this.$store.state.beneficiaryPayout.map((b, idx) => Object.assign({ index: idx }, b));//JSON.parse('[{"amountUSD":"100","timestamp":1572998400},{"amountUSD":"100","timestamp":1575936000},{"amountUSD":"100","timestamp":1578182400}]')
+	
+
+	payouts.forEach((element, index) => {
+		console.log(element.timestamp)
+		console.log(dateArray[5].timestamp.getTime()/1000)
+		switch(true){
+            case (dateArray[0].timestamp.getTime()/1000 <= element.timestamp && element.timestamp< dateArray[1].timestamp.getTime()/1000): {dateArray[0].payouts += parseInt(element.amountUSD); break;}
+            case (dateArray[1].timestamp.getTime()/1000 <= element.timestamp && element.timestamp< dateArray[2].timestamp.getTime()/1000): {dateArray[1].payouts += parseInt(element.amountUSD); break;}
+            case (dateArray[2].timestamp.getTime()/1000 <= element.timestamp && element.timestamp< dateArray[3].timestamp.getTime()/1000): {dateArray[2].payouts += parseInt(element.amountUSD); break;}
+            case (dateArray[3].timestamp.getTime()/1000 <= element.timestamp && element.timestamp< dateArray[4].timestamp.getTime()/1000): {dateArray[3].payouts += parseInt(element.amountUSD); break;}
+            case (dateArray[4].timestamp.getTime()/1000 <= element.timestamp && element.timestamp< dateArray[5].timestamp.getTime()/1000): {dateArray[4].payouts += parseInt(element.amountUSD); break;}
+                    case (element.timestamp > dateArray[5].timestamp.getTime()/1000): {dateArray[5].payouts += parseInt(element.amountUSD); break;}
+		}
+
+	})
+	let payoutChart = [0,0,0,0,0,0]
+	for(let i=0; i<6; i++){
+		payoutChart[i] = this.$store.state.web3.web3Instance().utils.fromWei(dateArray[i].payouts.toString())
+	}
+
+
+
+	this.earningsChart.chartData ={
+          labels: chartLabels,
+          datasets: [
+            {
+              label: 'kWh generated up to this month by all projects',
+              fill: true,
+              borderColor: config.colors.primary,
+              borderWidth: 2,
+              borderDash: [],
+              borderDashOffset: 0.0,
+              pointBackgroundColor: config.colors.primary,
+              pointBorderColor: 'rgba(255,255,255,0)',
+              pointHoverBackgroundColor: config.colors.primary,
+              pointBorderWidth: 20,
+              pointHoverRadius: 4,
+              pointHoverBorderWidth: 15,
+              pointRadius: 4,
+              data: payoutChart
+            }
+          ]
+        
+	  },
+	
+
+	
   
     this.i18n = this.$i18n;
     if (this.enableRTL) {
       this.i18n.locale = 'ar';
       this.$rtl.enableRTL();
     }
-    //this.initBigChart(0);
+    
   },
   beforeDestroy() {
     if (this.$rtl.isRTL) {

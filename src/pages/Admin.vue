@@ -1,17 +1,30 @@
 <template>
 
   <div class="extended-forms col-md-12">
-  
     <ValidationObserver v-slot="{ handleSubmit }">
       <form class="form-horizontal" @submit.prevent="handleSubmit(submit)">
         <card>
-          <h4 slot="header" class="card-title">Investment order</h4>
+          <h4 slot="header" class="card-title">Claim Tokens</h4>
           <div class="cold-md-9 offset-md-2">
-
-
+          </div>
+          <div class="text-center">
+            <card>
+              <div class="text-center">
+                <p class="card-text">Claim your tokens</p>
+                <base-button
+                  type="primary"
+                  @click.native="submit('claim')"
+                  >Claim</base-button>
+              </div>
+            </card>
+          </div>
+        </card>
+          <card>
+          <h4 slot="header" class="card-title">Payout</h4>
+          <div class="cold-md-9 offset-md-2">
             <div class="row">
               <label class="col-sm-2 col-form-label">
-                <div title= 'Invest infos here'>Invest
+                <div title= 'Invest infos here'>Payout amount
                   <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
                 </div>
               </label>
@@ -28,53 +41,19 @@
                   :class="[{ 'has-success': passed }, { 'has-danger': failed }]">
                 </base-input>
               </ValidationProvider>
-              </div>
-              <div class="col-md-5">
-                <!-- <h4 class="card-title">Choose currency</h4> -->
-                <div class="row">
-                  <div class="col-md-5">
-                    <el-select
-                      class="select-primary"
-                      size="large"
-                      placeholder="Currency"
-                      v-model="selects.currency"
-                    >
-                      <el-option
-                        required
-                        v-for="option in selects.currencies"
-                        class="select-primary"
-                        :value="option.value"
-                        :label="option.label"
-                        :key="option.label"
-                      >
-                      </el-option>
-                    </el-select>
-                  </div>
-                </div>
-              </div>
-              
-            </div>
-
-           
-
-          
-          </div>
-
-         
-          
-          <div class="text-center">
-            <card>
+            <div class="text-center">
               <div class="text-center">
-                <p class="card-text">Check your input before submitting</p>
                 <base-button
                   type="primary"
-                  @click.native="submit('success-message')"
-                  >Buy now!</base-button
-                >
+                  @click.native="submit('payout')"
+                  >Payout</base-button>
+            </div>
+            </div>
               </div>
-            </card>
+              <div class="col-md-5">
+              </div>
+            </div>
           </div>
-
         </card>
       </form>
     </ValidationObserver>
@@ -99,6 +78,7 @@ import { required, numeric, regex, confirmed } from "vee-validate/dist/rules";
 import { TabPane, Tabs, Collapse, CollapseItem } from 'src/components';
 
 import swal from 'sweetalert2';
+import {address} from '../util/constants/fundContract'
 
 extend("required", required);
 extend("numeric", numeric);
@@ -192,33 +172,17 @@ axios.post('https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2', {
   },
   methods: {
     submit(type) {
-      //calculate eth amount to pay with 5% addition
-      let amountToPay = this.$store.state.DAIPrice*this.number*3 // @Todo: fix (security) of this calculation; not important since user gets left coins back
-      let amountToPayWei = this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(amountToPay), 'ether'))
+      //@todo: Error-Handling /  Return value handling has to be added
+      if(type=='claim'){
+        this.$store.state.contractInstance().methods.releaseFunds().send({from: this.$store.state.web3.coinbase}).then((result) => {console.log(result)})
 
-      let daiAmount = this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(this.number), 'ether'))
-                     
-      console.log(amountToPayWei.toString())
-      console.log(daiAmount.toString())
+      } else {
+          let amountToPayWei = this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(this.number), 'ether'))
+          this.$store.state.contractInstanceDai().methods.approve(address,amountToPayWei).send({from: this.$store.state.web3.coinbase}).then((result) => {console.log(result)})
+          this.$store.state.contractInstance().methods.receivePayment(amountToPayWei).send({from: this.$store.state.web3.coinbase}).then((result) => {console.log(result)})
 
-      //this.$store.state.contractInstance().methods.buyTokens(this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(100), 'ether'))).send( {from: this.$store.state.web3.coinbase, value: this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(0.47941561331302246), 'ether'))})
-
-      this.$store.state.contractInstance().methods.buyTokens(daiAmount).send({value: amountToPayWei, from: this.$store.state.web3.coinbase}).then((result) => {console.log(result)})
-     
-      if(this.number > 0 & this.selects.currency!='') {
-        if (type === 'success-message') {
-          console.log(this.selects.currency);
-          swal.fire({
-            title: `Good job!`,
-            text: 'Our team is now proccessing your investment order',
-            buttonsStyling: false,
-            customClass: {
-              confirmButton: 'btn btn-success btn-fill'
-            },
-            icon: 'success'
-          });
-        } 
       }
+     
     }
   }
 };

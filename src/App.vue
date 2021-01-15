@@ -14,6 +14,10 @@ export default {
   },
   mounted() {
     this.initializeLayout();
-  }
+  },
+   async beforeCreate() {
+    this.$store.dispatch('registerWeb3')
+    
+  },
 };
 </script>

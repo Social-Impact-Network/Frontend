@@ -68,7 +68,9 @@ let state = {
     capLimitWei:0,
     tokenHolderTotal:0,
     DAIPrice: 0,
-    contractInstance: null
+    contractInstance: null,
+    contractInstanceDai: null,
+    connected: false
   }
   export default state
   

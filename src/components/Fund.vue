@@ -5,7 +5,14 @@
 </template>
 
 <script>
+import getDaiContract from '../util/getDaiCointract'
+getDaiContract.then(result => {
+  console.log("blub")
+            console.log(result)
+        }).catch(e => {console.log("blub2")
+        console.log(e)}) 
 export default {
+
   name: 'Fund',
   data () {
     return {

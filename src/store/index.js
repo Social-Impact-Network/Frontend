@@ -5,6 +5,8 @@ import getWeb3 from '../util/getWeb3'
 import getContract from '../util/getContract'
 
 Vue.use(Vuex)
+
+
 export const store = new Vuex.Store({
   strict: true,
   state,
@@ -28,7 +30,9 @@ export const store = new Vuex.Store({
     },*/
     registerContractInstance (state, payload) {
       console.log('Fund contract instance: ', payload)
-      state.contractInstance = () => payload
+      state.contractInstance = () => payload[0]
+      state.contractInstanceDai = () => payload[1]
+
     },
     registerUserTokenAmount (state, payload) {
         console.log('User Token Amount: ', payload)
@@ -95,8 +99,8 @@ export const store = new Vuex.Store({
     console.log('Dai Price : ', payload)
     state.DAIPrice = payload
   },
-  registerProject(state, payload){
-    state.projects.push(payload)
+  registerProjects(state, payload){
+    state.projects = payload
   },
   registerNumberOfProjects(state, payload){
     state.numberOfProjects = payload
@@ -117,6 +121,11 @@ export const store = new Vuex.Store({
 
     state.capLimitWei = payload['wei']
     state.capLimit = payload['eth']
+
+  },
+  registerConnection(state, payload){
+
+    state.connection = payload
 
   }
 
@@ -142,6 +151,9 @@ export const store = new Vuex.Store({
     getContractInstance ({commit}) {
         console.log("getContractInstance")
         getContract.then(result => {
+          console.log(result)
+          
+
             commit('registerContractInstance', result)
         }).catch(e => console.log(e)) 
     },
@@ -263,11 +275,11 @@ beneficiaryPayoutEvents ({commit}, payload) {
   }
   catch(e){console.log(e)}
 },
-addProject ({commit}, payload) {
+addProjects ({commit}, payload) {
   console.log("beneficiaryPayout")
   try {
       
-      commit('registerProject', payload)
+      commit('registerProjects', payload)
   }
   catch(e){console.log(e)}
 },
@@ -313,6 +325,13 @@ setCapLimit({commit}, payload) {
         eth: state.web3.web3Instance().utils.fromWei(payload)
       }
       commit('registerCapLimit', payloadWithEth)
+  }
+  catch(e){console.log(e)}
+},
+setConnectionState({commit}, payload) {
+  try {
+      
+      commit('registerConnection', payload)
   }
   catch(e){console.log(e)}
 }
