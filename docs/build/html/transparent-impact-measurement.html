@@ -1,0 +1,413 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Transparent Impact Measurement System (TIM) &mdash; Social Impact Network Documentation 0.01 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Social Impact Platform (Frontend)" href="platform.html" />
+    <link rel="prev" title="Social Impact Token" href="social-impact-token.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Social Impact Network Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Social Impact Network Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about-sinetwork.html">About Social Impact Network</a></li>
+<li class="toctree-l1"><a class="reference internal" href="social-impact-token.html">Social Impact Token</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Transparent Impact Measurement System (TIM)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#impact-werte">Impact Werte</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#speicherung-der-impact-werte">Speicherung der Impact Werte</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#wichtigste-api-urls">Wichtigste API-URLS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#liste-aller-projekt-asset-ids">Liste aller Projekt Asset IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#projektdaten">Projektdaten</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#solar-impact-werte-und-news-auslesen">Solar Impact Werte und News auslesen</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#social-impact-nodes">Social Impact Nodes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Erstelle deinen eigenen SI Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#list-of-active-nodes">List of active Nodes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="platform.html">Social Impact Platform (Frontend)</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Social Impact Network Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Transparent Impact Measurement System (TIM)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/transparent-impact-measurement.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="transparent-impact-measurement-system-tim">
+<h1>Transparent Impact Measurement System (TIM)<a class="headerlink" href="#transparent-impact-measurement-system-tim" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Das Social Impact Network setzt aktuell ausschließlich Solarprojekte in Entwicklungsländern um. Das Impact Measurment ist dementsprechend aktuell auf Solarprojekte beschränkt</p>
+</div>
+<p>Das Transparente Impact Measurement System (TIM) stellt sicher, dass die finanzierten Social Impact Projekte, den erwarteten sozialen Impact besitzen. Gleichzeitig kann das Impact Measurement
+verwendet werden um die Performance des Investments im Blick zu behalten. Durch das Impact Measurment kann der Investor bereits kleine Abweichungen zwischen
+em erwarteten Impact und dem erreichen Impact nachvollziehen. Diese Informationen ermöglichen die Überprüfung des sozialen Impact der Investionen, gleichzeitig
+können diese Informationen auch für Trading und Investitionsentscheidungen verwendet werden. Die Impact Werte beinhalten auch die Finanzperformance der einzelnen Projekte und werden in Echtzeit getrackt.</p>
+<p>Die Impactwerte aller Projekte sind öffentlich einsehbar.</p>
+<div class="section" id="impact-werte">
+<h2>Impact Werte<a class="headerlink" href="#impact-werte" title="Permalink to this headline">¶</a></h2>
+<p>Als Impact Werte werden alle Werte verstanden, anhand welche der direkte positiven Impact auf Umwelt und Soziales bewertet werden kann (z.B. generierte kwh).
+Darüber hinaus sind Impact Werte auch Finanzkennziffern, mit denen die finanzielle Performance der einzelnen Projekte bewertet werden können (z.B. APY).</p>
+<p>Für alle Projekte des Social Impact Netwerks werden folgende Impact Daten erfasst:</p>
+<table class="colwidths-given docutils align-default" id="id12">
+<caption><span class="caption-text">Impact Werte für alle Social Impact Projekte</span><a class="headerlink" href="#id12" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Datensatz</p></th>
+<th class="head"><p>Beschreibung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Projektbeschreibung</p></td>
+<td><p>Eine allgemeine Beschreibung des Projektes, Beschreibung der ausführenden Aid Organisation, der Beneficary und des sozialen Impacts</p></td>
+</tr>
+<tr class="row-odd"><td><p>News</p></td>
+<td><p>Aktuelle Nachrichten (z.B. Installationsstatus, Dividendenausschüttungen) des Projekts</p></td>
+</tr>
+<tr class="row-even"><td><p>Standort</p></td>
+<td><p>Standort der Projektumsetzung</p></td>
+</tr>
+<tr class="row-odd"><td><p>Expected Lifetime</p></td>
+<td><p>Laufzeit des gesamten Projekts</p></td>
+</tr>
+<tr class="row-even"><td><p>Projektkosten</p></td>
+<td><p>Die Gesamtkosten des Projekts</p></td>
+</tr>
+<tr class="row-odd"><td><p>APY</p></td>
+<td><p>Durchschnittliche jährliche APY über die gesamte Projektlaufzeit</p></td>
+</tr>
+</tbody>
+</table>
+<p>Zusätzlich werden für Solarprojekte des Social Impact Networks folgende Impact Werte gespeichert:</p>
+<table class="colwidths-given docutils align-default" id="id13">
+<caption><span class="caption-text">Zusätzliche Impact Werte für Solarprojekte</span><a class="headerlink" href="#id13" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Datensatz</p></th>
+<th class="head"><p>Beschreibung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Estimated energy per year</p></td>
+<td><p>Anzahl der kwh die durchschnittlich pro Jahr durch das Projekt erzeugt werden sollen</p></td>
+</tr>
+<tr class="row-odd"><td><p>Avoided CO2</p></td>
+<td><p>Anzahl an CO2 (in KG) die durch das Projekt über die gesamte Projektlaufzeit gespart werden sollen</p></td>
+</tr>
+<tr class="row-even"><td><p>System power</p></td>
+<td><p>Die maximale Leistung der Solaranlage in kwp</p></td>
+</tr>
+<tr class="row-odd"><td><p>Price per kwH Lifetime</p></td>
+<td><p>Preis (ind Dollar) für die die erzeugte Energie an den Beneficary verkauft wird</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="speicherung-der-impact-werte">
+<h2>Speicherung der Impact Werte<a class="headerlink" href="#speicherung-der-impact-werte" title="Permalink to this headline">¶</a></h2>
+<p>// Grafik</p>
+<p>Die Impact Werte werden in einer dezentralen, öffentlich zugänglichen Datenbank (BigChainDB) gespeichert.
+Jeder hat die Möglichkeit einen eigenen SI Node zu betreiben und somit ein komplettes Abbild aller Impact Werte zu erhalten.
+Je mehr unabhänige SI Nodes das Social Impact Netzwerk besitzt, desto manipulationssicher sind die Impact Werte.
+Durch den Betrieb eines unabhängigen SI Node, wird die Datenbank dezentralisiert und vor Manipulationen geschützt.
+Falls du das SI Netzwerk unterstützen möchtest, <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">erstelle deinen eigenen SI Node</a> und schütze die Impact Werte des SI Netzwerks.
+Für die Speicherung der Impact Werte wird eine BigChainDB verwendet. Die Abfrage der Daten findet somit über BigchainDB Nodes (SI Nodes) statt.
+Für eine vollständige Erklärung zu BigChainDB und wie du mit den Nodes interagieren kannst, lies bitte die <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">BigchainDB Documenation</a>.</p>
+<div class="section" id="wichtigste-api-urls">
+<h3>Wichtigste API-URLS<a class="headerlink" href="#wichtigste-api-urls" title="Permalink to this headline">¶</a></h3>
+<p>Die Entwickler des Social Impact Network betreiben einen SI Node unter <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">HIER URL</a>.
+Die Impact Werte können direkt über diesen SI Node bezogen werden oder über einen anderen <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">aktiven Node</a></p>
+<p>Die wichtigsten URLs zum Abruf der Impact Werte über diesen SI Node:</p>
+<table class="colwidths-given docutils align-default" id="id14">
+<caption><span class="caption-text">Wichtigsten API-URLs</span><a class="headerlink" href="#id14" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Beschreibung</p></th>
+<th class="head"><p>URL</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Liste aller Projekt Asset IDs</p></td>
+<td><p><a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">HIER URL</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>Statische Projektdaten (Impact Werte)</p></td>
+<td><p><a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">HIER URL</a></p></td>
+</tr>
+<tr class="row-even"><td><p>Aktuelle KwH Daten und News</p></td>
+<td><p><a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">HIER URL</a></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="liste-aller-projekt-asset-ids">
+<h3>Liste aller Projekt Asset IDs<a class="headerlink" href="#liste-aller-projekt-asset-ids" title="Permalink to this headline">¶</a></h3>
+<p>Als AssetID wird eine ID zu einem Datensatz verstanden der nicht veränderlich ist.
+In diesem Fall kann die Asset ID somit einer eindeutigen Projekt-ID gleichgesetzt werden, mit der Besonderheit, dass sich die Projektdaten (z.B. Projektbeschreibung, Projektlaufzeit) dieses Projekts nachträglich nicht änderbar sind.
+Eine Änderung eines Projekt-elements (z.B. Projektbeschreibung) ist somit nur mit der Erstellung eines neues Projekts möglich.
+Durch die Liste aller Projekt Asset IDs wird somit eine Liste von eindeutigen Projekt IDs ausgegeben.
+Diese Projekt IDs können verwendet werden um das Projekt eindeutig zu identifizieren.</p>
+<p>Eine Liste aller Projekt kann unter folgendem Link abgerufen werden: <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">HIER URL</a>
+Die einzelnen Projekt Asset IDs finden sich in dem JSON Objekt als Array in
+Hierrunter finden sich die AssetIDs aller vom SI Network aufgesetzen Projekte unter dem Eintrag <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">metadata</a></p>
+</div>
+<div class="section" id="projektdaten">
+<h3>Projektdaten<a class="headerlink" href="#projektdaten" title="Permalink to this headline">¶</a></h3>
+<p>Die einzelnen Projektdaten können mithilfe der AssetID der Projekte abgerufen werden.
+Hierzu wird folgender Link verwendet: <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">URL</a>
+Um Beispielsweise die Projektdaten des Projekts mit der Asset ID <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">ASSET</a> über den SI Node des
+Social Impact Networks abzurufen, kann folgender Link verwendet werden: <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">URL</a>
+Die Projektdaten finden sich unter <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">asset, data</a></p>
+</div>
+<div class="section" id="solar-impact-werte-und-news-auslesen">
+<h3>Solar Impact Werte und News auslesen<a class="headerlink" href="#solar-impact-werte-und-news-auslesen" title="Permalink to this headline">¶</a></h3>
+<p>Um spezifische Impact Werte für Solarprojekte auszulesen wird foldene Asset ID verwendet: <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">Asset ID</a>
+Unter dieser Asset ID kann ausgelesen werden wie viel Solarenergie über die angeschlossenen Solar Panels erzeugt wurden (khw), sowie weitere statistische Solardaten.
+Gleichzeitig finden sich unter dem Eintrag  <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">events.news</a> die aktuellen und vergangenen Nachrichten zu dem Projekt.
+Um den letzten Eintrag in der Datenbank über den SI Node des Social Impact Networks abzurufen, kann folgender Link verwendet werden: <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">URL</a></p>
+</div>
+</div>
+<div class="section" id="social-impact-nodes">
+<h2>Social Impact Nodes<a class="headerlink" href="#social-impact-nodes" title="Permalink to this headline">¶</a></h2>
+<p>Social Impact Nodes (SI Nodes) ermöglichen das authentische Speichern der Impact Werte durch dezentrale Speicherung.</p>
+<div class="section" id="id7">
+<h3>Erstelle deinen eigenen SI Node<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In der aktuellen Prototyp Phase können keine externen Nodes hinzugefügt werden. Wenn wir dich informieren sollen, sobald du einen eigenen Nodes aufsetzen kannst, schreib uns mitte eine Email mit Betreff “Node aufsetzen” an <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">EMAIL</a></p>
+</div>
+<p>Das Aufsetzen eines eigenen Nodes unterstützt die Sicherheit der Impact Werte hilft damit dem gesamten Social Impact Networks.
+Zum Aufsetzen eines eigenen Nodes, folge bitte der Beschreibung der BigchainDB Dokumentation <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">URL</a>.</p>
+</div>
+<div class="section" id="list-of-active-nodes">
+<h3>List of active Nodes<a class="headerlink" href="#list-of-active-nodes" title="Permalink to this headline">¶</a></h3>
+<p>Hier findest du eine nicht abschließende Liste von aktiven Nodes.
+Wenn du möchtest, dass dein SI Node der Liste hinzugefügt wird, schreibe uns bitte eine E-Mail an <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">Email</a>.</p>
+<table class="colwidths-given docutils align-default" id="id15">
+<caption><span class="caption-text">Liste bekanntester Nodes</span><a class="headerlink" href="#id15" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+<col style="width: 25%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Typ</p></th>
+<th class="head"><p>Owner</p></th>
+<th class="head"><p>Link</p></th>
+<th class="head"><p>Status</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Coordinator Node</p></td>
+<td><p>Social Impact Network</p></td>
+<td><p><a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">HIER URL</a></p></td>
+<td><p>Active</p></td>
+</tr>
+<tr class="row-odd"><td><p>Node</p></td>
+<td><p>Social Impact Network</p></td>
+<td><p><a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">HIER URL</a></p></td>
+<td><p>Active</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="platform.html" class="btn btn-neutral float-right" title="Social Impact Platform (Frontend)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="social-impact-token.html" class="btn btn-neutral float-left" title="Social Impact Token" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Felix H. C. Maduakor, Cedric Lehmann, Nikola Marokovic.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -1,0 +1,351 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Social Impact Token &mdash; Social Impact Network Documentation 0.01 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Transparent Impact Measurement" href="transparent-impact-measurement.html" />
+    <link rel="prev" title="About Social Impact Network" href="about-sinetwork.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Social Impact Network Documentation
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Social Impact Network Docs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="about-sinetwork.html">About Social Impact Network</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Social Impact Token</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#grundkonzept-investment">Grundkonzept Investment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#investions-und-ausschuttungsprozess-si-token">Investions und Ausschüttungsprozess (SI Token)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#smart-contract">Smart Contract</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#social-impact-prototyp-token-sip-token">Social Impact Prototyp Token (SIP Token)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#vereinfachte-bedinungen">Vereinfachte Bedinungen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#investions-und-ausschuttungsprozess-sip-token">Investions und Ausschüttungsprozess (SIP Token)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Smart Contract</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="transparent-impact-measurement.html">Transparent Impact Measurement</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Social Impact Network Documentation</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Social Impact Token</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/social-impact-token.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="social-impact-token">
+<h1>Social Impact Token<a class="headerlink" href="#social-impact-token" title="Permalink to this headline">¶</a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Aktuell existiert ausschließlich der Social Impact Prototype Token (SIP Token). Siehe <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">SIP Token</a></p>
+</div>
+<p>Über den Social Impact Token (SI Token) werden die Zahlungsabläufe des Investionsprozesses (u.a. Investition, Ausschüttung) abgebildet.
+Bei dem SI Token handelt es sich um einen ERC20 Token auf der Ethereum Blockchain. Programmiert wurde der SI Token in Solidity.
+Die gesamte Interaktion mit dem SI Token kann über die <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">SI Plattform (Frontend)</a> stattfinden.
+Da der Token nach dem ERC20-Standard implementiert wurde können die Basisfunktionen (insb. Senden und Empfangen) auch über beliebige ERC20-ready Wallets durchgeführt werden.</p>
+<div class="section" id="grundkonzept-investment">
+<h2>Grundkonzept Investment<a class="headerlink" href="#grundkonzept-investment" title="Permalink to this headline">¶</a></h2>
+<p>//Grafik: Beschreibung des Investionsprozesses FUND (allgemein)</p>
+<p>Das grundlegene Konzept des Investments sieht vor, dass der Investor in einen Funding-Pool investiert. Für sein investment in diesen Pool erhält der Investor entsprechend dem Tokenpreis sowie der Investmentsumme SI Token.
+Der Tokenpreis kalkuliert sich hierbei nach dem <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">Asset Net value</a> und gibt hierbei die echte Wertentwicklung der Projekte wieder.
+Die Gelder des Funding-Pools werden von den autorisierten AID Organisitionen verwendet um geplante, nachhaltige Projekte mit einem definierten ROI (avg. &gt;6%) umzusetzen.
+Eine Liste der geplanten Projekte findet sich auf der <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">SI Plattform (Frontend)</a>.
+Dividenden aus den Investionsprojekten werden in regelmäßigen Abständen (typischerweise monatlich) in DAI an die Inestoren ausgeschüttet.</p>
+</div>
+<div class="section" id="investions-und-ausschuttungsprozess-si-token">
+<h2>Investions und Ausschüttungsprozess (SI Token)<a class="headerlink" href="#investions-und-ausschuttungsprozess-si-token" title="Permalink to this headline">¶</a></h2>
+<p>//Grafik</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Für den Investions und Ausschüttungsprozess des Social Impact Prototyp Token (SIP Token) klicke bitte <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">hier</a>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Der SI Token ist ein ausschüttender Token. Regelmäßige (monatliche) Auszahlungen finden in DAI an den Halter des SI Token statt.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Vorerst werden über das Social Impact Network ausschlielich erneuerbare Energie Projekte umgesetzt.</p>
+</div>
+<ol class="arabic simple">
+<li><p>Der Investor kauft SI Token über einen lizensierten Partner oder über die SI Platform.</p></li>
+<li><p>Die SI Tokens werden für den Investor erstellt (geminted) und an ihn versendet.</p></li>
+<li><p>Die Gelder des Investors fließen  (gemeinsam mit den Geldern der weiteren Investoren) an die Aid Organization.</p></li>
+<li><p>Gemeinsam mit einem Cotractor errichten die Aid Organization und der Contractor eine Solaranalge für einen vorgegebenen Beneficary.</p></li>
+<li><p>Der Beneficary zahlt die erhaltene Energie an die Aid Organization.</p></li>
+<li><p>Die Aid organization tauscht das Geld über einen Exchange in Dai.</p></li>
+<li><p>Die DAI fließen zurück in den Smart Contract.</p></li>
+<li><p>Die DAI werden anteilig an alle Investoren ausgeschüttet; Teile der Zahlungen werden für zukünftige Projekte einbehalten (reinvest).</p></li>
+</ol>
+<div class="section" id="smart-contract">
+<h3>Smart Contract<a class="headerlink" href="#smart-contract" title="Permalink to this headline">¶</a></h3>
+<p>Der Smart Contract verfügt über folgende Grundfunktionalitäten, die durch das Frontend ansteuerbar sind:</p>
+<table class="colwidths-given docutils align-default" id="id5">
+<caption><span class="caption-text">Basisfunktionalität SI Smart Contract</span><a class="headerlink" href="#id5" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Methode</p></th>
+<th class="head"><p>Erklärung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Claim</p></td>
+<td><p>Durch den Aufruf der Claim-Methode kann der Nutzer die erhaltenen DAI aus dem Social Impact Smart Contract auszahlen.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Payout (Beneficary)</p></td>
+<td><p>Der Beneficary kann mit dieser Methode den gewählten DAI Betrag an das Netzwerk senden</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="social-impact-prototyp-token-sip-token">
+<h2>Social Impact Prototyp Token (SIP Token)<a class="headerlink" href="#social-impact-prototyp-token-sip-token" title="Permalink to this headline">¶</a></h2>
+<p>Das Social Impact Network befindet sich aktuell in der Prototyp Phase. Zum Testen des Social Impact Networks und dessen Impact Measrument Systems, wurde
+ein Social Impact Protyp Token entwickelt.</p>
+<p>Im Gegensatz zum Social Impact Token wurden hierbei einige vereinfachte Bedinungen geschaffen. Diese Bedinungen wurden insbesondere geschaffen um die regulatorischen Aspekte
+von Security Tokens auf ein Minimum zu reduzieren.</p>
+<div class="section" id="vereinfachte-bedinungen">
+<h3>Vereinfachte Bedinungen<a class="headerlink" href="#vereinfachte-bedinungen" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Das SI Netzwerk ist ein geschlossenes System. Investoren, Beneficary und Node Betreiber sind bekannt und begrenzt. Es findet kein öffentlicher Verkauf des SIP Token statt.</p></li>
+<li><p>Die Aid Organization und der Beneficary sind in diesem System identisch und eine natürliche Person der UNDP Lebanon.</p></li>
+<li><p>Der Verkauf des Token findet direkt über den Smart Contract in ETH oder DAI statt. Es wird kein externer Finanzdienstleister eingeschaltet.</p></li>
+<li><p>Der Tokenwert ist auf 1$ festgelegt (1 SIP = 1$). Es findet keine Berechnung des <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">Asset Net value</a> statt</p></li>
+<li><p>Es handelt sich um ein Einzelprojekt. Es findet kein Fund/Protfioansatz über mehrere Projekte statt.</p></li>
+<li><p>Die Projektlaufzeit des Einzelprojekts beschränkt sich auf 6 Monate.</p></li>
+</ol>
+</div>
+<div class="section" id="investions-und-ausschuttungsprozess-sip-token">
+<h3>Investions und Ausschüttungsprozess (SIP Token)<a class="headerlink" href="#investions-und-ausschuttungsprozess-sip-token" title="Permalink to this headline">¶</a></h3>
+<p>//Grafik</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Der SI Token ist ein ausschüttender Token. Monatliche Auszahlungen finden in DAI an den Halter des SI Token statt.</p>
+</div>
+<ol class="arabic simple">
+<li><p>Der (bekannte) Investor kauft über die <a class="reference external" href="https://github.com/Social-Impact-Network/Frontend">SI Plattform (Frontend)</a> SIP Token und zahlt in DAI oder Ether.</p></li>
+<li><p>Die SI Tokens werden von dem Smart Contract für den Investor erstellt (geminted).</p></li>
+<li><p>Die Gelder des Investors fließen danach (gemeinsam mit den Geldern der weiteren bekannten Investoren) an den bekannten Beneficary</p></li>
+<li><p>Gemeinsam mit einem Contractor errichtet der Beneficary eine Solaranalge für sich selbst</p></li>
+<li><p>Der Beneficary zahlt Leasinggebühren monatlich direkt an den Smart Contract in DAI</p></li>
+<li><p>Die Dai werden Anteilig an die Investoren ausgeschüttet</p></li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h3>Smart Contract<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>Die Grundfunktionalitäten des Smart Contract des SIP gleichen dem des SI Token.
+Aufgrund der Vereinfachung entfallen Funktionen für die Berechnung der NetAssetValue. Es findet auch eine Vereinfachung statt, da bei dem SIP Token ausschließlich ein Einzelprojekt vorliegt.
+Durch den Entfall der Fiat-Zahlungswege müssen jedoch zwei weitere Funktionen dem Smart Contract hinzugefügt werden:</p>
+<table class="colwidths-given docutils align-default" id="id6">
+<caption><span class="caption-text">xxxx</span><a class="headerlink" href="#id6" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Methode</p></th>
+<th class="head"><p>Erklärung</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Buy</p></td>
+<td><p>Durch die Buy-Methode kann der bekannte Investor die SIP Token für Ether oder Dai kaufen. Diese Funktionalität wird in dem SI Token durch einen lizensierten Finanzpartner und vorgeschalteten KYC Prozessen abgebildet.</p></td>
+</tr>
+<tr class="row-odd"><td><p>Claim (Beneficary)</p></td>
+<td><p>Der Beneficary kann die DAI der Investoren auszahlen, um Sie für die Finanzierung der Solar-Anlage zu verwenden</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="transparent-impact-measurement.html" class="btn btn-neutral float-right" title="Transparent Impact Measurement" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="about-sinetwork.html" class="btn btn-neutral float-left" title="About Social Impact Network" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021, Felix H. C. Maduakor, Cedric Lehmann, Nikola Marokovic.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
