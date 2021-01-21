@@ -1,1 +1,1 @@
-{"language":"node_js","node_js":["lts/*"],"cache":"npm","script":["npm run-script build"],"deploy":{"provider":"pages","local_dir":"dist","skip-cleanup":true,"github_token":"$GITHUB_TOKEN"}}
+{"language":"node_js","node_js":["lts/*"],"cache":"npm","script":["npm run-script build"],"deploy":{"provider":"pages","local_dir":"dist","github_token":"$GITHUB_TOKEN"}}
