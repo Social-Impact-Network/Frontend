@@ -95,9 +95,9 @@
           <a href="#" class="nav-item dropdown-item">Another one</a>
         </li>
       </base-dropdown> -->
-  <base-button type="danger" round >
+  <!--<base-button type="danger" round >
         Not connected
-      </base-button>
+      </base-button>-->
       <!--
       <base-dropdown
         tag="li"

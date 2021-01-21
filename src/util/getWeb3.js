@@ -1,8 +1,10 @@
+/**
+ * Function to get Web3 object and push it to 
+ * @param 
+ * @param 
+ */
 import Web3 from 'web3'
 import detectEthereumProvider from '@metamask/detect-provider';
-
-
-
 
 let getWeb3 =  new Promise(async function (resolve, reject) {
   const provider = await detectEthereumProvider();
@@ -62,6 +64,5 @@ if (provider){
       })
     })
   })
-
 
 export default getWeb3

@@ -72,5 +72,6 @@ let state = {
     contractInstanceDai: null,
     connected: false
   }
+  
   export default state
   
