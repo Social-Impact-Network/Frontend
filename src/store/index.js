@@ -29,19 +29,16 @@ export const store = new Vuex.Store({
       state.web3.balance = parseInt(payload.balance, 10)
     },*/
     registerContractInstance (state, payload) {
-      console.log('Fund contract instance: ', payload)
       state.contractInstance = () => payload[0]
       state.contractInstanceDai = () => payload[1]
 
     },
     registerUserTokenAmount (state, payload) {
-        console.log('User Token Amount: ', payload)
         state.userDetails.tokenAmountWei = payload['wei']
         state.userDetails.tokenAmount = payload['eth']
 
       },
     registerUserClaimableAmount (state, payload) {
-        console.log('User Claimable Amount: ', payload)
         state.userDetails.claimableAmount = payload['eth']
         state.userDetails.claimableAmountWei = payload['wei']
         console.log("test22_ " + state.userDetails.claimableAmount)
@@ -49,34 +46,27 @@ export const store = new Vuex.Store({
 
       },
       registerEarnings (state, payload) {
-        console.log('User Earnings: ', payload)
         state.userDetails.earningsWei = payload['wei']
         state.userDetails.earnings = payload['eth']
   
         },
         registerPurchasedEvents (state, payload) {
-          console.log('Purchased Events Store: ', payload)
           state.userDetails.tokenPurchased = payload
     
           },
         registerTransferSentEvents (state, payload) {
-          console.log('Transfer Events Store: ', payload)
           state.userDetails.transferSent = payload
           },
         registerTransferReceivedEvents (state, payload) {
-            console.log('Transfer Events Received Store: ', payload)
             state.userDetails.transferReceived = payload
         },
         registerTokenClaimedEvents (state, payload) {
-            console.log('Token Claimed Store: ', payload)
             state.userDetails.tokenClaimed = payload
         },
         registerBeneficiaryPayoutEvents (state, payload) {
-            console.log('Amount Paid out: ', payload)
             state.beneficiaryPayout = payload
         },
         registerTokenSupply (state, payload) {
-          console.log('Token Supply: ', payload)
           state.tokenSupplyTotalWei = payload['wei']
           state.tokenSupplyTotal = payload['eth']
 
@@ -88,15 +78,12 @@ export const store = new Vuex.Store({
 
       },
       registerReceivedClaims (state, payload) {
-        console.log('Token Supply: ', payload)
         state.userDetails.receivedClaims = payload
     },
     registerReceivedClaimsDateArray (state, payload) {
-      console.log('Token Supply: ', payload)
       state.userDetails.receidClaimsDateArray = payload
   },
   registerDAIPrice(state, payload){
-    console.log('Dai Price : ', payload)
     state.DAIPrice = payload
   },
   registerProjects(state, payload){
@@ -136,7 +123,6 @@ export const store = new Vuex.Store({
   
   actions: {
     registerWeb3 ({commit}) {
-      console.log('registerWeb3 Action being executed')
       getWeb3.then(result => {
         console.log('committing result to registerWeb3Instance mutation')
         commit('registerWeb3Instance', result)
@@ -149,7 +135,6 @@ export const store = new Vuex.Store({
       commit('pollWeb3Instance', payload)
     },*/
     getContractInstance ({commit}) {
-        console.log("getContractInstance")
         getContract.then(result => {
           console.log(result)
           
@@ -158,7 +143,6 @@ export const store = new Vuex.Store({
         }).catch(e => console.log(e)) 
     },
     getUserTokenAmount ({commit}, payload) {
-        console.log("getUserTokenAmount")
         try {
             let payloadWithEth = {
                 wei: payload,
@@ -168,7 +152,6 @@ export const store = new Vuex.Store({
         }
         catch(e){console.log(e)}
     },getTokenHolderTotal ({commit}, payload) {
-      console.log("getTokenHolder")
       try {
           
           commit('registerTokenHolder', payload)
@@ -177,7 +160,6 @@ export const store = new Vuex.Store({
   },
 
     getClaimableAmount ({commit}, payload) {
-        console.log("getClaimableAmount")
         try {
           let payloadWithEth = {
             wei: payload,
@@ -189,7 +171,6 @@ export const store = new Vuex.Store({
         catch(e){console.log(e)}
     },
     getEarnings ({commit}, payload) {
-        console.log("getEarnings")
         try {
             let payloadWithEth = {
                 wei: payload,
@@ -200,7 +181,6 @@ export const store = new Vuex.Store({
         catch(e){console.log(e)}
     },
     getPurchasedEvents ({commit}, payload) {
-        console.log("getPurchasedEvents")
         try {
             
             commit('registerPurchasedEvents', payload)
@@ -208,7 +188,6 @@ export const store = new Vuex.Store({
         catch(e){console.log(e)}
     },
     getTransferSentEvents ({commit}, payload) {
-        console.log("getTransferSentEvent")
         try {
             
             commit('registerTransferSentEvents', payload)
@@ -216,7 +195,6 @@ export const store = new Vuex.Store({
         catch(e){console.log(e)}
     },
     getTransferReceivedEvents ({commit}, payload) {
-      console.log("getTransferReceivedEvent")
       try {
           
           commit('registerTransferReceivedEvents', payload)
@@ -224,7 +202,6 @@ export const store = new Vuex.Store({
       catch(e){console.log(e)}
   },
   getTokenClaimedEvents ({commit}, payload) {
-    console.log("getTokenClaimed")
     try {
         
         commit('registerTokenClaimedEvents', payload)
@@ -232,7 +209,6 @@ export const store = new Vuex.Store({
     catch(e){console.log(e)}
 },
 setTokenSupplyTotal ({commit}, payload) {
-  console.log("setTokenSupply Total")
   try {
     let payloadWithEth = {
       wei: payload,
@@ -244,7 +220,6 @@ setTokenSupplyTotal ({commit}, payload) {
   catch(e){console.log(e)}
 },
 getReceivedClaims ({commit}, payload) {
-  console.log("setTokenSupply Total")
   try {
       
       commit('registerReceivedClaims', payload)
@@ -252,7 +227,6 @@ getReceivedClaims ({commit}, payload) {
   catch(e){console.log(e)}
 },
 setDAIPrice ({commit}, payload) {
-  console.log("set Dai Price Total")
   try {
       
       commit('registerDAIPrice', payload)
@@ -260,7 +234,6 @@ setDAIPrice ({commit}, payload) {
   catch(e){console.log(e)}
 },
 getReceivedClaimsDateArray ({commit}, payload) {
-  console.log("setTokenSupply Total")
   try {
       
       commit('registerReceivedClaimsDateArray', payload)
@@ -268,7 +241,6 @@ getReceivedClaimsDateArray ({commit}, payload) {
   catch(e){console.log(e)}
 },
 beneficiaryPayoutEvents ({commit}, payload) {
-  console.log("beneficiaryPayout")
   try {
       
       commit('registerBeneficiaryPayoutEvents', payload)
@@ -276,7 +248,6 @@ beneficiaryPayoutEvents ({commit}, payload) {
   catch(e){console.log(e)}
 },
 addProjects ({commit}, payload) {
-  console.log("beneficiaryPayout")
   try {
       
       commit('registerProjects', payload)

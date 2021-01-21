@@ -43,9 +43,9 @@ der einfachen Handelbarkeit der Investments und zeigen authentisch die sozialen 
    * - Element
      - Repository
      - Beschreibung
-   * - Frontend
+   * - Platform (Frontend)
      - `GitHub <https://github.com/Social-Impact-Network/Frontend>`_
-     - Das Frontend ermöglicht die einfache Interaktion mit dem `SI Token <https://github.com/Social-Impact-Network/Frontend>`_  und dem `TIM <https://github.com/Social-Impact-Network/Frontend>`_.
+     - Die SI Platform (Frontend) ermöglicht die einfache Interaktion mit dem `SI Token <https://github.com/Social-Impact-Network/Frontend>`_  und dem `TIM <https://github.com/Social-Impact-Network/Frontend>`_.
    * - Solar-Impact-Bridge
      - `GitHub <https://github.com/Social-Impact-Network/SPMonitorBridge-Server>`_
      - Die Solar-Impact-Bridge empfängt die Impact Werte der Solar Panels und speichert diese in der dezentralen BigChainDB.
