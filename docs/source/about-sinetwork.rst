@@ -56,7 +56,7 @@ der einfachen Handelbarkeit der digitalen Wertpapiere und zeigen authentisch die
      - Ein SI Node ist ein BigchainDB Node der für die dezentrale Speicherung der Impact Werte zuständig ist.
    * - SI Token/Smart Contract 
      - `GitHub <https://github.com/Social-Impact-Network/Token>`_
-     - Der SI Token ist als Smart Contract umgesetzt. Der Smart Contract ist für die Annahme von Finanzierungsmittel, Ausgabe von SI Token (ERC20), Allokation der investierten Gelder, sowie Ausschüttungen an Investoren zuständig.
+     - Der SI Token Smart Contract ist für die Annahme von Finanzierungsmittel, Ausgabe von SI Token (ERC20), Allokation der investierten Gelder, sowie Ausschüttungen an Investoren zuständig.
 
 Social Impact Token (SI Token)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -66,7 +66,7 @@ Bei dem SI Token handelt es sich um einen ERC-20 Token auf dem Ethereum Netzwerk
 Der SI Token verkörpert ein Wertpapier und entspricht der Investition in eine Schuldscheindarlehen.
 Der Investor erhält bei seiner Investition über die offizielle SI Plattform die SI Token. Gehandelt werden kann der Token über dezentrale Börsen.
 Die vereinnahmeten finanziellen Mittel des SI Tokens werden von Aid Organizations (wie UNDP) für die Umsetzung von nachhaltigen Projekten verwendet. 
-Ausschüttungen werden ebenfalls durch die Smart Contracts abgewickelt. Die Investitionen laufen auf der Nominalwährung USD. Einzahlungen und Auszahlungen werden in Form von Finanzinstrumenten ETH und DAI über den Smart-Contract abgewickelt
+Ausschüttungen werden ebenfalls durch die Smart Contracts abgewickelt. Die Investitionen lauten in der Nominalwährung USD. Einzahlungen und Auszahlungen werden in Form von ETH und DAI über den Smart-Contract abgewickelt
 Als ERC20 Token kann der SI Token innerhalb des Ethereum-Netzwerks frei versendet werden.
 Der gesamte Finanzierungsprozess und Ausschüttungsprozess und weitere Einzelheiten des SI Tokens können `hier <https://github.com/Social-Impact-Network/Frontend>`_ nachgelesen werden.
 

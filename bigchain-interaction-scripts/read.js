@@ -2,7 +2,7 @@
 const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 const { saveLastTx } = require('./last_tx.js'); 
 
-// read the asset id from save.js
+// read the asset id from last_tx.js
 // note that append.js doesn't change the asset id 
 const assetID = saveLastTx.asset.id;
 
