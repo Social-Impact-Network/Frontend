@@ -16,10 +16,11 @@ The magic behind Social Impact Network: Your investment is completely transparen
 * 	Security: Your money is safe. All funds allocation and distribution are managed by Smart Contracts on a public blockchain.
 
 
-Diese Dokumentation hilft dir das Ecosystem des Social Impact Networks zu verstehen. Du erfährst wie du Impact Werte aus dem Netzwerk entnehmen kannst,
-einen eigenen Social Impact Node breiben kannst und wie du Software entwickelst die mit dem Socail Impact Netzwerk interagieren (z.B. DeFI-Projekte).
+This documentation will help you understand the Social Impact Network ecosystem.
+You will learn how to extract impact values from the network, how to run your own Social Impact Node and how to develop software that interacts with the Social Impact Network (e.g. DeFI projects).
 
-Das gesamte Social Impact Network ist ein Open-Source Projekt, also zögere nicht, neue Themen oder Content über `GitHub <https://github.com/Social-Impact-Network/Frontend>`_ vorzuschlagen.
+
+The entire Social Impact Network is an open source project, so feel free to suggest any new topics or content via `GitHub <https://github.com/Social-Impact-Network/Frontend>`_.
 
 
 

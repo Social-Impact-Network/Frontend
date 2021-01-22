@@ -9,21 +9,26 @@ Social Impact Platform (Frontend)
 
 //Grafik
 
-Die SI Platform verbindet den SI Token und das Transparent Impact Measurment System (TIM) um sie einfach und intutitiv bedienen zu können.
-Die gesamten Datensätze der SI Platform stammen aus den dezentralen Datenbanken. Es wird keine zentralisierte, lokale Datenbank verwendet.
-Die gesamte SI Platform kann somit lokal und ohne zusätzliche lokale Datenbank aufgesetzt werden.
+Die SI Platform stellt die Benutzerobfläche für die Komponenten SI Token und das Transparent Impact Measurment System (TIM) dar, um sie einfach und intutitiv bedienen zu können.
+Alle dynamischen Informationen, die auf der SI Platform dargestellt werden, stammen aus dezentralen Netzwerken (Ethereum, BigChainDB). Es wird keine zentralisierte, lokale Datenbank verwendet.
+Die gesamte SI Platform kann somit lokal und ohne zusätzliche lokale Datenbank aufgesetzt werden. 
 
 Die SI Platform enthält folgende Funktionen um mit dem Smart Contract zu interagieren:
 
 *  MetaMask Einbindung
-*  SI(P) Token-Kauf
-*  Beneficary Payout DAI (only SIP)
+*  Investieren (in ETH oder DAI)
+*  Erhalt von Token (SIP)
+*  Auszahlung an Projektbegünstigte
+*  Zins- und Rückzahlung durch Projektbegünstigte (in DAI)
+*  Zins- und Rückzahlungsanspruch durchsetzen und Auszahlung veranlassen (in DAI)
 
 Für die Darstellung der Impact Werte greift die SI Platform auf den `SI Node des Social Impact Netzwerks <https://github.com/Social-Impact-Network/Frontend>`_ zu.
 
 
 Deploying SI Platform lokal
 ----------------------------
+
+VERWEIS ZU README??? oder reinkopieren aus README?
 
 Um die SI Platform lokal aufzusetzen, kann das bereits gebuildete Projekt aus dem Github repository deployt werden.
 

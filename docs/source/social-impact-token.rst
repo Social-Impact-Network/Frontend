@@ -3,53 +3,51 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-===================
-Social Impact Token
-===================
-.. warning:: Aktuell existiert ausschließlich der Social Impact Prototype Token (SIP Token). Siehe `SIP Token <https://github.com/Social-Impact-Network/Frontend>`_
+===============================
+Social Impact Token (SI Token)
+===============================
+.. warning:: Currently, only Social Impact Prototype Token (SIP Token) exists. See `SIP Token <https://github.com/Social-Impact-Network/Frontend>`_
 
-Über den Social Impact Token (SI Token) werden die Zahlungsabläufe des Finanzierungsprozess (u.a. Investition, Allokation, Zins- und Rückzahlungen) abgebildet.
-Bei dem SI Token handelt es sich um einen ERC20 Token auf der Ethereum Blockchain. Programmiert wurde der SI Token in Solidity.
-Die gesamte Interaktion mit dem SI Token kann über die `SI Plattform (Frontend) <https://github.com/Social-Impact-Network/Frontend>`_ stattfinden.
-Da der Token nach dem ERC20-Standard implementiert wurde können die Basisfunktionen (insb. Senden und Empfangen) auch über beliebige ERC20-ready Wallets durchgeführt werden.
+The Social Impact Token (SI Token) is used for payment flows (including investment, allocation, interest and payouts).
+SI Token is an ERC20 token on the Ethereum Blockchain, programmed in Solidity.
+All interactions with SI Token can be done through `SI platform (frontend) <https://github.com/Social-Impact-Network/Frontend>`_.
+Since the token was implemented according to the ERC20 standard, the basic functions (e.g. sending and receiving) can also be performed via any ERC20-enabled wallet.
+
+Social Impact Prototype Token (SIP Token)
+--------------------------------------------
+Social Impact Network is currently in the prototype phase. In order to test the Social Impact Network and its Transparent Impact Measurement System <https://github.com/Social-Impact-Network/Frontend>`_, the Social Impact Prototype Token has been developed.
+
+In contrast to SI Token, some simplified conditions were created for SIP Token. These conditions were created in order to reduce the regulatory aspects of the security token to a minimum.
 
 
-Social Impact Prototyp Token (SIP Token)
-----------------------------------------
-Das Social Impact Network befindet sich aktuell in der Prototyp Phase. Zum Testen des Social Impact Networks und dessen Impact Measrument Systems, wurde 
-ein Social Impact Protyp Token entwickelt.
-
-Im Gegensatz zum Social Impact Token wurden hierbei einige vereinfachte Bedinungen geschaffen. Diese Bedinungen wurden insbesondere geschaffen um die regulatorischen Aspekte
-von Security Tokens auf ein Minimum zu reduzieren.
-
-Vereinfachte Bedinungen
+Simplified conditions
 ~~~~~~~~~~~~~~~~~~~~~~~~
-#. Die zugrundeliegende Schuldscheinverschreibung wird nicht öffentlich angeboten und kann nicht von jedem gezeichnet werden.
-#. Investoren und Projektbegünstigte sind bekannt und begrenzt. 
-#. Die Hilfsorganisation und der Begünstigte sind identisch und wird einer natürliche Person innerhalb der UNDP Libanon sein.
-#. Der Entgegennahme der Zeichnungssumme findet direkt über den Smart Contract in ETH oder DAI statt. Es wird kein externer Finanzdienstleister eingeschaltet.
-#. Der Tokenwert ist auf 1$ festgelegt (1 SIP = 1$). Es findet keine Berechnung des `Asset Net value <https://github.com/Social-Impact-Network/Frontend>`_ statt
-#. Es handelt sich um die Finanzierung eines Einzelprojekt und es werden keine weiteren Projekte über dieses Wertpapier/Token finanziert.
-#. Die Projektlaufzeit des Einzelprojekts beschränkt sich auf 6 Monate.
-#. Die Zins- und Rückzahlungen finden monatlich statt.  Die Rückzahlungen finden in 6 gleichen Raten statt. 
-#. Die Zins- und Rückzahlungen werden den Investoren auf ihren Token gutgeschrieben und es muss über die Plattform die Auszahlung veranlasst werden.
+#. The underlying security is not publicly offered.
+#. Investors and project beneficiaries are known to each other and limited. 
+#. The aid organization and the beneficiary are identical and will be a natural person within UNDP Lebanon.
+#. Proceeds from token sales will be received directly through the Smart Contract in ETH or DAI. No external financial service provider will be involved.
+#. The token value is pegged at $1 (1 SIP = $1). There will be no calculation of `Asset Net value <https://github.com/Social-Impact-Network/Frontend>`_.
+#. It is a single project funding and no other projects will be funded through this token.
+#. The project duration of the project is limited to 6 months.
+#. Interest and principal payments are made monthly.  
+#. The interest and payouts will be credited to the investors' tokens and it is necessary to arrange the payment through the platform.
 
 
 
-Investions und Ausschüttungsprozess (SIP Token)
+Investment and payout process (SIP Token)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 //Grafik
 
-.. note:: Der SI Token ist ein ausschüttender Token. Monatliche Zins- und Rückzahlungen werden den Investoren in DAI über den Token gutgeschrieben. Auszahlungen können jederzeit über die Plattform veranlasst werden.
+.. note:: SI token is a payout token. Monthly interest and dividend payments are transferred to investors in DAI via token. Withdrawals can be initiated at any time via SI platform.
 
-#. Der (bekannte) Investor investiert über die `SI Plattform (Frontend) <https://github.com/Social-Impact-Network/Frontend>`_, und zahlt dabei in DAI oder Ether.
-#. Die SI Tokens werden von dem Smart Contract generiert und an den Investor übertragen.
-#. Die Gelder des Investors fließen danach (gemeinsam mit den Geldern der weiteren bekannten Investoren) an den bekannten Projektbegünstigten.
-#. Gemeinsam mit einem Contractor errichtet der Projektbegünstigte eine Solaranalge für sich selbst.
-#. Der Beneficary zahlt Zins- und Rückzahlungen monatlich direkt an den Smart Contract in DAI.
-#. Die DAI werden Anteilig den Investoren gutgeschrieben.
-#. Die Investoren können sich ihre gutgeschriebenen DAI jederzeit auszahlen lassen.
+#. The (known) investors invests via the `SI platform (frontend) <https://github.com/Social-Impact-Network/Frontend>`_ and pays in DAI or Ether.
+#. SI tokens are generated by the smart contract and transferred to investor.
+#. The investor's funds then are transferred (along with the funds of the other known investors) to the project beneficiary.
+#. The project beneficiary, together with a contractor, builds a solar system for himself.
+#. The beneficiary pays monthly interest and payouts directly to the smart contract in DAI.
+#. DAI is credited to investors on proportional basis.
+#. Investors can withdraw their credited DAI at any time.
 
 
 
@@ -73,7 +71,7 @@ Durch den Entfall der Fiat-Zahlungswege müssen jedoch zwei weitere Funktionen d
 
      
 Vision Social Impact Token 
------------------------
+----------------------------
 
 //Grafik: Beschreibung des Investionsprozesses FUND (allgemein)
 
@@ -85,11 +83,11 @@ Dividenden aus den Investionsprojekten werden in regelmäßigen Abständen (typi
 
 
 Investions und Ausschüttungsprozess (SI Token)
-----------------------------------------------
+------------------------------------------------
 
 //Grafik
 
-.. warning:: Für den Investions und Ausschüttungsprozess des Social Impact Prototyp Token (SIP Token) klicke bitte `hier <https://github.com/Social-Impact-Network/Frontend>`_.
+.. warning:: Für den Investions und Ausschüttungsprozess des Social Impact Prototype Token (SIP Token) klicke bitte `hier <https://github.com/Social-Impact-Network/Frontend>`_.
 
 .. note:: Der SI Token ist ein ausschüttender Token. Regelmäßige (monatliche) Auszahlungen finden in DAI an den Halter des SI Token statt.
 
@@ -105,19 +103,3 @@ Investions und Ausschüttungsprozess (SI Token)
 #. Die Aid organization tauscht das Geld über einen Exchange in Dai.
 #. Die DAI fließen zurück in den Smart Contract.
 #. Die DAI werden anteilig an alle Investoren ausgeschüttet; Teile der Zahlungen werden für zukünftige Projekte einbehalten (reinvest).
-
-/*Smart Contract
-~~~~~~~~~~~~~~
-
-Der Smart Contract verfügt über folgende Grundfunktionalitäten, die durch das Frontend ansteuerbar sind:
-
-.. list-table:: Basisfunktionalität SI Smart Contract
-   :widths: 50 50
-   :header-rows: 1
-
-   * - Methode
-     - Erklärung
-   * - Claim
-     - Durch den Aufruf der Claim-Methode kann der Nutzer die erhaltenen DAI aus dem Social Impact Smart Contract auszahlen.
-   * - Payout (Beneficary)
-     - Der Beneficary kann mit dieser Methode den gewählten DAI Betrag an das Netzwerk senden*/
