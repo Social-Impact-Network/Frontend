@@ -7,7 +7,7 @@
 
 ## Social Impact Network Platform (Frontend)
 
-The Social Impact Network Platform (SI Platform) is the frontend of the whole Social Impact Network. Through SI Platform, investors can easily interact with SI Smart Contracts and SI Transparent Impact Measurment System.
+Social Impact Network Platform (SI Platform) is the frontend of Social Impact Network. Through SI Platform, investors can easily interact with SI Smart Contracts and SI Transparent Impact Measurment System.
 
 
 ## Vulnerabilites, Bugs & Feature Request
