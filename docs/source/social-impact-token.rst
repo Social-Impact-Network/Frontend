@@ -8,13 +8,71 @@ Social Impact Token
 ===================
 .. warning:: Aktuell existiert ausschließlich der Social Impact Prototype Token (SIP Token). Siehe `SIP Token <https://github.com/Social-Impact-Network/Frontend>`_
 
-Über den Social Impact Token (SI Token) werden die Zahlungsabläufe des Investionsprozesses (u.a. Investition, Ausschüttung) abgebildet.
+Über den Social Impact Token (SI Token) werden die Zahlungsabläufe des Finanzierungsprozess (u.a. Investition, Allokation, Zins- und Rückzahlungen) abgebildet.
 Bei dem SI Token handelt es sich um einen ERC20 Token auf der Ethereum Blockchain. Programmiert wurde der SI Token in Solidity.
 Die gesamte Interaktion mit dem SI Token kann über die `SI Plattform (Frontend) <https://github.com/Social-Impact-Network/Frontend>`_ stattfinden.
 Da der Token nach dem ERC20-Standard implementiert wurde können die Basisfunktionen (insb. Senden und Empfangen) auch über beliebige ERC20-ready Wallets durchgeführt werden.
 
 
-Grundkonzept Investment
+Social Impact Prototyp Token (SIP Token)
+----------------------------------------
+Das Social Impact Network befindet sich aktuell in der Prototyp Phase. Zum Testen des Social Impact Networks und dessen Impact Measrument Systems, wurde 
+ein Social Impact Protyp Token entwickelt.
+
+Im Gegensatz zum Social Impact Token wurden hierbei einige vereinfachte Bedinungen geschaffen. Diese Bedinungen wurden insbesondere geschaffen um die regulatorischen Aspekte
+von Security Tokens auf ein Minimum zu reduzieren.
+
+Vereinfachte Bedinungen
+~~~~~~~~~~~~~~~~~~~~~~~~
+#. Die zugrundeliegende Schuldscheinverschreibung wird nicht öffentlich angeboten und kann nicht von jedermann gezeichnet werden.
+#. Investoren und Projektbegünstigte sind bekannt und begrenzt. 
+#. Die Hilfsorganisation und der Begünstigte sind identisch und wird einer natürliche Person innerhalb der UNDP Libanon sein.
+#. Der Entgegennahme der Zeichnungssumme findet direkt über den Smart Contract in ETH oder DAI statt. Es wird kein externer Finanzdienstleister eingeschaltet.
+#. Der Tokenwert ist auf 1$ festgelegt (1 SIP = 1$). Es findet keine Berechnung des `Asset Net value <https://github.com/Social-Impact-Network/Frontend>`_ statt
+#. Es handelt sich um die Finanzierung eines Einzelprojekt und es werden keine weiteren Projekte über dieses Wertpapier/Token finanziert.
+#. Die Projektlaufzeit des Einzelprojekts beschränkt sich auf 6 Monate.
+#. Die Zins- und Rückzahlungen finden monatlich statt.  Die Rückzahlungen finden in 6 gleichen Raten statt. 
+#. Die Zins- und Rückzahlungen werden den Investoren auf ihren Token gutgeschrieben und es muss über die Plattform die Auszahlung veranlasst werden.
+
+
+
+Investions und Ausschüttungsprozess (SIP Token)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+//Grafik
+
+.. note:: Der SI Token ist ein ausschüttender Token. Monatliche Zins- und Rückzahlungen werden den Investoren in DAI über den Token gutgeschrieben. Auszahlungen können jederzeit über die Plattform veranlasst werden.
+
+#. Der (bekannte) Investor investiert über die `SI Plattform (Frontend) <https://github.com/Social-Impact-Network/Frontend>`_, und zahlt dabei in DAI oder Ether.
+#. Die SI Tokens werden von dem Smart Contract generiert und an den Investor übertragen.
+#. Die Gelder des Investors fließen danach (gemeinsam mit den Geldern der weiteren bekannten Investoren) an den bekannten Projektbegünstigten.
+#. Gemeinsam mit einem Contractor errichtet der Projektbegünstigte eine Solaranalge für sich selbst.
+#. Der Beneficary zahlt Zins- und Rückzahlungen monatlich direkt an den Smart Contract in DAI.
+#. Die DAI werden Anteilig den Investoren gutgeschrieben.
+#. Die Investoren können sich ihre gutgeschriebenen DAI jederzeit auszahlen lassen.
+
+
+
+Smart Contract
+~~~~~~~~~~~~~~
+
+Die Grundfunktionalitäten des Smart Contract des SIP gleichen dem des SI Token.
+Aufgrund der Vereinfachung entfallen Funktionen für die Berechnung der NetAssetValue. Es findet auch eine Vereinfachung statt, da bei dem SIP Token ausschließlich ein Einzelprojekt vorliegt.
+Durch den Entfall der Fiat-Zahlungswege müssen jedoch zwei weitere Funktionen dem Smart Contract hinzugefügt werden:
+
+.. list-table:: xxxx
+   :widths: 50 50
+   :header-rows: 1
+
+   * - Methode
+     - Erklärung
+   * - Buy
+     - Durch die Buy-Methode kann der bekannte Investor die SIP Token für Ether oder Dai kaufen. Diese Funktionalität wird in dem SI Token durch einen lizensierten Finanzpartner und vorgeschalteten KYC Prozessen abgebildet.
+   * - Claim (Beneficary)
+     - Der Beneficary kann die DAI der Investoren auszahlen, um Sie für die Finanzierung der Solar-Anlage zu verwenden
+
+     
+Vision Social Impact Token 
 -----------------------
 
 //Grafik: Beschreibung des Investionsprozesses FUND (allgemein)
@@ -48,9 +106,7 @@ Investions und Ausschüttungsprozess (SI Token)
 #. Die DAI fließen zurück in den Smart Contract.
 #. Die DAI werden anteilig an alle Investoren ausgeschüttet; Teile der Zahlungen werden für zukünftige Projekte einbehalten (reinvest).
 
-
-
-Smart Contract
+/*Smart Contract
 ~~~~~~~~~~~~~~
 
 Der Smart Contract verfügt über folgende Grundfunktionalitäten, die durch das Frontend ansteuerbar sind:
@@ -64,58 +120,4 @@ Der Smart Contract verfügt über folgende Grundfunktionalitäten, die durch das
    * - Claim
      - Durch den Aufruf der Claim-Methode kann der Nutzer die erhaltenen DAI aus dem Social Impact Smart Contract auszahlen.
    * - Payout (Beneficary)
-     - Der Beneficary kann mit dieser Methode den gewählten DAI Betrag an das Netzwerk senden
-
-
-Social Impact Prototyp Token (SIP Token)
-----------------------------------------
-Das Social Impact Network befindet sich aktuell in der Prototyp Phase. Zum Testen des Social Impact Networks und dessen Impact Measrument Systems, wurde 
-ein Social Impact Protyp Token entwickelt.
-
-Im Gegensatz zum Social Impact Token wurden hierbei einige vereinfachte Bedinungen geschaffen. Diese Bedinungen wurden insbesondere geschaffen um die regulatorischen Aspekte
-von Security Tokens auf ein Minimum zu reduzieren.
-
-Vereinfachte Bedinungen
-~~~~~~~~~~~~~~~~~~~~~~~~
-#. Das SI Netzwerk ist ein geschlossenes System. Investoren, Beneficary und Node Betreiber sind bekannt und begrenzt. Es findet kein öffentlicher Verkauf des SIP Token statt.
-#. Die Aid Organization und der Beneficary sind in diesem System identisch und eine natürliche Person der UNDP Lebanon.
-#. Der Verkauf des Token findet direkt über den Smart Contract in ETH oder DAI statt. Es wird kein externer Finanzdienstleister eingeschaltet.
-#. Der Tokenwert ist auf 1$ festgelegt (1 SIP = 1$). Es findet keine Berechnung des `Asset Net value <https://github.com/Social-Impact-Network/Frontend>`_ statt
-#. Es handelt sich um ein Einzelprojekt. Es findet kein Fund/Protfioansatz über mehrere Projekte statt.
-#. Die Projektlaufzeit des Einzelprojekts beschränkt sich auf 6 Monate.
-
-
-
-Investions und Ausschüttungsprozess (SIP Token)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-//Grafik
-
-.. note:: Der SI Token ist ein ausschüttender Token. Monatliche Auszahlungen finden in DAI an den Halter des SI Token statt.
-
-#. Der (bekannte) Investor kauft über die `SI Plattform (Frontend) <https://github.com/Social-Impact-Network/Frontend>`_ SIP Token und zahlt in DAI oder Ether.
-#. Die SI Tokens werden von dem Smart Contract für den Investor erstellt (geminted).
-#. Die Gelder des Investors fließen danach (gemeinsam mit den Geldern der weiteren bekannten Investoren) an den bekannten Beneficary
-#. Gemeinsam mit einem Contractor errichtet der Beneficary eine Solaranalge für sich selbst
-#. Der Beneficary zahlt Leasinggebühren monatlich direkt an den Smart Contract in DAI
-#. Die Dai werden Anteilig an die Investoren ausgeschüttet
-
-
-
-Smart Contract
-~~~~~~~~~~~~~~
-
-Die Grundfunktionalitäten des Smart Contract des SIP gleichen dem des SI Token.
-Aufgrund der Vereinfachung entfallen Funktionen für die Berechnung der NetAssetValue. Es findet auch eine Vereinfachung statt, da bei dem SIP Token ausschließlich ein Einzelprojekt vorliegt.
-Durch den Entfall der Fiat-Zahlungswege müssen jedoch zwei weitere Funktionen dem Smart Contract hinzugefügt werden:
-
-.. list-table:: xxxx
-   :widths: 50 50
-   :header-rows: 1
-
-   * - Methode
-     - Erklärung
-   * - Buy
-     - Durch die Buy-Methode kann der bekannte Investor die SIP Token für Ether oder Dai kaufen. Diese Funktionalität wird in dem SI Token durch einen lizensierten Finanzpartner und vorgeschalteten KYC Prozessen abgebildet.
-   * - Claim (Beneficary)
-     - Der Beneficary kann die DAI der Investoren auszahlen, um Sie für die Finanzierung der Solar-Anlage zu verwenden
+     - Der Beneficary kann mit dieser Methode den gewählten DAI Betrag an das Netzwerk senden*/
