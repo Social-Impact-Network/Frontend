@@ -24,7 +24,7 @@ von Security Tokens auf ein Minimum zu reduzieren.
 
 Vereinfachte Bedinungen
 ~~~~~~~~~~~~~~~~~~~~~~~~
-#. Die zugrundeliegende Schuldscheinverschreibung wird nicht öffentlich angeboten und kann nicht von jedermann gezeichnet werden.
+#. Die zugrundeliegende Schuldscheinverschreibung wird nicht öffentlich angeboten und kann nicht von jedem gezeichnet werden.
 #. Investoren und Projektbegünstigte sind bekannt und begrenzt. 
 #. Die Hilfsorganisation und der Begünstigte sind identisch und wird einer natürliche Person innerhalb der UNDP Libanon sein.
 #. Der Entgegennahme der Zeichnungssumme findet direkt über den Smart Contract in ETH oder DAI statt. Es wird kein externer Finanzdienstleister eingeschaltet.

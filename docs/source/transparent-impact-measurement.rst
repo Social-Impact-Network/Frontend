@@ -6,14 +6,14 @@ Transparent Impact Measurement System (TIM)
 
 Das Transparente Impact Measurement System (TIM) stellt sicher, dass die finanzierten Social Impact Projekte, den erwarteten sozialen Impact besitzen. Gleichzeitig kann das Impact Measurement
 verwendet werden um die Performance des Investments im Blick zu behalten. Durch das Impact Measurment kann der Investor bereits kleine Abweichungen zwischen
-em erwarteten Impact und dem erreichen Impact nachvollziehen. Diese Informationen ermöglichen die Überprüfung des sozialen Impact der Investionen, gleichzeitig
+dem erwarteten und erreichten Impact nachvollziehen. Diese Informationen ermöglichen die Überprüfung des sozialen Impact der Investionen, gleichzeitig
 können diese Informationen auch für Trading und Investitionsentscheidungen verwendet werden. Die Impact Werte beinhalten auch die Finanzperformance der einzelnen Projekte und werden in Echtzeit getrackt.
 
 Die Impactwerte aller Projekte sind öffentlich einsehbar.
 
 Impact Werte
 ------------
-Als Impact Werte werden alle Werte verstanden, anhand welche der direkte positiven Impact auf Umwelt und Soziales bewertet werden kann (z.B. generierte kwh).
+Als Impact Werte werden alle Werte verstanden, anhand welche der direkte positive Nutzen auf auf Umwelt und Soziales bewertet werden kann (z.B. grüne Stromerzeugung in kWh).
 Darüber hinaus sind Impact Werte auch Finanzkennziffern, mit denen die finanzielle Performance der einzelnen Projekte bewertet werden können (z.B. APY).
 
 Für alle Projekte des Social Impact Netwerks werden folgende Impact Daten erfasst:
@@ -27,10 +27,10 @@ Für alle Projekte des Social Impact Netwerks werden folgende Impact Daten erfas
    * - Projektbeschreibung
      - Eine allgemeine Beschreibung des Projektes, Beschreibung der ausführenden Aid Organisation, der Beneficary und des sozialen Impacts
    * - News
-     - Aktuelle Nachrichten (z.B. Installationsstatus, Dividendenausschüttungen) des Projekts
+     - Aktuelle Nachrichten (z.B. Installationsstatus, Ausschüttungen) des Projekts
    * - Standort
      - Standort der Projektumsetzung
-   * - Expected Lifetime
+   * - Erwartete Laufzeit der Solaranlage
      - Laufzeit des gesamten Projekts
    * - Projektkosten
      - Die Gesamtkosten des Projekts
@@ -53,8 +53,6 @@ Zusätzlich werden für Solarprojekte des Social Impact Networks folgende Impact
      - Anzahl an CO2 (in KG) die durch das Projekt über die gesamte Projektlaufzeit gespart werden sollen
    * - System power
      - Die maximale Leistung der Solaranlage in kwp
-   * - Price per kwH Lifetime
-     - Preis (ind Dollar) für die die erzeugte Energie an den Beneficary verkauft wird
 
 
 Speicherung der Impact Werte
@@ -64,7 +62,7 @@ Speicherung der Impact Werte
 
 Die Impact Werte werden in einer dezentralen, öffentlich zugänglichen Datenbank (BigChainDB) gespeichert.
 Jeder hat die Möglichkeit einen eigenen SI Node zu betreiben und somit ein komplettes Abbild aller Impact Werte zu erhalten.
-Je mehr unabhänige SI Nodes das Social Impact Netzwerk besitzt, desto manipulationssicher sind die Impact Werte.
+Je mehr unabhänige SI Nodes am Social Impact Netzwerk teilnehmen, desto manipulationssicher sind die Impact Werte.
 Durch den Betrieb eines unabhängigen SI Node, wird die Datenbank dezentralisiert und vor Manipulationen geschützt.
 Falls du das SI Netzwerk unterstützen möchtest, `erstelle deinen eigenen SI Node <https://github.com/Social-Impact-Network/Frontend>`_ und schütze die Impact Werte des SI Netzwerks.
 Für die Speicherung der Impact Werte wird eine BigChainDB verwendet. Die Abfrage der Daten findet somit über BigchainDB Nodes (SI Nodes) statt.
@@ -84,25 +82,26 @@ Die wichtigsten URLs zum Abruf der Impact Werte über diesen SI Node:
 
    * - Beschreibung
      - URL
-   * - Liste aller Projekt Asset IDs
+   * - Liste aller Projekte mit dazugehöriger Asset ID
      - `HIER URL <https://github.com/Social-Impact-Network/Frontend>`_
-   * - Statische Projektdaten (Impact Werte)
+   * - Stammdaten eines Projekts (Impact Werte)
      - `HIER URL <https://github.com/Social-Impact-Network/Frontend>`_
    * - Aktuelle KwH Daten und News
      - `HIER URL <https://github.com/Social-Impact-Network/Frontend>`_
 
 
-Liste aller Projekt Asset IDs
+Liste aller Projekte mit dazugehöriger Asset ID
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Als AssetID wird eine ID zu einem Datensatz verstanden der nicht veränderlich ist.
-In diesem Fall kann die Asset ID somit einer eindeutigen Projekt-ID gleichgesetzt werden, mit der Besonderheit, dass sich die Projektdaten (z.B. Projektbeschreibung, Projektlaufzeit) dieses Projekts nachträglich nicht änderbar sind.
-Eine Änderung eines Projekt-elements (z.B. Projektbeschreibung) ist somit nur mit der Erstellung eines neues Projekts möglich.
-Durch die Liste aller Projekt Asset IDs wird somit eine Liste von eindeutigen Projekt IDs ausgegeben.
-Diese Projekt IDs können verwendet werden um das Projekt eindeutig zu identifizieren.
 
 Eine Liste aller Projekt kann unter folgendem Link abgerufen werden: `HIER URL <https://github.com/Social-Impact-Network/Frontend>`_
 Die einzelnen Projekt Asset IDs finden sich in dem JSON Objekt als Array in 
-Hierrunter finden sich die AssetIDs aller vom SI Network aufgesetzen Projekte unter dem Eintrag `metadata <https://github.com/Social-Impact-Network/Frontend>`_
+Hierrunter finden sich die Asset IDs aller vom SI Network aufgesetzen Projekte unter dem Eintrag `metadata <https://github.com/Social-Impact-Network/Frontend>`_
+
+Als AssetID wird eine ID zu einem Datensatz verstanden der nicht veränderlich ist.
+In diesem Fall kann die Asset ID somit einer eindeutigen Projekt-ID gleichgesetzt werden, mit der Besonderheit, dass sich die Projektdaten (z.B. Projektbeschreibung, Projektlaufzeit) dieses Projekts nachträglich nicht änderbar sind.
+Änderungen bei den Projekten können nur über die News Funktion  (z.B. Projektbeschreibung) ist somit nur mit der Erstellung eines neues Projekts möglich.
+Durch die Liste aller Projekt Asset IDs wird somit eine Liste von eindeutigen Projekt IDs ausgegeben.
+Diese Projekt IDs können verwendet werden um das Projekt eindeutig zu identifizieren.
 
 
 Projektdaten

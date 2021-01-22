@@ -1,0 +1,8 @@
+/.vscode
+.directory
+.env
+*.txt
+*.sh
+lasttx.js
+date.js
+keys.js
