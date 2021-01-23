@@ -2,109 +2,90 @@
 Transparent Impact Measurement System (TIM)
 ==============================================
 
-.. warning:: Das Social Impact Network setzt aktuell ausschließlich Solarprojekte in Entwicklungsländern um. Das Impact Measurment ist dementsprechend aktuell auf Solarprojekte beschränkt
+.. warning:: Currently, SI Network only funds solar projects, therefore the Impact Measurment System only stores data from solar projects
 
-Das Transparente Impact Measurement System (TIM) stellt sicher, dass die finanzierten Social Impact Projekte, den erwarteten sozialen Impact besitzen. Gleichzeitig kann das Impact Measurement
-verwendet werden um die Performance des Investments im Blick zu behalten. Durch das Impact Measurment kann der Investor bereits kleine Abweichungen zwischen
-dem erwarteten und erreichten Impact nachvollziehen. Diese Informationen ermöglichen die Überprüfung des sozialen Impact der Investionen, gleichzeitig
-können diese Informationen auch für Trading und Investitionsentscheidungen verwendet werden. Die Impact Werte beinhalten auch die Finanzperformance der einzelnen Projekte und werden in Echtzeit getrackt.
+Transparent Impact Measurement (TIM) ensures that the funded social impact projects can be examined for the expected social impact. At the same time, impact measurement makes it possible to keep track of the performance of the investment. Through impact measurements, the investor can understand even minor discrepancies between the expected impact and the achieved impact. This information enables the review of the social impact of the investment for third parties and at the same time this information can be used for trading and investment decisions. Impact values also include the financial performance of individual projects and are tracked in real time.
+Impact values of all projects are publicly available.
 
-Die Impactwerte aller Projekte sind öffentlich einsehbar.
+Impact Values
+-----------------
+Impact values are all any data that can be used to assess direct positive environmental and social benefits (e.g., clean electricity generation in kWh). In addition, impact values are also financial indicators that can be used to assess the financial performance of funded SI Network projects (e.g. APY).
 
-Impact Werte
-------------
-Als Impact Werte werden alle Werte verstanden, anhand welche der direkte positive Nutzen auf auf Umwelt und Soziales bewertet werden kann (z.B. grüne Stromerzeugung in kWh).
-Darüber hinaus sind Impact Werte auch Finanzkennziffern, mit denen die finanzielle Performance der einzelnen Projekte bewertet werden können (z.B. APY).
-
-Für alle Projekte des Social Impact Netwerks werden folgende Impact Daten erfasst:
+The following impact data is collected for all Social Impact Network projects:
 
 .. list-table:: Impact Werte für alle Social Impact Projekte
    :widths: 50 50
    :header-rows: 1
 
-   * - Datensatz
-     - Beschreibung
-   * - Projektbeschreibung
-     - Eine allgemeine Beschreibung des Projektes, Beschreibung der ausführenden Aid Organisation, der Beneficary und des sozialen Impacts
+ 
+
+   * - Value
+     - Description
+   * - Project description
+     - A general description of the project, description of the implementing aid organization, beneficiary and social impact.
    * - News
-     - Aktuelle Nachrichten (z.B. Installationsstatus, Ausschüttungen) des Projekts
-   * - Standort
-     - Standort der Projektumsetzung
-   * - Erwartete Laufzeit der Solaranlage
-     - Laufzeit des gesamten Projekts
-   * - Projektkosten
-     - Die Gesamtkosten des Projekts
+     - Current news (e.g. installation status, payouts) of the project.
+   * - Location
+     - Location of the project implementation
+   * - Project cost
+     - The total cost of the project
    * - APY
-     - Durchschnittliche jährliche APY über die gesamte Projektlaufzeit
+     - Average annual APY over the lifetime of the project.
 
-
-
-Zusätzlich werden für Solarprojekte des Social Impact Networks folgende Impact Werte gespeichert:
+Additionally, the following impact values are stored for solar projects:
 
 .. list-table:: Zusätzliche Impact Werte für Solarprojekte
    :widths: 50 50
    :header-rows: 1
 
-   * - Datensatz
-     - Beschreibung
-   * - Estimated energy per year
-     - Anzahl der kwh die durchschnittlich pro Jahr durch das Projekt erzeugt werden sollen
+   * - Value
+     - Description
+   * - Expected duration of the solar installation
+     - Duration of the whole project
+   * - Estimated energy generated per year
+     - Amount of kwh generated on average per year by the project.
    * - Avoided CO2
-     - Anzahl an CO2 (in KG) die durch das Projekt über die gesamte Projektlaufzeit gespart werden sollen
+     - Amount of CO2 (in KG) saved by the project over the entire project lifetime.
    * - System power
-     - Die maximale Leistung der Solaranlage in kwp
+     - The maximum power of the solar system in kwp
 
 
-Speicherung der Impact Werte
+Storage of Impact Values
 ----------------------------
 
 // Grafik
 
-Die Impact Werte werden in einer dezentralen, öffentlich zugänglichen Datenbank (BigChainDB) gespeichert.
-Jeder hat die Möglichkeit einen eigenen SI Node zu betreiben und somit ein komplettes Abbild aller Impact Werte zu erhalten.
-Je mehr unabhänige SI Nodes am Social Impact Netzwerk teilnehmen, desto manipulationssicher sind die Impact Werte.
-Durch den Betrieb eines unabhängigen SI Node, wird die Datenbank dezentralisiert und vor Manipulationen geschützt.
-Falls du das SI Netzwerk unterstützen möchtest, `erstelle deinen eigenen SI Node <https://github.com/Social-Impact-Network/Frontend>`_ und schütze die Impact Werte des SI Netzwerks.
-Für die Speicherung der Impact Werte wird eine BigChainDB verwendet. Die Abfrage der Daten findet somit über BigchainDB Nodes (SI Nodes) statt.
-Für eine vollständige Erklärung zu BigChainDB und wie du mit den Nodes interagieren kannst, lies bitte die `BigchainDB Documenation <https://github.com/Social-Impact-Network/Frontend>`_.
+SI Impact values are stored in a decentralized, publicly accessible database (BigChainDB). Everyone can operate an SI node and thus obtain a complete image of all impact values. The more independent SI Nodes participate in the Social Impact network, the more resistant against tampering the impact values are. By running an independent SI Node, the database becomes decentralized and protected from tampering. If you want to support SI network and protect impact values `create your own SI node <https://github.com/Social-Impact-Network/Frontend>`_ . A BigChainDB is used to store impact values. 
+Querying impact values is performed through BigchainDB nodes (SI nodes). For a full explanation of BigChainDB and how it interacts with nodes, see `BigchainDB documentation <https://github.com/Social-Impact-Network/Frontend>`_.
 
-Wichtigste API-URLS
+Main REST API URLs
 ~~~~~~~~~~~~~~~~~~~~
 
-Die Entwickler des Social Impact Network betreiben einen SI Node unter `HIER URL <https://github.com/Social-Impact-Network/Frontend>`_.
-Die Impact Werte können direkt über diesen SI Node bezogen werden oder über einen anderen `aktiven Node <https://github.com/Social-Impact-Network/Frontend>`_
-
-Die wichtigsten URLs zum Abruf der Impact Werte über diesen SI Node: 
+Core Social Impact Network Team operate an SI node at `HERE URL <https://github.com/Social-Impact-Network/Frontend>`_. Impact values can be retrieved directly via this SI node or via other `active nodes <https://github.com/Social-Impact-Network/Frontend>`_ Main REST API URLs for retrieving impact values (JSON) via this SI node: 
 
 .. list-table:: Wichtigsten API-URLs
    :widths: 50 50
    :header-rows: 1
 
-   * - Beschreibung
+   * - Description
      - URL
-   * - Liste aller Projekte mit dazugehöriger Asset ID
-     - `HIER URL <https://github.com/Social-Impact-Network/Frontend>`_
-   * - Stammdaten eines Projekts (Impact Werte)
-     - `HIER URL <https://github.com/Social-Impact-Network/Frontend>`_
-   * - Aktuelle KwH Daten und News
-     - `HIER URL <https://github.com/Social-Impact-Network/Frontend>`_
+   * - list of all projects with associated Asset IDs
+     - `HERE URL <https://github.com/Social-Impact-Network/Frontend>`_
+   * - General Project data (impact values)
+     - `HERE URL <https://github.com/Social-Impact-Network/Frontend>`_
+   * - Current KwH data and news
+     - `HERE URL <https://github.com/Social-Impact-Network/Frontend>`_
 
 
-Liste aller Projekte mit dazugehöriger Asset ID
+List of all projects with associated Asset ID
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Eine Liste aller Projekt kann unter folgendem Link abgerufen werden: `HIER URL <https://github.com/Social-Impact-Network/Frontend>`_
-Die einzelnen Projekte befinden sich mit der zugehörigen AssetID in dem JSON Objekt als Array.
-Hierrunter finden sich die Asset IDs aller vom SI Network aufgesetzen Projekte unter dem Eintrag `metadata <https://github.com/Social-Impact-Network/Frontend>`_
+A list of all projects can be found under the following link: `HERE URL <https://github.com/Social-Impact-Network/Frontend>`_ Each project is located with its associated asset ID in the JSON object as an array. You will find the asset IDs of all projects set up by the SI network in entry `Metadata <https://github.com/Social-Impact-Network/Frontend>`_.
+Asset ID is the identifier of a project. When a project is created via a CREATE transaction, this unique Asset ID is assigned and cannot be changed.  The Asset ID can thus be considered equivalent to a unique Project ID. The list of all project asset IDs thus provides a list of unique project IDs. These project IDs can be used to uniquely identify the project.
 
-Als AssetID wird die Kennung eines Projekts verstanden. Bei der Anlage eines Projekts über eine CREATE Transaktion wird diese einzigartige AssetID vergeben, die sich nicht verändert. 
-In diesem Fall kann die Asset ID somit einer eindeutigen Projekt-ID gleichgesetzt werden
-Durch die Liste aller Projekt Asset IDs wird somit eine Liste von eindeutigen Projekt IDs ausgegeben.
-Diese Projekt IDs können verwendet werden um das Projekt eindeutig zu identifizieren.
-
-Initialisierung einer Projektliste
+Initialization of a project list
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Für die Initialisierung einer neuen Projektliste, benutze das Skript `create_project_list.js <https://github.com/Social-Impact-Network/Frontend>`_
+To initialize a new project list, use  `create_project_list.js <https://github.com/Social-Impact-Network/Frontend>`_.
 
 Projektdaten
 ~~~~~~~~~~~~
