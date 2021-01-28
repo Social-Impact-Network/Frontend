@@ -37,37 +37,60 @@ const tx = driver.Transaction.makeCreateTransaction(
 // Sign the transaction with admin's private keys
 const txCreateadminSimpleSigned = driver.Transaction.signTransaction(tx, admin_privateKey);
 
-conn.postTransactionCommit(txCreateadminSimpleSigned)
-.then(tx => {
-
-	const metaTransfer = {
-		'timestamp': timestamp,
-		'event': "OWNERSHIP_TRANSFER",
-		'from': tx.outputs[0].public_keys[0],
-		'to': tracker_publicKey
-	};
-
-	const transaction = driver.Transaction.makeTransferTransaction(
-		[{ tx: txCreateadminSimpleSigned, output_index: 0 }],
-		[driver.Transaction.makeOutput(driver.Transaction.makeEd25519Condition(tracker_publicKey))],
-		metaTransfer
-	);
-
-	const signedCryptoConditionTx = driver.Transaction.signTransaction(transaction, admin_privateKey);
-	return conn.postTransactionCommit(signedCryptoConditionTx);
-})
-.then(tx => {
-	console.log('Is Admin the owner?', tx.outputs[0].public_keys[0] === admin_publicKey);
-	console.log('Is Tracker the owner?', tx.outputs[0].public_keys[0] === tracker_publicKey);
-	console.log('Was Admin the previous owner?', tx.inputs[0].owners_before[0] === admin_publicKey);
+conn.postTransactionCommit(txCreateadminSimpleSigned).then(tx => {
+	/* Put in here corresponding asset ids. 
+	* It is recommended to add them one by one. 
+	* That is, adding one additional asset id per TX */
+	const idList = [
+		tx.asset.id,
+		// 'asset_id_2_here' // after asset id 1 is written to bigchaindb
+	];
 	
-	// write last written transaction for convenience in a .js file
-    fs.writeFileSync('./last_tx.js', 'const saveLastTx =\n' + util.inspect(tx, { depth: null }) , 'utf-8');
-    fs.appendFileSync('last_tx.js', ';\nmodule.exports = { saveLastTx };','utf-8');
+	const metaNew = {
+		'timestamp': timestamp,
+		'event': 'APPEND_ID',
+		'projects': idList
+	};
+	
+	const transaction = driver.Transaction.makeTransferTransaction(
+		[{ tx: tx, output_index: 0 }],
+		[driver.Transaction.makeOutput(driver.Transaction.makeEd25519Condition(admin_publicKey))],
+		metaNew
+	);
+		
+	const txSigned = driver.Transaction.signTransaction(transaction, admin_privateKey);
+	conn.postTransactionCommit(txSigned)
+	.then(tx => {
 
-	conn.searchAssets(tx.asset.id)  
-	.then(assets => {
-		console.log(util.inspect(assets, { depth: null }))
-		process.exit(1)
+		const metaTransfer = {
+			'timestamp': timestamp,
+			'event': "OWNERSHIP_TRANSFER",
+			'from': tx.outputs[0].public_keys[0],
+			'to': tracker_publicKey
+		};
+
+		const transaction = driver.Transaction.makeTransferTransaction(
+			[{ tx: txCreateadminSimpleSigned, output_index: 0 }],
+			[driver.Transaction.makeOutput(driver.Transaction.makeEd25519Condition(tracker_publicKey))],
+			metaTransfer
+		);
+
+		const signedCryptoConditionTx = driver.Transaction.signTransaction(transaction, admin_privateKey);
+		return conn.postTransactionCommit(signedCryptoConditionTx);
+	})
+	.then(tx => {
+		console.log('Is Admin the owner?', tx.outputs[0].public_keys[0] === admin_publicKey);
+		console.log('Is Tracker the owner?', tx.outputs[0].public_keys[0] === tracker_publicKey);
+		console.log('Was Admin the previous owner?', tx.inputs[0].owners_before[0] === admin_publicKey);
+		
+		// write last written transaction for convenience in a .js file
+		fs.writeFileSync('./last_tx.js', 'const saveLastTx =\n' + util.inspect(tx, { depth: null }) , 'utf-8');
+		fs.appendFileSync('last_tx.js', ';\nmodule.exports = { saveLastTx };','utf-8');
+
+		conn.searchAssets(tx.asset.id)  
+		.then(assets => {
+			console.log(util.inspect(assets, { depth: null }))
+			process.exit(1)
+		})
 	})
 })
