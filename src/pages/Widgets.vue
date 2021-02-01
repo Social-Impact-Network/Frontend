@@ -376,13 +376,12 @@ axios.post('https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2', {
 
       let daiAmount = this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(this.number), 'ether'))
                      
-      console.log(amountToPayWei.toString())
-      console.log(daiAmount.toString())
+      //console.log(amountToPayWei.toString())
+      //console.log(daiAmount.toString())
 
       //this.$store.state.contractInstance().methods.buyTokens(this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(100), 'ether'))).send( {from: this.$store.state.web3.coinbase, value: this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(0.47941561331302246), 'ether'))})
-
+      console.log(this.$store.state.)
       this.$store.state.contractInstance().methods.buyTokens(daiAmount).send({value: amountToPayWei, from: this.$store.state.web3.coinbase}).then((result) => {console.log(result)})
-     
       if(this.number > 0 & this.selects.currency!='') {
         if (type === 'success-message') {
           console.log(this.selects.currency);

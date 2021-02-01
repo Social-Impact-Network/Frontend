@@ -205,10 +205,7 @@ console.log(this.$store.state.userDetails.transferReceived)
           }
         )
         }
-console.log("claimm");
- console.log(this.$store.state.userDetails.receivedClaims)
         if (Array.isArray(this.$store.state.userDetails.receivedClaims)){
-          console.log("456")
         this.$store.state.userDetails.receivedClaims.forEach((receivedClaims) => { 
           tableData.push(
             {id:newID,

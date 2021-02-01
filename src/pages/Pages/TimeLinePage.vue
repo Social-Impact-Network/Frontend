@@ -724,8 +724,7 @@ export default {
   computed: {
 
 projectCards(){
-	/*console.log("hier")
-	console.log(this.$store.state.projects)*/
+
 let projectCard = []
 console.log("cards")
 console.log(this.$store.state.projects)

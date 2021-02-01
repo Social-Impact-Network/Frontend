@@ -7,9 +7,8 @@
 <script>
 import getDaiContract from '../util/getDaiCointract'
 getDaiContract.then(result => {
-  console.log("blub")
             console.log(result)
-        }).catch(e => {console.log("blub2")
+        }).catch(e => {console.log(e)
         console.log(e)}) 
 export default {
 
@@ -22,20 +21,7 @@ export default {
   },
  
   methods: {
-    /* clickNumber (event) {
-      //this.winEvent = null
-      this.pending = true    
-      this.$store.state.contractInstance().methods.balanceOf(this.$store.state.web3.coinbase).call( (err, result) => {
-        if (err) {
-          this.pending = false
-          console.log("Error while retrieving Balance")
-        } else {
-          this.balance = result;
-          this.pending = false;
-        }
-      })
-
-    } */
+    
   },
  async mounted () {
     
@@ -110,7 +96,6 @@ export default {
         let resultTokenClaimed = await this.$store.state.contractInstance().getPastEvents("AmountPaidOut",{
             filter: {tokenholder: this.$store.state.web3.coinbase},
             fromBlock: 1})
-        console.log("123444444")
         console.log(resultTokenClaimed)
         let tokenClaimedEventPayload = []
         for await (let tokenClaimedEvent of resultTokenClaimed) { //@todo: test with multiple purchasedEvents committed
