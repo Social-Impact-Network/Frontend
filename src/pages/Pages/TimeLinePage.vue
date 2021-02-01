@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-
+     <metamask/>
     <!-- Stats Cards -->
     <div class="col-lg-4" v-for="card in statsCards" :key="card.title">
       <stats-card
@@ -182,410 +182,14 @@
 
 				
 	</card>
-      <!--<stats-card
-        :title="card.title"
-        :sub-title="card.subTitle"
-        :type="card.type"
-        :icon="card.icon"
-        :claimButtonShow="card.claimButtonShow"
-        :claimButtonDisable="card.claimButtonDisable"
-        :buyToken="card.buyToken"
-      > 
-      </stats-card>-->
-    
-				
-				<!--<card>
-					<template slot="header">
-						<h3 class="card-title">CAHL - Armenian Elderly Home (Active)</h3>
-					</template>
-					<tabs
-						type="primary"
-						tabNavWrapperClasses="col-lg-3 col-md-6"
-						tabContentClasses="col-md-8"
-						vertical
-						square
-						class="row"
-					>
-						<tab-pane>
-							<span slot="label">
-								<i class="tim-icons icon-globe-2"></i>Description
-							</span>
-							<img src="img/Solar.jpg"/>
-							<br>
-							<br>
-							Collaboratively administrate empowered markets via plug-and-play
-							networks. Dynamically procrastinate B2C users after installed base
-							benefits.
-						</tab-pane>
-						<tab-pane>
-							<span slot="label">
-								<i class="tim-icons icon-globe-2"></i>News
-							</span>
-							<img src="img/Solar.jpg"/>
-							<br>
-							<br>
-							Collaboratively administrate empowered markets via plug-and-play
-							networks. Dynamically procrastinate B2C users after installed base
-							benefits.
-						</tab-pane>
-
-						<tab-pane>
-							<span slot="label">
-								<i class="tim-icons icon-notes"></i>Details
-							</span>
-							Collaboratively administrate empowered markets via plug-and-play
-							networks. Dynamically procrastinate B2C users after installed base
-							benefits.
-
-              <table style="width:100%">
-								<br>
-								<tr>
-									<td>
-										<div title= 'project costs infos here'>
-											Project Cost <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-										</div>
-									</td>
-									<td>1 Mio EUR</td>
-								</tr>
-
-								<tr>
-									<td>
-										<div title= 'Estimated energy per year infos here'>
-											Estimated energy per year <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-										</div>
-									</td>
-									<td>139,43 MWh</td>
-								</tr>
-
-								<tr>
-									<div title= 'price per kWh infos here'>
-											Price per kWh <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>0.15 USD</td>
-								</tr>
-
-								<tr>
-									<div title= 'service fees infos here'>
-											Service fee <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>20%</td>
-								</tr>
-
-								<tr>
-									<div title= 'reinvest rate infos here'>
-											Reinvest rate <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>20%</td>
-								</tr>
-
-
-								<tr>
-									<div title= 'Network dividends infos here'>
-										Network dividends <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>60%</td>
-								</tr>
-
-								<tr>
-									<div title= 'Expected Lifetime infos here'>
-										Expected Lifetime <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>20 years</td>
-								</tr>
-
-							</table>
-						</tab-pane>
-					</tabs>
-				</card>-->
+     
 			</div>
 
-			 <!-- Big quadratic tabs with icons 
-			<div class="col-md-6">
-				<card>
-					<template slot="header">
-						<h3 class="card-title">UNDP Country Office (Proposed)</h3>
-					</template>
-					<tabs
-						type="primary"
-						tabNavWrapperClasses="col-lg-3 col-md-6"
-						tabContentClasses="col-md-8"
-						vertical
-						square
-						class="row"
-					>
-						<tab-pane>
-							<span slot="label">
-								<i class="tim-icons icon-globe-2"></i>Lebanon
-							</span>
-							<img src="img/Solar.jpg"/>
-							<br>
-							<br>
-							Collaboratively administrate empowered markets via plug-and-play
-							networks. Dynamically procrastinate B2C users after installed base
-							benefits.
-						</tab-pane>
-
-						<tab-pane>
-							<span slot="label">
-								<i class="tim-icons icon-notes"></i>Details
-							</span>
-							Collaboratively administrate empowered markets via plug-and-play
-							networks. Dynamically procrastinate B2C users after installed base
-							benefits.
-
-							<table style="width:100%">
-								<br>
-								<tr>
-									<td>
-										<div title= 'project costs infos here'>
-											Project Cost <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-										</div>
-									</td>
-									<td>1 Mio EUR</td>
-								</tr>
-
-								<tr>
-									<td>
-										<div title= 'Estimated energy per year infos here'>
-											Estimated energy per year <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-										</div>
-									</td>
-									<td>139,43 MWh</td>
-								</tr>
-
-								<tr>
-									<div title= 'price per kWh infos here'>
-											Price per kWh <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>0.15 USD</td>
-								</tr>
-
-								<tr>
-									<div title= 'service fees infos here'>
-											Service fee <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>20%</td>
-								</tr>
-
-								<tr>
-									<div title= 'reinvest rate infos here'>
-											Reinvest rate <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>20%</td>
-								</tr>
-
-
-								<tr>
-									<div title= 'Network dividends infos here'>
-										Network dividends <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>60%</td>
-								</tr>
-
-								<tr>
-									<div title= 'Expected Lifetime infos here'>
-										Expected Lifetime <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>20 years</td>
-								</tr>
-
-							</table>
-
-						</tab-pane>
-					</tabs>
-				</card>
-			</div>--->
 
 		</div>
 
 
 
-			<!--
-			<div v-if="showMore">
-				<div class="row">
-			<div class="col-md-6">
-				<card>
-					<template slot="header">
-						<h3 class="card-title">Project #3</h3>
-					</template>
-					<tabs
-						type="primary"
-						tabNavWrapperClasses="col-lg-3 col-md-6"
-						tabContentClasses="col-md-8"
-						vertical
-						square
-						class="row"
-					>
-						<tab-pane>
-							<span slot="label">
-								<i class="tim-icons icon-globe-2"></i>Home
-							</span>
-							Collaboratively administrate empowered markets via plug-and-play
-							networks. Dynamically procrastinate B2C users after installed base
-							benefits.
-						</tab-pane>
-
-						<tab-pane>
-							<span slot="label">
-								<i class="tim-icons icon-notes"></i>Details
-							</span>
-							Collaboratively administrate empowered markets via plug-and-play
-							networks. Dynamically procrastinate B2C users after installed base
-							benefits.
-							<table style="width:100%">
-							<br>
-								<tr>
-									<td>
-										<div title= 'project costs infos here'>
-											Project Cost <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-										</div>
-									</td>
-									<td>1 Mio EUR</td>
-								</tr>
-
-								<tr>
-									<td>
-										<div title= 'Estimated energy per year infos here'>
-											Estimated energy per year <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-										</div>
-									</td>
-									<td>139,43 MWh</td>
-								</tr>
-
-								<tr>
-									<div title= 'price per kWh infos here'>
-											Price per kWh <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>0.15 USD</td>
-								</tr>
-
-								<tr>
-									<div title= 'service fees infos here'>
-											Service fee <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>20%</td>
-								</tr>
-
-								<tr>
-									<div title= 'reinvest rate infos here'>
-											Reinvest rate <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>20%</td>
-								</tr>
-
-
-								<tr>
-									<div title= 'Network dividends infos here'>
-										Network dividends <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>60%</td>
-								</tr>
-
-								<tr>
-									<div title= 'Expected Lifetime infos here'>
-										Expected Lifetime <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>20 years</td>
-								</tr>
-
-							</table>
-						</tab-pane>
-					</tabs>
-				</card>
-			</div>
-
-				<div class="col-md-6">
-					<card>
-						<template slot="header">
-							<h3 class="card-title">Project #4</h3>
-						</template>
-						<tabs
-							type="primary"
-							tabNavWrapperClasses="col-lg-3 col-md-6"
-							tabContentClasses="col-md-8"
-							vertical
-							square
-							class="row"
-						>
-							<tab-pane>
-							<span slot="label">
-								<i class="tim-icons icon-globe-2"></i>Home
-							</span>
-								Collaboratively administrate empowered markets via plug-and-play
-								networks. Dynamically procrastinate B2C users after installed base
-								benefits. <br /><br />
-								Dramatically visualize customer directed convergence without
-								revolutionary ROI.
-							</tab-pane>
-
-							<tab-pane>
-							<span slot="label">
-								<i class="tim-icons icon-notes"></i>Details
-							</span>
-								<table style="width:100%">
-								<br>
-								<tr>
-									<td>
-										<div title= 'project costs infos here'>
-											Project Cost <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-										</div>
-									</td>
-									<td>1 Mio EUR</td>
-								</tr>
-
-								<tr>
-									<td>
-										<div title= 'Estimated energy per year infos here'>
-											Estimated energy per year <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-										</div>
-									</td>
-									<td>139,43 MWh</td>
-								</tr>
-
-								<tr>
-									<div title= 'price per kWh infos here'>
-											Price per kWh <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>0.15 USD</td>
-								</tr>
-
-								<tr>
-									<div title= 'service fees infos here'>
-											Service fee <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>20%</td>
-								</tr>
-
-								<tr>
-									<div title= 'reinvest rate infos here'>
-											Reinvest rate <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>20%</td>
-								</tr>
-
-
-								<tr>
-									<div title= 'Network dividends infos here'>
-										Network dividends <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>60%</td>
-								</tr>
-
-								<tr>
-									<div title= 'Expected Lifetime infos here'>
-										Expected Lifetime <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-									</div>
-									<td>20 years</td>
-								</tr>
-
-							</table>
-							</tab-pane>
-						</tabs>
-					</card>
-				</div>
-			</div>
-		
-		</div>-->
 
 		<div class="col-md-6 ml-auto mr-auto">
 			<div class="width: 100%">
@@ -597,7 +201,6 @@
 </template>
 <script>
 import LineChart from 'src/components/Charts/LineChart.js';
-import BarChart from 'src/components/Charts/BarChart.js';
 import * as chartConfigs from 'src/components/Charts/config.js';
 import TaskList from 'src/pages/Dashboard/TaskList.vue';
 import UserTable from 'src/pages/Dashboard/UserTable.vue';
@@ -607,6 +210,7 @@ import config from '@/config';
 import { TabPane, Tabs, Collapse, CollapseItem } from 'src/components';
 import axios from 'axios'
 import {address} from '../../util/constants/fundContract'
+import Metamask from '@/components/metamask'
 
 let chartLabels = []
 let dtPrimary = new Date()
@@ -630,7 +234,9 @@ export default {
     TabPane,
     Tabs,
     Collapse,
-    CollapseItem
+	CollapseItem,
+	Metamask,
+
   },
   data() {
     return {
@@ -703,10 +309,6 @@ export default {
               pointBackgroundColor: config.colors.danger,
               pointBorderColor: 'rgba(255,255,255,0)',
               pointHoverBackgroundColor: config.colors.danger,
-              //pointBorderWidth: 0.5,
-              //pointHoverRadius: 4,
-              //pointHoverBorderWidth: 15,
-              //pointRadius: 4,
               data: [7, 7, 6, 7, 7, 7]
 			},
 			
@@ -932,7 +534,33 @@ const totalCO2Avoided = (totalEnergyGenerated*0.6).toFixed(2)
 	      dt.setMilliseconds(0);
         dateArray.push({timestamp: dt, payouts:0})
 	  }
-	  
+	if(this.$store.state.tokenSupplyTotal == 0){
+ 		const tokenSupply =  await this.$store.state.contractInstance().methods.totalSupply().call(); 
+    	this.$store.dispatch('setTokenSupplyTotal', tokenSupply)
+	}
+     
+
+
+
+	if(this.$store.state.beneficiaryPayout[0] == undefined){
+		console.log("hier")
+		let resultBeneficiaryPayout = await this.$store.state.contractInstance().getPastEvents("PaymentReceived",{
+            	fromBlock: 1})
+            	console.log("beneficiracy...")
+                    console.log(resultBeneficiaryPayout)
+
+    	let beneficiaryPayoutPayload = []
+        	for await (let  beneficiaryPayoutEvent of resultBeneficiaryPayout) { //@todo: test with multiple purchasedEvents committed
+        	beneficiaryPayoutPayload.push( {
+                amountUSD: beneficiaryPayoutEvent.returnValues.amount, //@todo: has to be changed to new FundContract
+                timestamp: (await this.$store.state.web3.web3Instance().eth.getBlock(beneficiaryPayoutEvent.blockNumber)).timestamp //@todo: improvement: check if ts could be added to contract to save alot of time here..
+            })
+		}
+	  	this.$store.dispatch('beneficiaryPayoutEvents', beneficiaryPayoutPayload)
+	}
+	
+
+
 	let payouts = this.$store.state.beneficiaryPayout.map((b, idx) => Object.assign({ index: idx }, b));//JSON.parse('[{"amountUSD":"100","timestamp":1572998400},{"amountUSD":"100","timestamp":1575936000},{"amountUSD":"100","timestamp":1578182400}]')
 	
 

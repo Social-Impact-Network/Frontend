@@ -22,93 +22,11 @@
             label="Token"
             property="amount"
           ></el-table-column>
-          <!-- <el-table-column
-            min-width="150"
-            sortable
-            align="right"
-            header-align="right"
-            label="Salary"
-            property="salary"
-          ></el-table-column> -->
+
         </el-table>
       </card>
     </div>
 
-   <!--  <div class="col-md-12">
-      <card class="card-plain" body-classes="table-full-width">
-        <template slot="header">
-          <h4 class="card-title">Table on Plain Background</h4>
-          <p class="category">Here is a subtitle for this table</p>
-        </template>
-        <el-table
-          header-cell-class-name="table-transparent"
-          header-row-class-name="table-transparent"
-          row-class-name="table-transparent"
-          :data="tableData"
-        >
-          <el-table-column
-            min-width="150"
-            sortable
-            label="Name"
-            property="name"
-          ></el-table-column>
-          <el-table-column
-            min-width="150"
-            sortable
-            label="Country"
-            property="country"
-          ></el-table-column>
-          <el-table-column
-            min-width="150"
-            sortable
-            label="City"
-            property="city"
-          ></el-table-column>
-          <el-table-column
-            min-width="150"
-            sortable
-            align="right"
-            header-align="right"
-            label="Salary"
-            property="salary"
-          ></el-table-column>
-        </el-table>
-      </card>
-    </div>
-
-    <div class="col-md-12">
-      <card body-classes="table-full-width">
-        <h4 slot="header" class="card-title">Regular Table with Colors</h4>
-        <el-table :row-class-name="tableRowClassName" :data="tableData">
-          <el-table-column
-            min-width="150"
-            sortable
-            label="Name"
-            property="name"
-          ></el-table-column>
-          <el-table-column
-            min-width="150"
-            sortable
-            label="Country"
-            property="country"
-          ></el-table-column>
-          <el-table-column
-            min-width="150"
-            sortable
-            label="City"
-            property="city"
-          ></el-table-column>
-          <el-table-column
-            min-width="150"
-            sortable
-            align="right"
-            header-align="right"
-            label="Salary"
-            property="salary"
-          ></el-table-column>
-        </el-table>
-      </card>
-    </div> -->
 
   </div>
 </template>
@@ -122,17 +40,6 @@ export default {
   },
   data() {
 
-     /* let tableData = []
-      let  newID=0
-      this.$store.state.userDetails.tokenPurchased.forEach((purchasedEvent) => { 
-        tableData.push(
-          {id:newID,
-          date: purchasedEvent.timestamp,
-          action: 'purchased',
-          amount: purchasedEvent.amountToken + 'SIP (Value: ' + purchasedEvent.valueUSD+ ' USD)'})
-          newID++
-        }
-        )*/
 
 return {
   

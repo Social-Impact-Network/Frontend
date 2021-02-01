@@ -1,10 +1,11 @@
 <template>
 
   <div class="extended-forms col-md-12">
-  
+     <metamask/>  
+
     <ValidationObserver v-slot="{ handleSubmit }">
       <form class="form-horizontal" @submit.prevent="handleSubmit(submit)">
-        <card>
+        <card v-if="fundOpen">
           <h4 slot="header" class="card-title">Investment order</h4>
           <div class="cold-md-9 offset-md-2">
 
@@ -30,7 +31,6 @@
               </ValidationProvider>
               </div>
               <div class="col-md-5">
-                <!-- <h4 class="card-title">Choose currency</h4> -->
                 <div class="row">
                   <div class="col-md-5">
                     <el-select
@@ -52,9 +52,7 @@
                   </div>
                 </div>
               </div>
-              <!-- <label class="col-sm-3 label-on-right"
-                ><code>numeric="true"</code></label
-              > -->
+              
             </div>
 
             <div class="row">
@@ -111,14 +109,6 @@
               >
             </div>
           </div>
-
-          <!-- <div class="text-center">
-            <base-button
-              native-type="submit"
-              type="primary"
-              >Buy</base-button
-            >
-          </div> -->
           
           <div class="text-center">
             <card>
@@ -134,6 +124,31 @@
           </div>
 
         </card>
+      <card v-else>
+          <h4 slot="header" class="card-title">Funding Closed</h4>
+          <div class="cold-md-9 offset-md-2">
+
+
+  
+
+          </div>
+          
+          <div class="text-center">
+            <card>
+              <div class="text-center">
+                <p class="card-text">Funding closed</p>
+                
+              </div>
+            </card>
+          </div>
+
+       
+
+
+
+      </card>
+
+
       </form>
     </ValidationObserver>
     
@@ -259,11 +274,12 @@
         </div>
       </div>
     </card>
-    <!-- end card -->
   </div>  
 </template>
 
 <script>
+import Metamask from '@/components/metamask'
+
 import { TimeSelect, DatePicker, Select, Option } from 'element-ui';
 import {
   BaseProgress,
@@ -296,7 +312,8 @@ export default {
     TabPane,
     Tabs,
     Collapse,
-    CollapseItem
+    CollapseItem,
+    Metamask
   },
   data() {
     return {
@@ -307,6 +324,7 @@ export default {
       url: "",
       equal: "",
       equalTo: "",
+      fundOpen: true,
       
       selects: {
         currency: '',
@@ -341,13 +359,19 @@ card() {
     tokenSupplyTotal: this.$store.state.tokenSupplyTotal,
     alreadyFunded: parseInt(this.$store.state.tokenSupplyTotal/this.$store.state.capLimit)*100
         };
-
+        
+ 
       return pendingProject
     
 		}
   },
 
-    mounted() {
+    async mounted() {
+
+
+  if(this.$store.state.capLimit == this.$store.state.tokenSupplyTotal){
+              this.fundOpen = false;
+        }
       const axios = require('axios')
 
 axios.post('https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2', {
@@ -367,6 +391,31 @@ axios.post('https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2', {
 .catch((error) => {
   console.error(error)
 })
+
+
+
+  },
+  watch: {
+  '$store.state.web3.coinbase': async function() {
+    let tokenSupply = 0;
+    let capLimit = 0;
+        if(this.$store.state.tokenSupplyTotal == 0){
+          tokenSupply = await this.$store.state.contractInstance().methods.totalSupply().call()
+          this.$store.dispatch('setTokenSupplyTotal', tokenSupply)
+        }
+
+        if(this.$store.state.capLimit == 0){
+            capLimit = await this.$store.state.contractInstance().methods.cap().call()
+            this.$store.dispatch('setCapLimit', capLimit)
+        }
+
+        if(tokenSupply == capLimit){
+              this.fundOpen = false;
+        }
+
+        
+  
+    }
   },
   methods: {
     submit(type) {
@@ -376,12 +425,10 @@ axios.post('https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2', {
 
       let daiAmount = this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(this.number), 'ether'))
                      
-      //console.log(amountToPayWei.toString())
-      //console.log(daiAmount.toString())
-
-      //this.$store.state.contractInstance().methods.buyTokens(this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(100), 'ether'))).send( {from: this.$store.state.web3.coinbase, value: this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(0.47941561331302246), 'ether'))})
-     // console.log(this.$store.state)
-      this.$store.state.contractInstance().methods.buyTokens(daiAmount).send({value: amountToPayWei, from: this.$store.state.web3.coinbase}).then((result) => {console.log(result)})
+       console.log(this.$store.state.contractInstance())
+      this.$store.state.contractInstance().methods.buyTokens(daiAmount).send({value: amountToPayWei, from: this.$store.state.web3.coinbase}).then((result) => {
+        console.log("result")
+        console.log(result)})
       if(this.number > 0 & this.selects.currency!='') {
         if (type === 'success-message') {
           console.log(this.selects.currency);
@@ -396,7 +443,8 @@ axios.post('https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2', {
           });
         } 
       }
-    }
+    },
+
   }
 };
 </script>

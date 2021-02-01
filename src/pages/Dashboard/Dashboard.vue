@@ -81,11 +81,7 @@ let dt = new Date()
 dt.setMonth(dtPrimary.getMonth()-i)
 bigChartLabels[0].push(dt.toLocaleString('default', { month: 'short' }))
 }
-/*let bigChartLabels = [
-  ['J2N', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC']
- // ["January '19", 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December', "January '20"],
-  /* ['a','b','c','d','e','f','g','h','i','k','l','m','n'] 
-]*/
+
 
 let bigChartDatasetOptions = {
   fill: true,
@@ -170,15 +166,7 @@ export default {
           type: 'info',
           icon: 'tim-icons icon-bulb-63',
           //footer: '<i class="tim-icons icon-satisfied"></i> Impact'
-        }/*,
-        {
-          title: 'Buy Token',
-          subTitle: 'Invest',
-          type: 'danger',
-          icon: 'tim-icons icon-cart',
-          buyToken: true
-          //footer: '<i class="tim-icons icon-wallet-43"></i> Purchase history'
-        }*/
+        }
       ]
     },
           
@@ -238,7 +226,6 @@ this.$store.state.userDetails.receidClaimsDateArray.forEach((element, index) => 
       this.bigLineChart.chartData = chartData;
       this.bigLineChart.activeIndex = index;
       
-      /* console.log(index); */
     }
   },
   watch:{
@@ -247,19 +234,7 @@ this.$store.state.userDetails.receidClaimsDateArray.forEach((element, index) => 
     }
 
   },
-  mounted() {/*
-    console.log("test")
-console.log(this.$store.state.userDetails.receidClaimsDateArray)
-this.$store.state.userDetails.receidClaimsDateArray.forEach((element) => {
-console.log(element)
-
-
-})
-bigChartData = [
-  [50, 70, 90, 70, 85, 60, 75, 60, 90, 80, 110, 100,],
-  [50, 100000000000, 156, 222, 286, 380, 421, 409, 321, 231, 180, 133, 99]/* ,
-  [60, 80, 65, 130, 80, 105, 90, 130, 70, 115, 60, 130, 22] 
-]*/
+  mounted() {
     this.i18n = this.$i18n;
     if (this.enableRTL) {
       this.i18n.locale = 'ar';

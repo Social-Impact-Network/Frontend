@@ -25,6 +25,12 @@ export default {
       if (state.web3.web3Instance !== null) return state.web3.web3Instance().utils.fromWei(state.web3.balance.toString())
     }
   }),
+  async mounted() {
+                await this.$store.dispatch('getContractInstance')
+
+  }
+
+
   
 }
 </script>

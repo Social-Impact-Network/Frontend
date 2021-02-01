@@ -1,6 +1,7 @@
 <template>
 
   <div class="extended-forms col-md-12">
+    <metamask/>
     <ValidationObserver v-slot="{ handleSubmit }">
       <form class="form-horizontal" @submit.prevent="handleSubmit(submit)">
         <card>
@@ -8,7 +9,7 @@
           <div class="cold-md-9 offset-md-2">
           </div>
           <div class="text-center">
-            <card>
+            <card v-if="claimable">
               <div class="text-center">
                 <p class="card-text">Claim your tokens</p>
                 <base-button
@@ -17,8 +18,17 @@
                   >Claim</base-button>
               </div>
             </card>
+            <card v-else>
+            <div class="text-center">
+                <p class="card-text">Already claimed.</p>  
+              </div>
+            </card>
           </div>
         </card>
+
+        
+
+
           <card>
           <h4 slot="header" class="card-title">Payout</h4>
           <div class="cold-md-9 offset-md-2">
@@ -43,6 +53,10 @@
               </ValidationProvider>
             <div class="text-center">
               <div class="text-center">
+                <base-button
+                  type="primary"
+                  @click.native="submit('approve')"
+                  >Approve</base-button>
                 <base-button
                   type="primary"
                   @click.native="submit('payout')"
@@ -77,8 +91,8 @@ import { required, numeric, regex, confirmed } from "vee-validate/dist/rules";
 
 import { TabPane, Tabs, Collapse, CollapseItem } from 'src/components';
 
-import swal from 'sweetalert2';
 import {address} from '../util/constants/fundContract'
+import Metamask from '@/components/metamask'
 
 extend("required", required);
 extend("numeric", numeric);
@@ -98,7 +112,9 @@ export default {
     TabPane,
     Tabs,
     Collapse,
-    CollapseItem
+    CollapseItem,
+    Metamask,
+
   },
   data() {
     return {
@@ -109,6 +125,7 @@ export default {
       url: "",
       equal: "",
       equalTo: "",
+      claimable: true,
       
       selects: {
         currency: '',
@@ -172,15 +189,17 @@ axios.post('https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2', {
   },
   methods: {
     submit(type) {
+      let amountToPayWei = 0
       //@todo: Error-Handling /  Return value handling has to be added
       if(type=='claim'){
         this.$store.state.contractInstance().methods.releaseFunds().send({from: this.$store.state.web3.coinbase}).then((result) => {console.log(result)})
 
-      } else {
-          let amountToPayWei = this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(this.number), 'ether'))
+      } else if(type=='approve') {
+          amountToPayWei = this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(this.number), 'ether'))
           this.$store.state.contractInstanceDai().methods.approve(address,amountToPayWei).send({from: this.$store.state.web3.coinbase}).then((result) => {console.log(result)})
+      } else {
+          amountToPayWei = this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(this.number), 'ether'))
           this.$store.state.contractInstance().methods.receivePayment(amountToPayWei).send({from: this.$store.state.web3.coinbase}).then((result) => {console.log(result)})
-
       }
      
     }

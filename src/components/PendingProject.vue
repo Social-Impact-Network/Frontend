@@ -5,16 +5,11 @@
 </template>
 
 <script>
-/*import getDaiContract from '../util/getDaiCointract'
-getDaiContract.then(result => {
-            console.log(result)
-        }).catch(e => {console.log(e)
-        console.log(e)}) 
-*/
+
 
 export default {
 
-  name: 'Fund',
+  name: 'PendingProject',
   data () {
     return {
       amount: null,
