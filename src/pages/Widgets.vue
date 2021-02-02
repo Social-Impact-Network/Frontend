@@ -16,7 +16,7 @@
                   <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
                 </div>
               </label>
-              <div class="col-sm-4">
+              <div class="col-sm-2">
                 <ValidationProvider
                   name="number"
                   rules="required|numeric"
@@ -30,12 +30,21 @@
                 </base-input>
               </ValidationProvider>
               </div>
-              <div class="col-md-5">
-                <div class="row">
-                  <div class="col-md-5">
-                    <el-select
+             
+              
+            </div>
+
+            <div class="row">
+              <label class="col-sm-2 col-form-label">
+                <div title= 'Reward infos here'>Invest in
+                  <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                </div>
+              </label>
+              <div class="col-sm-1"
+                >
+                  <el-select
                       class="select-primary"
-                      size="large"
+                      size="small"
                       placeholder="Currency"
                       v-model="selects.currency"
                     >
@@ -49,76 +58,114 @@
                       >
                       </el-option>
                     </el-select>
-                  </div>
                 </div>
-              </div>
-              
             </div>
 
-            <div class="row">
+          <div class="row">
               <label class="col-sm-2 col-form-label">
-                <div title= 'Reward infos here'>Reward
+                <div title= 'Energy infos here'>Rate
                   <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
                 </div>
               </label>
               <div class="col-sm-5">
                 <base-input>
-                  <p class="form-control-static">{{ number*20/100 }}</p>
+                  <p  class="form-control-static" v-if="selects.currency=='DAI'">1</p>
+                  <p  class="form-control-static" v-else>{{ rate }}</p>
+
+                </base-input>
+              </div>
+              <label class="col-sm-3 label-on-right" 
+                >{{selects.currency}}/USD</label
+              >
+               
+            </div>
+            
+            <div class="row">
+              <label class="col-sm-2 col-form-label">
+                <div title= 'Income return infos here'>Amount to pay
+                  <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                </div>
+              </label>
+              <div class="col-sm-5">
+                <base-input>
+
+                   <p  class="form-control-static" v-if="selects.currency=='DAI'">{{number}}</p>
+                  <p class="form-control-static" v-else>{{ number*rate }}</p>
+                </base-input>
+              </div>
+              <label class="col-sm-3 label-on-right" v-if="selects.currency=='DAI'"
+                >USD</label
+              >
+              <label class="col-sm-3 label-on-right" v-else
+                >ETH</label
+              >
+            </div>
+           <div class="row">
+              <label class="col-sm-2 col-form-label">
+                <div title= 'Income return infos here'>Reward
+                  <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                </div>
+              </label>
+              <div class="col-sm-5">
+                <base-input>
+                  <p class="form-control-static">{{number}}</p>
                 </base-input>
               </div>
 
               <label class="col-sm-3 label-on-right"
                 >SI Token</label
               >
-            </div>
-
-          <div class="row">
-              <label class="col-sm-2 col-form-label">
-                <div title= 'Energy infos here'>Energy
-                  <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
-                </div>
-              </label>
-              <div class="col-sm-5">
-                <base-input>
-                  <p class="form-control-static">{{ number*15/100 }}</p>
-                </base-input>
-              </div>
-
-              <label class="col-sm-3 label-on-right"
-                >kWh/month</label
-              >
-            </div>
             
-            <div class="row">
+            </div>
+           <div class="row">
               <label class="col-sm-2 col-form-label">
-                <div title= 'Income return infos here'>Income return
+                <div title= 'Income return infos here'>Energy
                   <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
                 </div>
               </label>
               <div class="col-sm-5">
                 <base-input>
-                  <p class="form-control-static">{{ number*5/100 }}</p>
+                  <p class="form-control-static">{{ number*11.24 }}</p>
                 </base-input>
               </div>
-
-              <label class="col-sm-3 label-on-right" v-if="selects.currency"
-                >{{ selects.currency }}/month</label
-              >
-              <label class="col-sm-3 label-on-right" v-if="!selects.currency"
-                >Please select currency</label
-              >
+              <label class="col-sm-3 label-on-right"
+                >kwh per month</label>
+            </div>
+           <div class="row">
+              <label class="col-sm-2 col-form-label">
+                <div title= 'Income return infos here'>APY
+                  <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
+                </div>
+              </label>
+              <div class="col-sm-5">
+                <base-input>
+                  <p class="form-control-static">6.5</p>
+                </base-input>
+              </div>
+              <label class="col-sm-3 label-on-right" 
+                >%</label>
             </div>
           </div>
           
           <div class="text-center">
             <card>
               <div class="text-center">
+      
+                <base-checkbox>Please read <a :href="'https://google.com'" target="_blank">HERE</a> </base-checkbox>
                 <p class="card-text">Check your input before submitting</p>
+                <base-button
+                  type="primary"
+                  @click.native="submit('approve')"
+                  >Approve</base-button
+                >
+
                 <base-button
                   type="primary"
                   @click.native="submit('success-message')"
                   >Buy now!</base-button
                 >
+
+                
               </div>
             </card>
           </div>
@@ -127,11 +174,7 @@
       <card v-else>
           <h4 slot="header" class="card-title">Funding Closed</h4>
           <div class="cold-md-9 offset-md-2">
-
-
-  
-
-          </div>
+      </div>
           
           <div class="text-center">
             <card>
@@ -325,13 +368,12 @@ export default {
       equal: "",
       equalTo: "",
       fundOpen: true,
-      
+      rate: 0,
       selects: {
-        currency: '',
+        currency: 'DAI',
         currencies: [
-          { value: 'USD', label: 'USD $' },
-          { value: 'EUR', label: 'EUR €' },
-          { value: 'BTC', label: 'BTC ₿' }
+          { value: 'DAI', label: 'DAI' },
+          { value: 'ETH', label: 'ETH' }
         ],
         multiple: 'ARS'
       },
@@ -355,6 +397,7 @@ card() {
 		energyEstimation: 'to add ',
 		apy: 'to add',
     location: 'to add ',
+    fundOpen: true,
     capLimit: this.$store.state.capLimit,
     tokenSupplyTotal: this.$store.state.tokenSupplyTotal,
     alreadyFunded: parseInt(this.$store.state.tokenSupplyTotal/this.$store.state.capLimit)*100
@@ -369,8 +412,8 @@ card() {
     async mounted() {
 
 
-  if(this.$store.state.capLimit == this.$store.state.tokenSupplyTotal){
-              this.fundOpen = false;
+  if(this.$store.state.capLimit == this.$store.state.tokenSupplyTotal && this.$store.state.capLimit > 0){
+              this.fundOpen = true;
         }
       const axios = require('axios')
 
@@ -386,7 +429,7 @@ axios.post('https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2', {
 })
 .then((res) => {
   this.$store.dispatch('setDAIPrice', res.data.data.token.derivedETH)
-  
+  this.rate = res.data.data.token.derivedETH;
 })
 .catch((error) => {
   console.error(error)
@@ -408,9 +451,11 @@ axios.post('https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2', {
             capLimit = await this.$store.state.contractInstance().methods.cap().call()
             this.$store.dispatch('setCapLimit', capLimit)
         }
-
+      
         if(tokenSupply == capLimit){
               this.fundOpen = false;
+        } else {
+          this.fundOpen = true;
         }
 
         
@@ -425,7 +470,6 @@ axios.post('https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2', {
 
       let daiAmount = this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(this.number), 'ether'))
                      
-       console.log(this.$store.state.contractInstance())
       this.$store.state.contractInstance().methods.buyTokens(daiAmount).send({value: amountToPayWei, from: this.$store.state.web3.coinbase}).then((result) => {
         console.log("result")
         console.log(result)})
