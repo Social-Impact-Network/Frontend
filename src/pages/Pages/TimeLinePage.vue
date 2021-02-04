@@ -334,7 +334,7 @@ console.log(this.$store.state.projects)
 this.$store.state.projects.forEach((project) => {
 	projectCard.push({
 		title: project.name.toString(),
-        news: 'to add',
+    news: 'to add',
 		description: project.details,
 		costs: String(project.hardwareCosts + project.installationCosts + project.planningCosts),
 		expectedLifetime: project.predictedLifetime,
@@ -417,13 +417,14 @@ statsCards() {
 
 
     
-    
 	  
 
 let response = (await axios
-	  .get('https://ropsten.etherscan.io/token/generic-tokenholders2?a='+ address)).data
-	  let tokenHolderTotal = Number(response.match(/(?<=A total of \s*).*?(?=\s*token holders)/gs)[0])
-	this.$store.dispatch('getTokenHolderTotal', tokenHolderTotal)
+    .get('https://ropsten.etherscan.io/token/generic-tokenholders2?a='+ address)).data
+let tokenHolderTotal = Number(response.match(/(?<=A total of \s*).*?(?=\s*token holder)/gs)[0])
+
+  this.$store.dispatch('getTokenHolderTotal', tokenHolderTotal)
+
 	let projects = []
 
 let projectAssetIDs = (await axios
@@ -438,6 +439,8 @@ function mod(n, m) {
   await Promise.all(projectAssetIDs.projects.map(async (projectID) => {
     try {
 	  let projetDetails = (await axios.get('https://acren.org/project_details.php')).data[0].asset.data //@todo: add projectID here
+
+
 
 		project = {
 		'assetID': projectID,
@@ -459,8 +462,9 @@ function mod(n, m) {
 
 	
 	
-	let lastTx = (await axios.get('https://acren.org/measurements.php')).data[0]//.metadata.summary.kwh_total //@todo: add projectID here
-	totalEnergyGenerated += lastTx.metadata.summary.kwh_total 
+  let lastTx = (await axios.get('https://acren.org/measurements.php')).data[0]//.metadata.summary.kwh_total //@todo: add projectID here
+
+  totalEnergyGenerated += lastTx.metadata.summary.kwh_total 
 	let kwhStatisticYear = lastTx.metadata.summary.kwh_by_year
 	const yearToday = new Date().getUTCFullYear()
 	const monthToday = new Date().getMonth()

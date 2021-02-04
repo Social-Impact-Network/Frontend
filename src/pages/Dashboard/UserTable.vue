@@ -65,7 +65,9 @@ return {
 
 let tableData = []
       let  newID=0
+
       if (Array.isArray(this.$store.state.userDetails.tokenPurchased)){
+      console.log( this.$store.state.userDetails.tokenPurchased)
       this.$store.state.userDetails.tokenPurchased.forEach((purchasedEvent) => { 
         tableData.push(
           {id:newID,

@@ -37,11 +37,12 @@ export default {
         let resultAmountPaidOut = await this.$store.state.contractInstance().getPastEvents("AmountPaidOut",{
             filter: {tokenholder: this.$store.state.web3.coinbase},
             fromBlock: 1})
-       
+   
+            
         var BN = this.$store.state.web3.web3Instance().utils.BN;
         let earnings = new BN(0)
         resultAmountPaidOut.forEach((amount) => { 
-            earnings = earnings.add(new BN(amount.returnValues.amount))
+            earnings = earnings.add(new BN(amount.returnValues.amountDAI))
         })
         this.$store.dispatch('getEarnings', earnings)
 
@@ -49,16 +50,18 @@ export default {
         let resultTokensPurchase = await this.$store.state.contractInstance().getPastEvents("TokensPurchased",{
             filter: {buyer: this.$store.state.web3.coinbase},
             fromBlock: 1})
-            console.log("tokens purchased")
         let purchasedEventPayload = []
+       
         
         for await (let purchasedEvent of resultTokensPurchase) { //@todo: test with multiple purchasedEvents committed
         purchasedEventPayload.push( {
-                amountToken: purchasedEvent.returnValues.amount, //@todo: has to be changed to new FundContract
-                valueUSD: purchasedEvent.returnValues.value,
+                amountToken: purchasedEvent.returnValues.amountToken, //@todo: has to be changed to new FundContract
+                valueUSD: purchasedEvent.returnValues.amountDAI,
                 timestamp: (await this.$store.state.web3.web3Instance().eth.getBlock(purchasedEvent.blockNumber)).timestamp //@todo: improvement: check if ts could be added to contract to save alot of time here..
             })
         }
+        console.log("err")
+        console.log(purchasedEventPayload)
         this.$store.dispatch('getPurchasedEvents', purchasedEventPayload)
         //Event: Token sent (transfer)
         let resultTokenSent = await this.$store.state.contractInstance().getPastEvents("Transfer",{
@@ -88,8 +91,6 @@ export default {
                 timestamp: (await this.$store.state.web3.web3Instance().eth.getBlock(tokenReceivedEvent.blockNumber)).timestamp //@todo: improvement: check if ts could be added to contract to save alot of time here..
             })
         }
-        console.log("received")
-        console.log(tokenReceivedEventPayload)
         this.$store.dispatch('getTransferReceivedEvents', tokenReceivedEventPayload)
     
     
@@ -101,7 +102,7 @@ export default {
         let tokenClaimedEventPayload = []
         for await (let tokenClaimedEvent of resultTokenClaimed) { //@todo: test with multiple purchasedEvents committed
         tokenClaimedEventPayload.push( {
-                amountUSD: tokenClaimedEvent.returnValues.amount, //@todo: has to be changed to new FundContract
+                amountUSD: tokenClaimedEvent.returnValues.amountDAI, //@todo: has to be changed to new FundContract
                 timestamp: (await this.$store.state.web3.web3Instance().eth.getBlock(tokenClaimedEvent.blockNumber)).timestamp //@todo: improvement: check if ts could be added to contract to save alot of time here..
             })
         }
@@ -111,16 +112,15 @@ export default {
       
        let resultBeneficiaryPayout = await this.$store.state.contractInstance().getPastEvents("PaymentReceived",{
             fromBlock: 1})
-            console.log("beneficiracy...")
-                    console.log(resultBeneficiaryPayout)
 
       let beneficiaryPayoutPayload = []
         for await (let  beneficiaryPayoutEvent of resultBeneficiaryPayout) { //@todo: test with multiple purchasedEvents committed
         beneficiaryPayoutPayload.push( {
-                amountUSD: beneficiaryPayoutEvent.returnValues.amount, //@todo: has to be changed to new FundContract
+                amountUSD: beneficiaryPayoutEvent.returnValues.amountDAI, //@todo: has to be changed to new FundContract
                 timestamp: (await this.$store.state.web3.web3Instance().eth.getBlock(beneficiaryPayoutEvent.blockNumber)).timestamp //@todo: improvement: check if ts could be added to contract to save alot of time here..
             })
         }
+       
       this.$store.dispatch('beneficiaryPayoutEvents', beneficiaryPayoutPayload)
 
 
@@ -189,13 +189,8 @@ export default {
               		} 
               })
 
-            console.log("amountUSD: " + payout.amountUSD)
-            console.log("tokenBalancePayout: " + tokenBalancePayout)
-            console.log("totalsupply: " + this.$store.state.tokenSupplyTotalWei)
-            console.log(payout)
 
             claimableAmountPayout = parseInt(payout.amountUSD*(tokenBalancePayout/this.$store.state.tokenSupplyTotalWei)) // calculate which porportion the user receives of payout (based on token amount, token supply amount of payout)
-            console.log("Tokenamount" + tokenBalancePayout + " Total Supply: " + tokenSupply + " Payout:" + claimableAmountPayout)
             claimableAmountTotalPayout += claimableAmountPayout
            
             receivedClaims.push({

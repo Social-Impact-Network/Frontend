@@ -151,7 +151,7 @@
             <card>
               <div class="text-center">
       
-                <base-checkbox>Please read <a :href="'https://google.com'" target="_blank">HERE</a> </base-checkbox>
+                <base-checkbox>Please read <a :href="'https://google.com'" target="_blank">this</a> </base-checkbox>
                 <p class="card-text">Check your input before submitting</p>
                 <base-button
                   type="primary"
@@ -161,7 +161,7 @@
 
                 <base-button
                   type="primary"
-                  @click.native="submit('success-message')"
+                  @click.native="submit('buyNow')"
                   >Buy now!</base-button
                 >
 
@@ -334,6 +334,7 @@ import { extend } from "vee-validate";
 import { required, numeric, regex, confirmed } from "vee-validate/dist/rules";
 
 import { TabPane, Tabs, Collapse, CollapseItem } from 'src/components';
+import {address} from '../util/constants/fundContract'
 
 import swal from 'sweetalert2';
 
@@ -400,7 +401,7 @@ card() {
     fundOpen: true,
     capLimit: this.$store.state.capLimit,
     tokenSupplyTotal: this.$store.state.tokenSupplyTotal,
-    alreadyFunded: parseInt(this.$store.state.tokenSupplyTotal/this.$store.state.capLimit)*100
+    alreadyFunded: (parseInt(this.$store.state.tokenSupplyTotal)/parseInt(this.$store.state.capLimit))*100
         };
         
  
@@ -464,30 +465,82 @@ axios.post('https://api.thegraph.com/subgraphs/name/uniswap/uniswap-v2', {
   },
   methods: {
     submit(type) {
-      //calculate eth amount to pay with 5% addition
-      let amountToPay = this.$store.state.DAIPrice*this.number*3 // @Todo: fix (security) of this calculation; not important since user gets left coins back
-      let amountToPayWei = this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(amountToPay), 'ether'))
+      let amountToPayWei = 0
+      amountToPayWei = this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(this.number), 'ether'))
 
-      let daiAmount = this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(this.number), 'ether'))
-                     
-      this.$store.state.contractInstance().methods.buyTokens(daiAmount).send({value: amountToPayWei, from: this.$store.state.web3.coinbase}).then((result) => {
-        console.log("result")
-        console.log(result)})
-      if(this.number > 0 & this.selects.currency!='') {
-        if (type === 'success-message') {
-          console.log(this.selects.currency);
-          swal.fire({
-            title: `Good job!`,
-            text: 'Our team is now proccessing your investment order',
+      //@todo: Error-Handling /  Return value handling has to be added
+       if(type=='approve') {
+          this.$store.state.contractInstanceDai().methods.approve(address,amountToPayWei).send({from: this.$store.state.web3.coinbase}).then((result) => {
+             swal.fire({
+                    title: `Approved!`,
+            text: 'Your approval request has been confirmed.',
             buttonsStyling: false,
             customClass: {
               confirmButton: 'btn btn-success btn-fill'
             },
             icon: 'success'
           });
-        } 
+                        
+            }).catch(function(err) {
+                  swal.fire({
+                    title: `Error!`,
+                    text: 'Please try again later',
+                    buttonsStyling: false,
+                    customClass: {
+                      confirmButton: 'btn btn-error btn-fill'
+                    },
+                    icon: 'error'
+                  });                        // will show "foo"
+              });
+      } else {
+        
+          if(this.selects.currency=='DAI' && amountToPayWei >0){
+            this.$store.state.contractInstance().methods.buyTokens(amountToPayWei).send({from: this.$store.state.web3.coinbase}).then((result) => {
+                        console.log(result)
+                         swal.fire({
+                    title: `Good job!`,
+            text: 'Your investment has been processed',
+            buttonsStyling: false,
+            customClass: {
+              confirmButton: 'btn btn-success btn-fill'
+            },
+            icon: 'success'
+          });
+                        }).catch(function(err) {
+                  swal.fire({
+                    title: `Error!`,
+                    text: 'Please try again later',
+                    buttonsStyling: false,
+                    customClass: {
+                      confirmButton: 'btn btn-error btn-fill'
+                    },
+                    icon: 'error'
+                  });                        // will show "foo"
+              });
+          } else {
+            let slippage = 3 //@todo: fix, slippage really high...
+            let amountToPay = this.$store.state.DAIPrice*this.number*slippage
+            let amountToPayWei = this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(amountToPay), 'ether'))
+            let daiAmount = this.$store.state.web3.web3Instance().utils.toBN(this.$store.state.web3.web3Instance().utils.toWei(String(this.number), 'ether'))
+
+            this.$store.state.contractInstance().methods.buyTokens(daiAmount).send({value: amountToPayWei, from: this.$store.state.web3.coinbase}).then((result) => {
+              console.log(result)
+
+               swal.fire({
+                    title: `Good job!`,
+            text: 'Your investment has been processed',
+            buttonsStyling: false,
+            customClass: {
+              confirmButton: 'btn btn-success btn-fill'
+            },
+            icon: 'success'
+          });
+          })
+        }
       }
-    },
+
+
+    }
 
   }
 };

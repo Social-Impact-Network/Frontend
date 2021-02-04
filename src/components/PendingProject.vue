@@ -44,7 +44,6 @@ export default {
         let resultTokensPurchase = await this.$store.state.contractInstance().getPastEvents("TokensPurchased",{
             filter: {buyer: this.$store.state.web3.coinbase},
             fromBlock: 1})
-            console.log("tokens purchased")
         let purchasedEventPayload = []
         
         for await (let purchasedEvent of resultTokensPurchase) { //@todo: test with multiple purchasedEvents committed
@@ -83,8 +82,6 @@ export default {
                 timestamp: (await this.$store.state.web3.web3Instance().eth.getBlock(tokenReceivedEvent.blockNumber)).timestamp //@todo: improvement: check if ts could be added to contract to save alot of time here..
             })
         }
-        console.log("received")
-        console.log(tokenReceivedEventPayload)
         this.$store.dispatch('getTransferReceivedEvents', tokenReceivedEventPayload)
     
     
@@ -92,7 +89,6 @@ export default {
         let resultTokenClaimed = await this.$store.state.contractInstance().getPastEvents("AmountPaidOut",{
             filter: {tokenholder: this.$store.state.web3.coinbase},
             fromBlock: 1})
-        console.log(resultTokenClaimed)
         let tokenClaimedEventPayload = []
         for await (let tokenClaimedEvent of resultTokenClaimed) { //@todo: test with multiple purchasedEvents committed
         tokenClaimedEventPayload.push( {
@@ -106,8 +102,6 @@ export default {
       
        let resultBeneficiaryPayout = await this.$store.state.contractInstance().getPastEvents("PaymentReceived",{
             fromBlock: 1})
-            console.log("beneficiracy...")
-                    console.log(resultBeneficiaryPayout)
 
       let beneficiaryPayoutPayload = []
         for await (let  beneficiaryPayoutEvent of resultBeneficiaryPayout) { //@todo: test with multiple purchasedEvents committed
@@ -184,13 +178,9 @@ export default {
               		} 
               })
 
-            console.log("amountUSD: " + payout.amountUSD)
-            console.log("tokenBalancePayout: " + tokenBalancePayout)
-            console.log("totalsupply: " + this.$store.state.tokenSupplyTotalWei)
             console.log(payout)
 
             claimableAmountPayout = parseInt(payout.amountUSD*(tokenBalancePayout/this.$store.state.tokenSupplyTotalWei)) // calculate which porportion the user receives of payout (based on token amount, token supply amount of payout)
-            console.log("Tokenamount" + tokenBalancePayout + " Total Supply: " + tokenSupply + " Payout:" + claimableAmountPayout)
             claimableAmountTotalPayout += claimableAmountPayout
            
             receivedClaims.push({
@@ -204,6 +194,7 @@ export default {
           }
         
         )
+     
       receivedClaims.sort(sortingTimestamps)
 
        this.$store.dispatch('getReceivedClaims', receivedClaims)
@@ -221,7 +212,7 @@ export default {
 	      dt.setMilliseconds(0);
         dateArray.push({timestamp: dt, claimableAmountUSD:0})
       }
-
+     
       receivedClaims.forEach(function(element, index){
           //@todo: change to loop    
           switch(true){
