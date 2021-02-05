@@ -422,6 +422,7 @@ statsCards() {
 let response = (await axios
     .get('https://ropsten.etherscan.io/token/generic-tokenholders2?a='+ address)).data
 let tokenHolderTotal = Number(response.match(/(?<=A total of \s*).*?(?=\s*token holder)/gs)[0])
+console.log(tokenHolderTotal)
 
   this.$store.dispatch('getTokenHolderTotal', tokenHolderTotal)
 
@@ -493,12 +494,11 @@ function mod(n, m) {
  * @todo: These values should be gathered through projectlist and through iterating through list
  
 */
-const apy = "6.17"
-const totalCO2Avoided = (totalEnergyGenerated*0.6).toFixed(2)
+  const totalCO2Avoided = (totalEnergyGenerated*0.6).toFixed(2)
 	this.$store.dispatch('addNumberOfProjects', projects.length)
 	this.$store.dispatch('addTotalEnergyGenerated', totalEnergyGenerated)
 	this.$store.dispatch('addTotalCO2Avoided', totalCO2Avoided)
-	this.$store.dispatch('addAPY', apy)
+	//this.$store.dispatch('addAPY', 6.17) // this line produces an error...
 
 
 	this.$store.dispatch('setPendingProject', project)

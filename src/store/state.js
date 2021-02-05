@@ -61,7 +61,7 @@ let state = {
     numberOfProjects:0,
     totalEnergyGenerated:0,
     totalCO2Avoided:0,
-    apy:0,
+    apy:6.17,
     tokenSupplyTotal: 0,
     tokenSupplyTotalWei: 0,
     capLimit: 0,
