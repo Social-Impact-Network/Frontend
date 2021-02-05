@@ -428,7 +428,7 @@ let tokenHolderTotal = Number(response.match(/(?<=A total of \s*).*?(?=\s*token 
 	let projects = []
 
 let projectAssetIDs = (await axios
-	  .get('https://acren.org/listProjectAssetIds.php')).data.metadata
+    .get('https://acren.org/listProjectAssetIds.php')).data.metadata
 let project;
 let totalEnergyGenerated = 0
 let energyTabData = [0,0,0,0,0,0]
@@ -438,8 +438,8 @@ function mod(n, m) {
 	}
   await Promise.all(projectAssetIDs.projects.map(async (projectID) => {
     try {
-	  let projetDetails = (await axios.get('https://acren.org/project_details.php')).data[0].asset.data //@todo: add projectID here
 
+	  let projetDetails = (await axios.get('https://acren.org/project_details.php')).data[0].asset.data //@todo: add projectID here
 
 
 		project = {
@@ -463,7 +463,6 @@ function mod(n, m) {
 	
 	
   let lastTx = (await axios.get('https://acren.org/measurements.php')).data[0]//.metadata.summary.kwh_total //@todo: add projectID here
-
   totalEnergyGenerated += lastTx.metadata.summary.kwh_total 
 	let kwhStatisticYear = lastTx.metadata.summary.kwh_by_year
 	const yearToday = new Date().getUTCFullYear()
@@ -492,8 +491,8 @@ function mod(n, m) {
 	
 /**
  * @todo: These values should be gathered through projectlist and through iterating through list
- */
-
+ 
+*/
 const apy = "6.17"
 const totalCO2Avoided = (totalEnergyGenerated*0.6).toFixed(2)
 	this.$store.dispatch('addNumberOfProjects', projects.length)
@@ -528,7 +527,6 @@ const totalCO2Avoided = (totalEnergyGenerated*0.6).toFixed(2)
 		  
 
 
-
 	 let dateArray=[] // Setting array with [0] => timestamp of beginning of 12 months ago, [1] => timestamo of beginning of month 11 months ago, ..
       for (let i=5; i >= 0; i--) {
 	      let dt = new Date();
@@ -537,12 +535,14 @@ const totalCO2Avoided = (totalEnergyGenerated*0.6).toFixed(2)
 	      dt.setHours(0, 0, 0);
 	      dt.setMilliseconds(0);
         dateArray.push({timestamp: dt, payouts:0})
-	  }
+    }
+
 	if(this.$store.state.tokenSupplyTotal == 0){
+
  		const tokenSupply =  await this.$store.state.contractInstance().methods.totalSupply().call(); 
     	this.$store.dispatch('setTokenSupplyTotal', tokenSupply)
 	}
-     
+
 
 
 
@@ -564,9 +564,10 @@ const totalCO2Avoided = (totalEnergyGenerated*0.6).toFixed(2)
 	}
 	
 
+console.log(9)
 
 	let payouts = this.$store.state.beneficiaryPayout.map((b, idx) => Object.assign({ index: idx }, b));//JSON.parse('[{"amountUSD":"100","timestamp":1572998400},{"amountUSD":"100","timestamp":1575936000},{"amountUSD":"100","timestamp":1578182400}]')
-	
+
 
 	payouts.forEach((element, index) => {
 		console.log(element.timestamp)
