@@ -6,8 +6,7 @@
       <form class="form-horizontal" @submit.prevent="handleSubmit(submit)">
         <card>
           <h4 slot="header" class="card-title">Claim Tokens</h4>
-          <div class="cold-md-9 offset-md-2">
-          </div>
+          
           <div class="text-center">
             <card v-if="claimable">
               <div class="text-center">
@@ -31,7 +30,7 @@
 
           <card>
           <h4 slot="header" class="card-title">Payout</h4>
-          <div class="cold-md-9 offset-md-2">
+          <div class="cold-md-9 offset-md-3">
             <div class="row">
               <label class="col-sm-2 col-form-label">
                 <div title= 'Invest infos here'>Payout amount
@@ -64,8 +63,7 @@
             </div>
             </div>
               </div>
-              <div class="col-md-5">
-              </div>
+              
             </div>
           </div>
         </card>
