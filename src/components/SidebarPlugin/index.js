@@ -1,6 +1,9 @@
 import Sidebar from './SideBar.vue';
 import SidebarItem from './SidebarItem.vue';
 
+
+document.body.classList.toggle('sidebar-mini');
+
 const SidebarStore = {
   showSidebar: false,
   sidebarLinks: [],

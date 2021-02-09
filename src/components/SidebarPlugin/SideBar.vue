@@ -70,7 +70,6 @@ export default {
     // set here sidebar icon  */
     logo: {
       type: String,
-      /* default: 'img/icon-vue.png', */
       default: 'img/icon-si.png',
       description: 'Sidebar app logo'
     },
