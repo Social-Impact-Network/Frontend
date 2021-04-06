@@ -190,12 +190,12 @@
 
 
 
-
-		<div class="col-md-6 ml-auto mr-auto">
+    
+		<!--<div class="col-md-6 ml-auto mr-auto">
 			<div class="width: 100%">
 				<base-button type="primary" class="btn btn-block" @click="toggleText">{{ text }}</base-button>
 			</div>
-		</div>
+		</div>-->
     
   </div>
 </template>

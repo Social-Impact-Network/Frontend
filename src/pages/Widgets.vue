@@ -8,11 +8,9 @@
         <card v-if="fundOpen">
           <h4 slot="header" class="card-title">Investment order</h4>
           <div class="cold-md-9 offset-md-2">
-
-
             <div class="row">
               <label class="col-sm-2 col-form-label">
-                <div title= 'Invest infos here'>Invest
+                <div title='Invest infos here'>Invest
                   <sup><i class="tim-icons icon-alert-circle-exc"></i></sup>
                 </div>
               </label>
@@ -164,34 +162,22 @@
                   @click.native="submit('buyNow')"
                   >Buy now!</base-button
                 >
-
-                
               </div>
             </card>
           </div>
-
         </card>
       <card v-else>
           <h4 slot="header" class="card-title">Funding Closed</h4>
           <div class="cold-md-9 offset-md-2">
       </div>
-          
           <div class="text-center">
             <card>
               <div class="text-center">
                 <p class="card-text">Funding closed</p>
-                
               </div>
             </card>
           </div>
-
-       
-
-
-
       </card>
-
-
       </form>
     </ValidationObserver>
     
@@ -414,7 +400,7 @@ card() {
 
 
   if(this.$store.state.capLimit == this.$store.state.tokenSupplyTotal && this.$store.state.capLimit > 0){
-              this.fundOpen = true;
+              this.fundOpen = false;
         }
       const axios = require('axios')
 
